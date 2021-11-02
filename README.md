@@ -13,14 +13,14 @@ For this assignment you have the choice between getting a real world client that
 
 Whatever project you choose, the final submission must have the following:
 
-- A Gantt chart planning the project
-- A style guide
-- An Adobe XD prototype
-- Use a CSS Pre-processor and BEM if not using CSS Modules, Styled Components, etc
-- Use a React.js or Next.js
-- You can use regular JS or TypeScript
-- Please use create-react-app or create-next-app to generate a skeleton project for yourself
-- A fully working website that fulfils the brief
+- [x] A Gantt chart planning the project
+- [x] A style guide
+- [ ] An Adobe XD prototype
+- [ ] Use a CSS Pre-processor and BEM if not using CSS Modules, Styled Components, etc
+- [x] Use a React.js or Next.js
+- [x] You can use regular JS or TypeScript
+- [x] Please use create-react-app or create-next-app to generate a skeleton project for yourself
+- [ ] A fully working website that fulfils the brief
 
 ## Option 2: Hotel Booking Website
 
