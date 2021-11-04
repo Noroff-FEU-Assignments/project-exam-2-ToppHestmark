@@ -14,7 +14,7 @@ export interface PropertyType {
     | 'Cabin'
     | '';
   neighbourhood: 'City' | 'Bergenhus' | 'Ytrebygda' | 'Fana' | 'Paradis' | '';
-  // description: string;
+  description: string;
 }
 
 export interface InputProps {

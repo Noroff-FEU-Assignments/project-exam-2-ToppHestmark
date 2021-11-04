@@ -27,5 +27,5 @@ export const addRoomSchema = yup.object().shape({
   neighbourhood: yup
     .string()
     .matches(/(City|Bergenhus|Ytrebygda|Fana|Paradis)/),
-  // // description: yup.string().required('Please enter description').min(20),
+  description: yup.string().required('Please enter description').min(20),
 });

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
     min-height: 100vh;
     margin: 0 auto;
     font-family: 'Roboto', sans-serif;
-    -ms-overflow-style: none; 
+    -ms-overflow-style: none;
     scrollbar-width: none;
   }
 

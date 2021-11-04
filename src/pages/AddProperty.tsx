@@ -4,14 +4,18 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
 import { FormGroup, Button } from '@mui/material';
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
-import { ROOMS_URL } from '../settings/apis';
 import { AuthContext } from '../context/AuthProvider';
 import { addRoomSchema } from '../validation/addRoomSchema';
 import PropertyInputs from '../components/form/PropertyInputs';
 import { PropertyType } from '../components/form/PropertyInputs.types';
 import PropertyOptions from '../components/form/PropertyOptions';
+import { manageRoom } from '../apis/manageRoom';
+
+export const FormContainer = styled(FormGroup)`
+  width: 100%;
+`;
 
 const AddProperty: React.FC = () => {
   const [auth, setAuth] = useContext<any>(AuthContext);
@@ -34,7 +38,7 @@ const AddProperty: React.FC = () => {
     subtitle: '',
     property_type: '',
     neighbourhood: '',
-    // description: '',
+    description: '',
   });
 
   const history = useHistory();
@@ -50,40 +54,12 @@ const AddProperty: React.FC = () => {
     resolver: yupResolver(addRoomSchema),
   });
 
-  function onSubmit(data: PropertyType) {
+  const onSubmit = async (data: PropertyType) => {
     setAddError(null);
-    console.log('Form submit inputs: ', data);
-    // console.log('Property options:', propertyOptions);
+    const addNewRoom = await manageRoom('POST', token, propertyOptions, data);
 
-    // const options = {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: 'Bearer ' + token,
-    //   },
-    //   body: JSON.stringify({
-    //     identifier: data.username,
-    //     password: data.password,
-    //   }),
-    // };
-
-    // try {
-    //   const response = await (await fetch(ROOMS_URL, options)).json();
-    //   const { user, error } = response;
-
-    //   if (user) {
-    //     setAuth(response);
-    //     history.push('/');
-    //   }
-
-    //   if (error) {
-    //     setAddError(error);
-    //   }
-    // } catch (error) {
-    //   console.log('error', error);
-    //   setAddError(error);
-    // }
-  }
+    console.log('Add property response', addNewRoom);
+  };
 
   const handleChange =
     (prop: any) => (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,7 +79,7 @@ const AddProperty: React.FC = () => {
   };
 
   return (
-    <FormGroup>
+    <FormContainer>
       <PropertyOptions
         propertyOptions={propertyOptions}
         handlePropertyOptions={handlePropertyOptions}
@@ -117,7 +93,7 @@ const AddProperty: React.FC = () => {
       />
 
       <Button onClick={handleSubmit(onSubmit)}>Add</Button>
-    </FormGroup>
+    </FormContainer>
   );
 };
 

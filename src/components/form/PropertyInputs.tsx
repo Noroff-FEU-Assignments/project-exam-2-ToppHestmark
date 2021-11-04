@@ -6,12 +6,21 @@ import {
   FormHelperText,
   Select,
   MenuItem,
+  TextField,
 } from '@mui/material';
 import { InputProps } from './PropertyInputs.types';
 
-export const ContainerGrid = styled.div`
+export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const DescriptionWrapper = styled(FormControl)`
+  margin: 2em;
+  width: 100%;
+  display: flex;
   justify-content: center;
   align-items: center;
 `;
@@ -22,173 +31,190 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
   const doNothing = (e) => e.target.blur();
 
   return (
-    <ContainerGrid>
-      <FormControl
-        error={errors?.Title ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel> Property name </InputLabel>
-        <Input
-          type="text"
-          value={property?.Title}
-          {...register('Title')}
-          onChange={handleChange('Title')}
-        />
-        <FormHelperText>
-          {' '}
-          {errors?.Title && errors?.Title.message}{' '}
-        </FormHelperText>
-      </FormControl>
+    <>
+      <GridWrapper>
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Property name"
+            error={errors?.Title ? true : false}
+            value={property?.Title}
+            helperText={
+              errors?.Title ? errors?.Title.message : 'Title of the property'
+            }
+            {...register('Title')}
+            onChange={handleChange('Title')}
+          />
+        </FormControl>
 
-      <FormControl
-        error={errors?.room_type ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel> Room Type </InputLabel>
-        <Input
-          type="text"
-          value={property?.room_type}
-          {...register('room_type')}
-          onChange={handleChange('room_type')}
-        />
-        <FormHelperText>
-          {' '}
-          {errors?.room_type && errors?.room_type.message}{' '}
-        </FormHelperText>
-      </FormControl>
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Room Type"
+            error={errors?.room_type ? true : false}
+            value={property?.room_type}
+            helperText={
+              errors?.room_type ? errors?.room_type.message : 'Sea view etc.'
+            }
+            {...register('room_type')}
+            onChange={handleChange('room_type')}
+          />
+        </FormControl>
 
-      <FormControl
-        error={errors?.bed_type ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel> Bed Type </InputLabel>
-        <Input
-          type="text"
-          value={property?.bed_type}
-          {...register('bed_type')}
-          onChange={handleChange('bed_type')}
-        />
-        <FormHelperText>
-          {' '}
-          {errors?.bed_type && errors?.bed_type.message}{' '}
-        </FormHelperText>
-      </FormControl>
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Bed Type"
+            error={errors?.bed_type ? true : false}
+            value={property?.bed_type}
+            helperText={
+              errors?.bed_type ? errors?.bed_type.message : 'Queensize etc.'
+            }
+            {...register('bed_type')}
+            onChange={handleChange('bed_type')}
+          />
+        </FormControl>
 
-      <FormControl
-        error={errors?.price_per_night ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel> Price per night </InputLabel>
-        <Input
-          type="number"
-          value={property?.price_per_night}
-          {...register('price_per_night')}
-          onChange={handleChange('price_per_night')}
-          onWheel={doNothing}
-        />
-        <FormHelperText>
-          {' '}
-          {errors?.price_per_night && errors?.price_per_night.message}{' '}
-        </FormHelperText>
-      </FormControl>
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="number"
+            variant="standard"
+            label="Price per night"
+            error={errors?.price_per_night ? true : false}
+            value={property?.price_per_night}
+            helperText={
+              errors?.price_per_night
+                ? errors?.price_per_night.message
+                : 'US Dollar'
+            }
+            {...register('price_per_night')}
+            onChange={handleChange('price_per_night')}
+            onWheel={doNothing}
+          />
+        </FormControl>
 
-      <FormControl
-        error={errors?.guest_review ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel> Guest Review </InputLabel>
-        <Input
-          type="text"
-          value={property?.guest_review}
-          {...register('guest_review')}
-          onChange={handleChange('guest_review')}
-        />
-        <FormHelperText>
-          {' '}
-          {errors?.guest_review && errors?.guest_review.message}{' '}
-        </FormHelperText>
-      </FormControl>
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Guest Review"
+            error={errors?.guest_review ? true : false}
+            value={property?.guest_review}
+            helperText={
+              errors?.guest_review
+                ? errors?.guest_review.message
+                : 'Good price etc.'
+            }
+            {...register('guest_review')}
+            onChange={handleChange('guest_review')}
+          />
+        </FormControl>
 
-      <FormControl
-        error={errors?.image_01 ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel> Image URL </InputLabel>
-        <Input
-          type="text"
-          value={property?.image_01}
-          {...register('image_01')}
-          onChange={handleChange('image_01')}
-        />
-        <FormHelperText>
-          {' '}
-          {errors?.image_01 && errors?.image_01.message}{' '}
-        </FormHelperText>
-      </FormControl>
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Image URL"
+            error={errors?.image_01 ? true : false}
+            value={property?.image_01}
+            helperText={
+              errors?.image_01 ? errors?.image_01.message : '.jpeg .jpg .png'
+            }
+            {...register('image_01')}
+            onChange={handleChange('image_01')}
+          />
+        </FormControl>
 
-      <FormControl
-        error={errors?.subtitle ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel> Subtitle </InputLabel>
-        <Input
-          type="text"
-          value={property?.subtitle}
-          {...register('subtitle')}
-          onChange={handleChange('subtitle')}
-        />
-        <FormHelperText>
-          {' '}
-          {errors?.subtitle && errors?.subtitle.message}{' '}
-        </FormHelperText>
-      </FormControl>
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Subtitle"
+            error={errors?.subtitle ? true : false}
+            value={property?.subtitle}
+            helperText={
+              errors?.subtitle ? errors?.subtitle.message : 'Short description'
+            }
+            {...register('subtitle')}
+            onChange={handleChange('subtitle')}
+          />
+        </FormControl>
 
-      <FormControl
-        error={errors?.property_type ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel>Property Type</InputLabel>
-        <Select
-          value={property?.property_type}
-          label="Property Type"
-          {...register('property_type')}
-          onChange={handleChange('property_type')}
+        <FormControl
+          variant="standard"
+          error={errors?.property_type ? true : false}
+          sx={{ m: 1, width: '30ch' }}
         >
-          <MenuItem value="Hotel">Hotel</MenuItem>
-          <MenuItem value="Guesthouse">Guesthouse</MenuItem>
-          <MenuItem value="Apartment">Apartment</MenuItem>
-          <MenuItem value="Holiday">Holiday</MenuItem>
-          <MenuItem value="Cabin">Cabin</MenuItem>
-        </Select>
-        <FormHelperText>
-          {' '}
-          {errors?.property_type && errors?.property_type.message}{' '}
-        </FormHelperText>
-      </FormControl>
+          <InputLabel>Property Type</InputLabel>
+          <Select
+            value={property?.property_type}
+            label="Property Type"
+            {...register('property_type')}
+            onChange={handleChange('property_type')}
+          >
+            <MenuItem value="Hotel">Hotel</MenuItem>
+            <MenuItem value="Guesthouse">Guesthouse</MenuItem>
+            <MenuItem value="Apartment">Apartment</MenuItem>
+            <MenuItem value="Holiday">Holiday</MenuItem>
+            <MenuItem value="Cabin">Cabin</MenuItem>
+          </Select>
+          <FormHelperText>
+            {' '}
+            {errors?.property_type && errors?.property_type.message}{' '}
+          </FormHelperText>
+        </FormControl>
 
-      <FormControl
-        error={errors?.neighbourhood ? true : false}
-        sx={{ m: 1, width: '30ch' }}
-      >
-        <InputLabel>Neighbourhood</InputLabel>
-        <Select
-          value={property?.neighbourhood}
-          label="Neighbourhood"
-          {...register('neighbourhood')}
-          onChange={handleChange('neighbourhood')}
+        <FormControl
+          variant="standard"
+          error={errors?.neighbourhood ? true : false}
+          sx={{ m: 1, width: '30ch' }}
         >
-          <MenuItem value="City">City</MenuItem>
-          <MenuItem value="Bergenhus">Bergenhus</MenuItem>
-          <MenuItem value="Ytrebygda">Ytrebygda</MenuItem>
-          <MenuItem value="Fana">Fana</MenuItem>
-          <MenuItem value="Paradis">Paradis</MenuItem>
-        </Select>
-        <FormHelperText>
-          {' '}
-          {errors?.neighbourhood && errors?.neighbourhood.message}{' '}
-        </FormHelperText>
-      </FormControl>
-    </ContainerGrid>
+          <InputLabel>Neighbourhood</InputLabel>
+          <Select
+            value={property?.neighbourhood}
+            label="Neighbourhood"
+            {...register('neighbourhood')}
+            onChange={handleChange('neighbourhood')}
+          >
+            <MenuItem value="City">City</MenuItem>
+            <MenuItem value="Bergenhus">Bergenhus</MenuItem>
+            <MenuItem value="Ytrebygda">Ytrebygda</MenuItem>
+            <MenuItem value="Fana">Fana</MenuItem>
+            <MenuItem value="Paradis">Paradis</MenuItem>
+          </Select>
+          <FormHelperText>
+            {' '}
+            {errors?.neighbourhood && errors?.neighbourhood.message}{' '}
+          </FormHelperText>
+        </FormControl>
+      </GridWrapper>
+      <DescriptionWrapper
+        variant="standard"
+        error={errors?.description ? true : false}
+        sx={{ m: 1 }}
+      >
+        <TextField
+          label="Description"
+          variant="standard"
+          multiline
+          rows={4}
+          fullWidth
+          defaultValue={property?.description}
+          error={errors?.description ? true : false}
+          value={property?.description.trim()}
+          helperText={
+            errors?.description
+              ? errors?.description.message
+              : 'Describe property'
+          }
+          {...register('description')}
+          onChange={handleChange('description')}
+        />
+      </DescriptionWrapper>
+    </>
   );
 };
 

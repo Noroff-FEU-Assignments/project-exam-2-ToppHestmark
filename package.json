@@ -27,6 +27,9 @@
     "web-vitals": "^1.1.2",
     "yup": "^0.32.11"
   },
+  "resolutions": {
+    "styled-components": "^5"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

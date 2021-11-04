@@ -15,7 +15,7 @@ import {
   FormHelperText,
 } from '@mui/material';
 
-import { LOGIN_URL } from '../settings/apis';
+import { LOGIN_URL } from '../apis/apis';
 import { AuthContext } from '../context/AuthProvider';
 import { loginSchema } from '../validation/loginSchema';
 

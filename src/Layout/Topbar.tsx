@@ -3,7 +3,6 @@ import { NavLink, useHistory } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 
 import styled from 'styled-components';
-import { Button } from '@mui/material';
 
 const Wrapper = styled.nav`
   display: flex;
