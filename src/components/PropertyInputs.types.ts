@@ -1,3 +1,5 @@
+import { NeighbourhoodTypes, PropertyTypes } from '../types/partials';
+
 export interface PropertyType {
   Title: string;
   room_type: string;
@@ -6,14 +8,8 @@ export interface PropertyType {
   guest_review: string;
   image_01: string;
   subtitle: string;
-  property_type:
-    | 'Hotel'
-    | 'Guesthouse'
-    | 'Apartment'
-    | 'Holiday'
-    | 'Cabin'
-    | '';
-  neighbourhood: 'City' | 'Bergenhus' | 'Ytrebygda' | 'Fana' | 'Paradis' | '';
+  property_type: PropertyTypes;
+  neighbourhood: NeighbourhoodTypes;
   description: string;
 }
 

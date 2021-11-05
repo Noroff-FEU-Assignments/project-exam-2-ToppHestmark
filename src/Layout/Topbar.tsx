@@ -38,7 +38,9 @@ const TopBar: React.FC = () => {
 
   return (
     <Wrapper>
-      <Link to="/">Holidaze</Link>
+      <Link style={{ marginRight: 'auto' }} to="/">
+        Holidaze
+      </Link>
 
       {auth ? (
         <>

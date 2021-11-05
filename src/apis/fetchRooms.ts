@@ -1,6 +1,6 @@
 import { ROOMS_URL } from './apis';
 
-export const getRooms = async (id?: number | string): Promise<void> => {
+export const fetchRooms = async (id?: number | string): Promise<void> => {
   try {
     const res = await fetch(`${ROOMS_URL}/${id}`);
     if (!res.ok) {
