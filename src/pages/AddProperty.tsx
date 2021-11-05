@@ -8,16 +8,16 @@ import styled from 'styled-components';
 
 import { AuthContext } from '../context/AuthProvider';
 import { addRoomSchema } from '../validation/addRoomSchema';
-import PropertyInputs from '../components/form/PropertyInputs';
-import { PropertyType } from '../components/form/PropertyInputs.types';
-import PropertyOptions from '../components/form/PropertyOptions';
+import PropertyInputs from '../components/PropertyInputs';
+import { PropertyType } from '../components/PropertyInputs.types';
+import PropertyOptions from '../components/PropertyOptions';
 import { manageRoom } from '../apis/manageRoom';
 
 export const FormContainer = styled(FormGroup)`
   width: 100%;
 `;
 
-const AddProperty: React.FC = () => {
+const AddProperty = () => {
   const [auth, setAuth] = useContext<any>(AuthContext);
   const [addError, setAddError] = useState<any>(null);
   const [breakfast, setBreakfast] = useState<boolean>(false);

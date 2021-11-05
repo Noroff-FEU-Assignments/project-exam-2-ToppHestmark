@@ -7,10 +7,10 @@ const Wrapper = styled.main`
 
 const LayoutWrapper = ({ children }: any) => {
   return (
-    <div>
+    <Wrapper>
       <Topbar />
-      <Wrapper>{children}</Wrapper>
-    </div>
+      {children}
+    </Wrapper>
   );
 };
 

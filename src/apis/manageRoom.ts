@@ -1,5 +1,5 @@
-import { PropertyOptions } from '../components/form/PropertyOptions.types';
-import { PropertyType } from '../components/form/PropertyInputs.types';
+import { PropertyOptions } from '../components/PropertyOptions.types';
+import { PropertyType } from '../components/PropertyInputs.types';
 import { ROOMS_URL } from './apis';
 
 type MethodsType = 'POST' | 'PUT' | 'DELETE';

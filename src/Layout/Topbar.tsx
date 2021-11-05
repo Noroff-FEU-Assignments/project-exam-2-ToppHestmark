@@ -7,6 +7,11 @@ import styled from 'styled-components';
 const Wrapper = styled.nav`
   display: flex;
   justify-content: center;
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9; */
 `;
 
 export const Link = styled(NavLink)`
@@ -43,7 +48,10 @@ const TopBar: React.FC = () => {
           </Link>
         </>
       ) : (
-        <Link to="/login">Login</Link>
+        <>
+          <Link to="/contact">Contact</Link>
+          <Link to="/login">Login</Link>
+        </>
       )}
     </Wrapper>
   );

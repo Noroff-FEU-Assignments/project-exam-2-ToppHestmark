@@ -3,38 +3,31 @@ import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
-import {
-  FormControl,
-  IconButton,
-  Input,
-  InputAdornment,
-  InputLabel,
-  FormGroup,
-  Button,
-  FormHelperText,
-} from '@mui/material';
+import { FormControl, FormGroup, Button, TextField } from '@mui/material';
+import styled from 'styled-components';
 
 import { LOGIN_URL } from '../apis/apis';
 import { AuthContext } from '../context/AuthProvider';
 import { loginSchema } from '../validation/loginSchema';
 
+export const Container = styled.div`
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 interface LoginType {
-  username: string;
-  password: string;
-  showPassword: boolean;
-}
-interface LoginSchema {
   username: string;
   password: string;
 }
 
-const Login: React.FC = () => {
+const Login = () => {
   const [loginError, setLoginError] = useState<any>(null);
   const [values, setValues] = useState<LoginType>({
     username: '',
     password: '',
-    showPassword: false,
   });
   const history = useHistory();
   const [auth, setAuth] = useContext<any>(AuthContext);
@@ -45,11 +38,11 @@ const Login: React.FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginSchema>({
+  } = useForm<LoginType>({
     resolver: yupResolver(loginSchema),
   });
 
-  async function onSubmit(data: LoginSchema) {
+  async function onSubmit(data: LoginType) {
     setLoginError(null);
     console.log(data);
 
@@ -87,72 +80,42 @@ const Login: React.FC = () => {
       setValues({ ...values, [prop]: event.target.value });
     };
 
-  const handleClickShowPassword = () => {
-    setValues({
-      ...values,
-      showPassword: !values.showPassword,
-    });
-  };
-
-  const handleMouseDownPassword = (
-    event: React.MouseEvent<HTMLButtonElement>
-  ) => {
-    event.preventDefault();
-  };
-
   return (
-    <div
-      style={{
-        marginTop: 30,
-        width: '100%',
-      }}
-    >
+    <Container>
       <FormGroup>
-        <FormControl
-          error={errors.username ? true : false}
-          sx={{ m: 1, width: '35ch' }}
-        >
-          <InputLabel>Username</InputLabel>
-          <Input
+        <FormControl sx={{ m: 1, width: '35ch' }}>
+          <TextField
             type="text"
+            variant="standard"
+            label="User"
+            placeholder="Username or email"
+            multiline
+            error={errors?.username ? true : false}
             value={values.username}
+            helperText={errors?.username && errors?.username.message}
             {...register('username')}
             onChange={handleChange('username')}
           />
-          <FormHelperText> {errors.username?.message} </FormHelperText>
         </FormControl>
 
-        <FormControl
-          error={errors.password ? true : false}
-          sx={{ m: 1, width: '35ch' }}
-        >
-          <InputLabel htmlFor="standard-adornment-password">
-            Password
-          </InputLabel>
-          <Input
-            id="standard-adornment-password"
-            type={values.showPassword ? 'text' : 'password'}
+        <FormControl sx={{ m: 1, width: '35ch' }}>
+          <TextField
+            type="password"
+            variant="standard"
+            label="Password"
+            placeholder="Your secret key"
+            multiline
+            error={errors.password ? true : false}
             value={values.password}
+            helperText={errors?.password && errors?.password.message}
             {...register('password')}
             onChange={handleChange('password')}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                >
-                  {values.showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
           />
-          <FormHelperText> {errors.password?.message} </FormHelperText>
         </FormControl>
 
         <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
       </FormGroup>
-    </div>
+    </Container>
   );
 };
 
