@@ -51,6 +51,7 @@ const TopBar: React.FC = () => {
         </>
       ) : (
         <>
+          <Link to="/all-properties">Properties</Link>
           <Link to="/contact">Contact</Link>
           <Link to="/login">Login</Link>
         </>

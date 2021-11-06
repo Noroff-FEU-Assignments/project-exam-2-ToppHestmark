@@ -35,9 +35,9 @@ You will need to create an API to store the data for the establishments, enquiri
 ### Visitor Side
 
 - [ ] Homepage
-- [ ] Search bar typeahead (auto dropdown with hotel names that match what has been typed)
-- [ ] A results page with all hotels
-- [ ] The hotel specific page which displays all details about the hotel
+- [x] Search bar typeahead (auto dropdown with hotel names that match what has been typed)
+- [x] A results page with all hotels
+- [x] The hotel specific page which displays all details about the hotel
 - [ ] An enquiry page either modal or separate page
 - [x] A contact page (different to enquiry page) which goes to the admin for Holidaze
 
