@@ -16,7 +16,7 @@ const AllProperties = () => {
 
   return (
     <Container>
-      {rooms.map((room) => {
+      {rooms?.map((room) => {
         const {
           Title,
           bed_type,

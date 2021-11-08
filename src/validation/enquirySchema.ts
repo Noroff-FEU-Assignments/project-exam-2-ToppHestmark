@@ -9,6 +9,5 @@ export const enquirySchema = yup.object().shape({
     .required('Phone number is required')
     .positive()
     .integer(),
-  number_of_guests: yup.number().required('Please enter number of guests'),
   enquiry_specifications: yup.string(),
 });

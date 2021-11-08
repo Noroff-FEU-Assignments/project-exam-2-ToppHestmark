@@ -1,43 +1,76 @@
 import { useState, useEffect } from 'react';
-import { useLocation, useHistory, useParams } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
-import AdapterDateFns from '@mui/lab/AdapterDateFns';
-import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import DatePicker from '@mui/lab/DatePicker';
+import styled from 'styled-components/macro';
+import { useLocation, useHistory } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { FormGroup, Button } from '@mui/material';
 import { RoomType } from '../types/roomType';
+import { enquirySchema } from '../validation/enquirySchema';
+import EnquiryInputs from '../components/EnquiryInputs';
+
+export const FormContainer = styled(FormGroup)`
+  width: 100%;
+`;
+
+export interface EnquiryType {
+  firstname: string;
+  lastname: string;
+  email: string;
+  phone_number: number | string;
+  enquiry_specifications: string;
+}
 
 const Enquiry = () => {
   const { state }: any = useLocation<{ property: RoomType | undefined }>();
-  const history = useHistory();
-  const [dateFrom, setDateFrom] = useState<Date | null>(null);
-  const [dateTo, setDateTo] = useState<Date | null>(null);
   const property: RoomType = state?.property;
+  const history = useHistory();
+
+  const [enquiriesError, setEnquiriesError] = useState<any>(null);
+  const [enquiries, setEnquiries] = useState<EnquiryType>({
+    firstname: '',
+    lastname: '',
+    email: '',
+    phone_number: '',
+    enquiry_specifications: '',
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<EnquiryType>({
+    resolver: yupResolver(enquirySchema),
+  });
+
+  // Convert this to Async
+  const onSubmit = (data: EnquiryType) => {
+    setEnquiriesError(null);
+
+    console.log('Enquiries data: ', data);
+  };
+
+  const handleEnquiryChange =
+    (prop: any) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setEnquiries({
+        ...enquiries,
+        [prop]: event.target.value,
+      });
+    };
 
   return (
     <div>
       <h1>Your're almost there.</h1>
       <h2> Enquiry for {property.Title} </h2>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DatePicker
-          label="From"
-          value={dateFrom}
-          onChange={(newValue) => {
-            setDateFrom(newValue);
-          }}
-          renderInput={(params) => <TextField variant="standard" {...params} />}
+
+      <FormContainer>
+        <EnquiryInputs
+          errors={errors}
+          enquiries={enquiries}
+          register={register}
+          handleEnquiryChange={handleEnquiryChange}
         />
-      </LocalizationProvider>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DatePicker
-          label="To"
-          value={dateTo}
-          onChange={(newValue) => {
-            setDateTo(newValue);
-          }}
-          renderInput={(params) => <TextField variant="standard" {...params} />}
-        />
-      </LocalizationProvider>
-      <p>Total: 999 dollar</p>
+        <Button onClick={handleSubmit(onSubmit)}>Book</Button>
+      </FormContainer>
     </div>
   );
 };
