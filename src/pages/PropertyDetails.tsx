@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { FormGroup, Button, FormControl } from '@mui/material';
+import { FormGroup, Button, FormControl, Typography } from '@mui/material';
 import DatePicker from '@mui/lab/DatePicker';
 import { fetchRooms } from '../apis/fetchRooms';
 import { RoomType } from '../types/roomType';
@@ -17,7 +17,7 @@ interface IDParam {
   id: string | undefined;
 }
 
-interface IBooking {
+interface IGuests {
   number_of_guests: number;
 }
 
@@ -27,9 +27,10 @@ const PropertyDetails = () => {
   const [room, setRoom] = useState<RoomType | any>();
   const [dateFrom, setDateFrom] = useState<Date | any>(new Date());
   const [dateTo, setDateTo] = useState<Date | any>(null);
-  const [booking, setBooking] = useState<IBooking>({
+  const [guests, setGuests] = useState<IGuests>({
     number_of_guests: 1,
   });
+  const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const minimumStays = DateTime.fromJSDate(dateFrom)
     .plus({ days: MIN_STAYS })
@@ -43,11 +44,6 @@ const PropertyDetails = () => {
     .diff(dateStart, 'days')
     .toObject()
     .days?.toFixed(0);
-  const totalPrice = parseInt(durationOfStays) * room?.price_per_night;
-
-  console.log('Price per night: ', room?.price_per_night);
-  console.log('Total price: ', totalPrice);
-  console.log('Duration of stays: ', durationOfStays);
 
   !id && history.push('/');
 
@@ -55,20 +51,25 @@ const PropertyDetails = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IBooking>({
+  } = useForm<IGuests>({
     resolver: yupResolver(numberOfGuestsSchema),
   });
 
-  const onSubmit = (data: IBooking) => {
+  const onSubmit = (data: IGuests) => {
     console.log('Date start: ', dateStart);
+    console.log('Date end: ', dateEnd);
+    console.log('Price per night: ', room?.price_per_night);
+    console.log('Total price: ', totalPrice);
+    console.log('Duration of stays: ', durationOfStays);
+    console.log('Guests: ', data);
   };
 
   const doNothing = (e) => e.target.blur();
 
   const handleChange =
     (prop: any) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setBooking({
-        ...booking,
+      setGuests({
+        ...guests,
         [prop]: event.target.value,
       });
     };
@@ -79,6 +80,11 @@ const PropertyDetails = () => {
       setRoom(room);
     })();
   }, []);
+
+  useEffect(() => {
+    const calculatedPrice = parseInt(durationOfStays) * room?.price_per_night;
+    setTotalPrice(calculatedPrice);
+  }, [dateFrom && dateEnd]);
 
   return (
     <div>
@@ -120,7 +126,7 @@ const PropertyDetails = () => {
             variant="standard"
             label="Number of guests"
             error={errors?.number_of_guests ? true : false}
-            value={booking?.number_of_guests}
+            value={guests?.number_of_guests}
             helperText={
               errors?.number_of_guests && errors?.number_of_guests.message
             }
@@ -129,8 +135,12 @@ const PropertyDetails = () => {
             onWheel={doNothing}
           />
         </FormControl>
+        <Typography>
+          {' '}
+          Total price: {!isNaN(totalPrice) ? totalPrice : 0}
+        </Typography>
 
-        <Button onClick={handleSubmit(onSubmit)}>BOOK</Button>
+        <Button onClick={handleSubmit(onSubmit)}>GO TO guests</Button>
       </FormGroup>
     </div>
   );
