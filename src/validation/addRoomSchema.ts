@@ -20,6 +20,18 @@ export const addRoomSchema = yup.object().shape({
     .required('Please enter an image url')
     .url()
     .matches(/\jpg|jpeg|png+$/i),
+  image_02: yup
+    .string()
+    .url()
+    .matches(/\jpg|jpeg|png+$/i),
+  image_03: yup
+    .string()
+    .url()
+    .matches(/\jpg|jpeg|png+$/i),
+  image_04: yup
+    .string()
+    .url()
+    .matches(/\jpg|jpeg|png+$/i),
   subtitle: yup.string().required('Please enter description').min(5).max(25),
   property_type: yup
     .string()

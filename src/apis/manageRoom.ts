@@ -1,5 +1,5 @@
-import { PropertyOptions } from '../components/PropertyOptions.types';
-import { PropertyType } from '../components/PropertyInputs.types';
+import { PropertyOptions } from '../components/PropertyOptions/PropertyOptions.types';
+import { PropertyType } from '../components/PropertyInputs/PropertyInputs.types';
 import { ROOMS_URL } from './apis';
 
 type MethodsType = 'POST' | 'PUT' | 'DELETE';
@@ -27,6 +27,9 @@ export const manageRoom = async (
       price_per_night: data.price_per_night,
       guest_review: data.guest_review,
       image_01: data.image_01,
+      image_02: data.image_02,
+      image_03: data.image_03,
+      image_04: data.image_04,
       subtitle: data.subtitle,
       property_type: data.property_type,
       neighbourhood: data.neighbourhood,

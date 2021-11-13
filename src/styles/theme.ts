@@ -13,6 +13,7 @@ const theme: DefaultTheme = {
     success: '#008009',
     danger: '#db1212',
   },
+  border: '1px solid #cccccc',
 };
 
 export { theme };

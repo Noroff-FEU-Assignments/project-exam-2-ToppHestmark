@@ -114,13 +114,58 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
             type="text"
             variant="standard"
             label="Image URL"
-            placeholder="With extension .jpeg .jpg .png"
+            placeholder="jpeg/jpg/png"
             multiline
             error={errors?.image_01 ? true : false}
             value={property?.image_01}
             helperText={errors?.image_01 && errors?.image_01.message}
             {...register('image_01')}
             onChange={handleChange('image_01')}
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Image URL 2"
+            placeholder="jpeg/jpg/png"
+            multiline
+            error={errors?.image_02 ? true : false}
+            value={property?.image_02}
+            helperText={errors?.image_02 && errors?.image_02.message}
+            {...register('image_02')}
+            onChange={handleChange('image_02')}
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Image URL 3"
+            placeholder="jpeg/jpg/png"
+            multiline
+            error={errors?.image_03 ? true : false}
+            value={property?.image_03}
+            helperText={errors?.image_03 && errors?.image_03.message}
+            {...register('image_03')}
+            onChange={handleChange('image_03')}
+          />
+        </FormControl>
+
+        <FormControl sx={{ m: 1, width: '30ch' }}>
+          <TextField
+            type="text"
+            variant="standard"
+            label="Image URL 4"
+            placeholder="jpeg/jpg/png"
+            multiline
+            error={errors?.image_04 ? true : false}
+            value={property?.image_04}
+            helperText={errors?.image_04 && errors?.image_04.message}
+            {...register('image_04')}
+            onChange={handleChange('image_04')}
           />
         </FormControl>
 

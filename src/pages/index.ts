@@ -5,3 +5,5 @@ export { default as Contact } from './Contact';
 export { default as AllProperties } from './AllProperties';
 export { default as PropertyDetails } from './PropertyDetails';
 export { default as Enquiry } from './Enquiry';
+export { default as Bookings } from './Bookings';
+export { default as Messages } from './Messages';

@@ -62,6 +62,7 @@ const PropertyDetails = () => {
     console.log('Total price: ', totalPrice);
     console.log('Duration of stays: ', durationOfStays);
     console.log('Guests: ', data);
+    console.log('Room ID: ', room?.id);
   };
 
   const doNothing = (e) => e.target.blur();
@@ -140,7 +141,7 @@ const PropertyDetails = () => {
           Total price: {!isNaN(totalPrice) ? totalPrice : 0}
         </Typography>
 
-        <Button onClick={handleSubmit(onSubmit)}>GO TO guests</Button>
+        <Button onClick={handleSubmit(onSubmit)}>GO TO BOOKING</Button>
       </FormGroup>
     </div>
   );

@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FormGroup, Button } from '@mui/material';
 import { RoomType } from '../types/roomType';
 import { enquirySchema } from '../validation/enquirySchema';
-import EnquiryInputs from '../components/EnquiryInputs';
+import { EnquiryInputs } from '../components';
 
 export const FormContainer = styled(FormGroup)`
   width: 100%;
@@ -45,6 +45,7 @@ const Enquiry = () => {
   // Convert this to Async
   const onSubmit = (data: EnquiryType) => {
     setEnquiriesError(null);
+    // Please include booking_id
 
     console.log('Enquiries data: ', data);
   };

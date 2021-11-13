@@ -10,6 +10,8 @@ const Routes = () => (
     <Route path="/all-properties" component={p_.AllProperties} />
     <Route path="/property-details/:id" component={p_.PropertyDetails} />
     <Route path="/enquiry/:id" component={p_.Enquiry} />
+    <Route path="/bookings" component={p_.Bookings} />
+    <Route path="/messages" component={p_.Messages} />
   </Switch>
 );
 

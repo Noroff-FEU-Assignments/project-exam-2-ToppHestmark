@@ -3,6 +3,7 @@ import styled from 'styled-components/macro';
 
 const Wrapper = styled.main`
   width: 100%;
+  color: ${({ theme }) => theme.colors.navy};
 `;
 
 const LayoutWrapper = ({ children }: any) => {

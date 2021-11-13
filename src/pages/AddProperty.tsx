@@ -8,9 +8,8 @@ import styled from 'styled-components';
 
 import { AuthContext } from '../context/AuthProvider';
 import { addRoomSchema } from '../validation/addRoomSchema';
-import PropertyInputs from '../components/PropertyInputs';
-import { PropertyType } from '../components/PropertyInputs.types';
-import PropertyOptions from '../components/PropertyOptions';
+import { PropertyInputs, PropertyOptions } from '../components';
+import { PropertyType } from '../components/PropertyInputs/PropertyInputs.types';
 import { manageRoom } from '../apis/manageRoom';
 
 export const FormContainer = styled(FormGroup)`
@@ -35,6 +34,9 @@ const AddProperty = () => {
     price_per_night: 0,
     guest_review: '',
     image_01: '',
+    image_02: '',
+    image_03: '',
+    image_04: '',
     subtitle: '',
     property_type: '',
     neighbourhood: '',

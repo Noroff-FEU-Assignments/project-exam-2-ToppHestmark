@@ -48,6 +48,7 @@ const Home = () => {
 
   return (
     <Autocomplete
+      sx={{ m: 1, width: '30ch' }}
       open={open}
       onOpen={() => setOpen(true)}
       onClose={() => setOpen(false)}
