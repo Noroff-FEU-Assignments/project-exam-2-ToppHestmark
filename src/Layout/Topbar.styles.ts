@@ -5,18 +5,27 @@ import MenuIcon from '@mui/icons-material/Menu';
 export const NavContainer = styled.nav`
   width: 100%;
   height: 8vh;
+  z-index: 9;
+  background-color: ${({ theme }) => theme.colors.primary};
+`;
+
+export const Wrapper = styled.div`
+  max-width: 1400px;
+  margin: 0 auto;
   padding: 0 1em;
   display: flex;
   justify-content: center;
-  z-index: 9;
-  background-color: ${({ theme }) => theme.colors.primary};
+
+  @media screen and (min-width: 884px) {
+    padding: 1em;
+  }
 `;
 
 export const LinkWrap = styled.div`
   display: flex;
   align-items: center;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 884px) {
     display: none;
   }
 `;
@@ -29,18 +38,6 @@ export const Link = styled(NavLink)`
 
   &:hover {
     opacity: 0.85;
-  }
-`;
-
-export const AsideLink = styled(NavLink)`
-  color: ${({ theme }) => theme.colors.navy};
-  text-decoration: none;
-  font-weight: 300 !important;
-  padding: 1em 1.6em;
-  width: 260px;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.hover};
   }
 `;
 
@@ -57,7 +54,7 @@ export const LogoWrapper = styled(NavLink)`
     opacity: 0.85;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 884px) {
     img {
       width: 100px;
     }
@@ -68,8 +65,13 @@ export const MenuButton = styled(MenuIcon)`
   margin: 0.8em 0;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.white};
+  scale: 1.4;
 
-  @media screen and (min-width: 768px) {
+  &:hover {
+    opacity: 0.85;
+  }
+
+  @media screen and (min-width: 884px) {
     display: none !important;
   }
 `;
