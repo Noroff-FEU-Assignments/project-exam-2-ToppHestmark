@@ -13,6 +13,8 @@ declare module 'styled-components' {
       border: string;
       success: string;
       danger: string;
+      hover: string;
     };
+    border: string;
   }
 }

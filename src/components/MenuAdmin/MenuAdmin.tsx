@@ -5,16 +5,14 @@ import Popper from '@mui/material/Popper';
 import Paper from '@mui/material/Paper';
 import MenuList from '@mui/material/MenuList';
 import Stack from '@mui/material/Stack';
-import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 import { Container, Link, Item, MenuButton } from './MenuAdmin.styles';
 
 const MenuAdmin = () => {
-  const [, setAuth] = useContext<any>(AuthContext);
+  const [auth, setAuth] = useContext<any>(AuthContext);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef<any>(null);
-  const history = useHistory();
 
   const handleToggleDashboard = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -24,10 +22,6 @@ const MenuAdmin = () => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) return;
 
     setOpen(false);
-  };
-
-  const toAllProperties = () => {
-    history.push('/all-properties');
   };
 
   const logout = (event: Event | React.SyntheticEvent) => {
@@ -55,7 +49,7 @@ const MenuAdmin = () => {
           aria-haspopup="true"
           onClick={handleToggleDashboard}
         >
-          Dashboard
+          {auth?.user.username}
         </MenuButton>
         <Popper
           open={open}
@@ -77,8 +71,8 @@ const MenuAdmin = () => {
                     <Link to="/add-property">
                       <Item onClick={handleClose}>Add Property</Item>
                     </Link>
-                    <Link to="/all-property">
-                      <Item onClick={handleClose}>All Property</Item>
+                    <Link to="/all-properties">
+                      <Item onClick={handleClose}>All Properties</Item>
                     </Link>
                     <Link to="/bookings">
                       <Item onClick={handleClose}>Bookings</Item>

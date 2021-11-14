@@ -12,6 +12,7 @@ const theme: DefaultTheme = {
     border: '#cccccc',
     success: '#008009',
     danger: '#db1212',
+    hover: 'rgba(0, 0, 0, 0.04)',
   },
   border: '1px solid #cccccc',
 };

@@ -25,8 +25,9 @@ export const Item = styled(MenuItem)`
 
 export const MenuButton = styled(Button)`
   color: ${({ theme }) => theme.colors.white} !important;
-  text-transform: none !important;
-  margin: 1em 0 !important;
+  margin: 1.2em 0 !important;
+  padding: 0.2em 0.4em !important;
+  font-weight: 400 !important;
 
   &:hover {
     opacity: 0.85;
