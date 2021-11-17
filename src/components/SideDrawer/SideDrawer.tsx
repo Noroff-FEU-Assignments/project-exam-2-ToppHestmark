@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider';
 import { Drawer } from '@mui/material';
-import { AsideLink } from './SideDrawer.styles';
+import { AsideLink, Wrapper } from './SideDrawer.styles';
 
 interface ISideDrawer {
   closeAside: () => void;
@@ -19,7 +19,7 @@ const SideDrawer = (props: ISideDrawer) => {
   };
 
   const CustomerMenu = () => (
-    <>
+    <Wrapper>
       <AsideLink onClick={closeAside} to="/all-properties">
         Properties
       </AsideLink>
@@ -29,11 +29,11 @@ const SideDrawer = (props: ISideDrawer) => {
       <AsideLink onClick={closeAside} to="/login">
         Sign in
       </AsideLink>
-    </>
+    </Wrapper>
   );
 
   const AdminMenu = () => (
-    <>
+    <Wrapper>
       <AsideLink onClick={closeAside} to="/add-property">
         Add Property
       </AsideLink>
@@ -49,7 +49,7 @@ const SideDrawer = (props: ISideDrawer) => {
       <AsideLink onClick={logout} to="/">
         Sign out
       </AsideLink>
-    </>
+    </Wrapper>
   );
 
   return (

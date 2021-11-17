@@ -1,40 +1,9 @@
 import React from 'react';
-import styled from 'styled-components/macro';
 import { FormControl, TextField } from '@mui/material';
+import { GridWrapper, MessageWrapper } from './EnquiryInputs.styles';
+import { EnquiryInputsProps } from './EnquiryInputs.types';
 
-export const GridWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const MessageWrapper = styled(FormControl)`
-  margin: 2em;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export interface EnquiryType {
-  firstname: string;
-  lastname: string;
-  email: string;
-  phone_number: number | string;
-  enquiry_specifications: string;
-}
-
-interface Props {
-  errors: any;
-  enquiries: EnquiryType;
-  register: any;
-  handleEnquiryChange: (
-    prop: any
-  ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const EnquiryInputs = (props: Props) => {
+const EnquiryInputs = (props: EnquiryInputsProps) => {
   const { errors, enquiries, register, handleEnquiryChange } = props;
 
   return (

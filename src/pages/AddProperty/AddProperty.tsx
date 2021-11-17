@@ -6,11 +6,11 @@ import { useHistory } from 'react-router-dom';
 import { FormGroup, Button } from '@mui/material';
 import styled from 'styled-components';
 
-import { AuthContext } from '../context/AuthProvider';
-import { addRoomSchema } from '../validation/addRoomSchema';
-import { PropertyInputs, PropertyOptions } from '../components';
-import { PropertyType } from '../components/PropertyInputs/PropertyInputs.types';
-import { manageRoom } from '../apis/manageRoom';
+import { AuthContext } from '../../context/AuthProvider';
+import { addRoomSchema } from '../../validation/addRoomSchema';
+import { PropertyInputs, PropertyOptions } from '../../components';
+import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
+import { manageRoom } from '../../apis/manageRoom';
 
 export const FormContainer = styled(FormGroup)`
   width: 100%;

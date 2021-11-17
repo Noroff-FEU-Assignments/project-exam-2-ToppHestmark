@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { contactSchema } from '../validation/contactSchema';
-import { CONTACTS_URL } from '../apis/apis';
+import { contactSchema } from '../../validation/contactSchema';
+import { CONTACTS_URL } from '../../apis/apis';
 import { FormControl, FormGroup, Button, TextField } from '@mui/material';
 
 export interface ContactType {

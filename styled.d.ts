@@ -15,6 +15,5 @@ declare module 'styled-components' {
       danger: string;
       hover: string;
     };
-    border: string;
   }
 }

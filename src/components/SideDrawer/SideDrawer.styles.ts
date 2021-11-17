@@ -1,6 +1,12 @@
 import styled from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
 
+export const Wrapper = styled.aside`
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+`;
+
 export const AsideLink = styled(NavLink)`
   color: ${({ theme }) => theme.colors.navy};
   text-decoration: none;

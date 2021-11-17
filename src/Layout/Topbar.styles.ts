@@ -4,13 +4,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 export const NavContainer = styled.nav`
   width: 100%;
-  height: 8vh;
   z-index: 9;
   background-color: ${({ theme }) => theme.colors.primary};
 `;
 
 export const Wrapper = styled.div`
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
   padding: 0 1em;
   display: flex;
@@ -22,8 +21,10 @@ export const Wrapper = styled.div`
 `;
 
 export const LinkWrap = styled.div`
+  height: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   @media screen and (max-width: 884px) {
     display: none;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
-import { fetchRooms } from '../apis/fetchRooms';
-import { RoomType } from '../types/roomType';
+import { fetchRooms } from '../../apis/fetchRooms';
+import { RoomType } from '../../types/roomType';
 import { Container } from '@mui/material';
 
 const AllProperties = () => {

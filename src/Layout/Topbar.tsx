@@ -21,7 +21,7 @@ const TopBar: React.FC = () => {
 
   const CustomersMenu = () => (
     <>
-      <Link to="/all-properties">Properties</Link>
+      {/* <Link to="/all-properties">Properties</Link> */}
       <Link to="/contact">Contact</Link>
       <Link to="/login">Sign in</Link>
     </>
@@ -30,7 +30,6 @@ const TopBar: React.FC = () => {
   const AdminMenu = () => (
     <>
       <Link to="/add-property">Add Property</Link>
-      <Link to="/all-properties">Properties</Link>
       <Link to="/bookings">Bookings</Link>
       <Link to="/messages">Messages</Link>
       <Link onClick={logout} to="/">
@@ -47,7 +46,11 @@ const TopBar: React.FC = () => {
           <img src={Logo} alt="Holidaze logo" />{' '}
         </LogoWrapper>
 
-        <LinkWrap>{auth ? <AdminMenu /> : <CustomersMenu />}</LinkWrap>
+        <LinkWrap>
+          <Link to="/all-properties">Properties</Link>
+
+          {auth ? <AdminMenu /> : <CustomersMenu />}
+        </LinkWrap>
         <MenuButton onClick={() => setAsideOpen(true)} />
 
         <SideDrawer

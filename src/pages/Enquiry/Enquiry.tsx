@@ -4,15 +4,15 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormGroup, Button } from '@mui/material';
-import { RoomType } from '../types/roomType';
-import { enquirySchema } from '../validation/enquirySchema';
-import { EnquiryInputs } from '../components';
+import { RoomType } from '../../types/roomType';
+import { enquirySchema } from '../../validation/enquirySchema';
+import { EnquiryInputs } from '../../components';
 
 export const FormContainer = styled(FormGroup)`
   width: 100%;
 `;
 
-export interface EnquiryType {
+export interface IEnquiry {
   firstname: string;
   lastname: string;
   email: string;
@@ -20,13 +20,17 @@ export interface EnquiryType {
   enquiry_specifications: string;
 }
 
+export interface ILocationState {
+  property: RoomType | undefined;
+}
+
 const Enquiry = () => {
-  const { state }: any = useLocation<{ property: RoomType | undefined }>();
+  const { state }: any = useLocation<ILocationState>();
   const property: RoomType = state?.property;
   const history = useHistory();
 
   const [enquiriesError, setEnquiriesError] = useState<any>(null);
-  const [enquiries, setEnquiries] = useState<EnquiryType>({
+  const [enquiries, setEnquiries] = useState<IEnquiry>({
     firstname: '',
     lastname: '',
     email: '',
@@ -38,12 +42,12 @@ const Enquiry = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<EnquiryType>({
+  } = useForm<IEnquiry>({
     resolver: yupResolver(enquirySchema),
   });
 
   // Convert this to Async
-  const onSubmit = (data: EnquiryType) => {
+  const onSubmit = (data: IEnquiry) => {
     setEnquiriesError(null);
     // Please include booking_id
 

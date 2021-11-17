@@ -5,9 +5,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
 import { TextField } from '@mui/material';
 
-import { AuthContext } from '../context/AuthProvider';
-import { loginSchema } from '../validation/loginSchema';
-import { doLogin, ILogin } from '../apis/doLogin';
+import { AuthContext } from '../../context/AuthProvider';
+import { loginSchema } from '../../validation/loginSchema';
+import { doLogin, ILogin } from '../../apis/doLogin';
 import {
   Container,
   TitleText,
