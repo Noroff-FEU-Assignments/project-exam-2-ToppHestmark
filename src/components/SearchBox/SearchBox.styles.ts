@@ -23,7 +23,7 @@ export const SubmitButton = styled.button`
   font-size: 1.25rem;
   cursor: pointer;
   display: inline-block;
-  border-radius: 5px;
+  border-radius: ${({ theme }) => theme.borderRadius};
   background-color: ${({ theme }) => theme.colors.blue_light};
   border: 2px solid ${({ theme }) => theme.colors.blue_light};
 

@@ -1,6 +1,8 @@
 import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
+  borderRadius: '5px',
+
   colors: {
     primary: '#003a91',
     primary_dark: '#1d427a',
@@ -9,7 +11,7 @@ const theme: DefaultTheme = {
     navy: '#29293a',
     ghost: '#999999',
     gray: '#aeb1be',
-    border: '#cccccc',
+    border: 'rgba(0, 0, 0, 0.12)',
     success: '#008009',
     danger: '#db1212',
     hover: 'rgba(0, 0, 0, 0.04)',

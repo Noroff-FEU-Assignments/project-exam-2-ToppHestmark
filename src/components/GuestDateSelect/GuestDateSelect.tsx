@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { FormGroup, Button, FormControl } from '@mui/material';
+import { FormGroup, Button, FormControl, Divider } from '@mui/material';
 import DatePicker from '@mui/lab/DatePicker';
 import { RoomType } from '../../types/roomType';
 import { DateTime } from 'luxon';
@@ -19,7 +19,10 @@ import {
   PriceHead,
   Slash,
   Spacing,
+  SummaryText,
   TotalPrice,
+  HrLine,
+  MidText,
 } from './GuestDateSelect.styles';
 
 interface GuestDateSelectProps {
@@ -31,6 +34,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
   const [dateFrom, setDateFrom] = useState<Date | any>(new Date());
   const [dateTo, setDateTo] = useState<Date | any>(dateFrom);
   const [guests, setGuests] = useState<number | string>(1);
+  const [guestsError, setGuestsError] = useState<boolean>(true);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const minimumStays = DateTime.fromJSDate(dateFrom)
@@ -41,17 +45,29 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
     .toJSDate();
   const dateStart = DateTime.fromJSDate(dateFrom);
   const dateEnd = DateTime.fromJSDate(dateTo);
-  const durationOfStays: any = dateEnd
-    .diff(dateStart, 'days')
-    .toObject()
-    .days?.toFixed(0);
+  const duration: any = dateEnd.diff(dateStart, 'days').toObject().days;
+  const durationOfStays: number = Math.round(duration);
+
+  const handleGuestChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+
+    if (typeof parseInt(value) !== 'number') return;
+
+    setGuestsError(false);
+    setGuests(value);
+  };
 
   const submitBooking = () => {
-    // console.log('Date start: ', dateStart);
-    // console.log('Date end: ', dateEnd);
-    // console.log('Total price: ', totalPrice);
-    // console.log('Duration of stays: ', durationOfStays);
+    console.log(guestsError);
     console.log('Guests: ', guests);
+
+    if (
+      !Number(guests) ||
+      Number(guests) < MAX_GUESTS ||
+      Number(guests) > MAX_GUESTS ||
+      guestsError
+    )
+      return;
 
     const bookingRequest = {
       fromDate: dateStart,
@@ -71,7 +87,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
   }, [dateFrom]);
 
   useEffect(() => {
-    const calculatedPrice = parseInt(durationOfStays) * room?.price_per_night;
+    const calculatedPrice = durationOfStays * room?.price_per_night;
 
     setTotalPrice(calculatedPrice);
   }, [dateFrom && dateEnd]);
@@ -122,22 +138,36 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
             type="number"
             variant="standard"
             label="Guests"
-            error={guests < MIN_GUESTS ? true : false}
+            error={guests < MIN_GUESTS || guests > MAX_GUESTS ? true : false}
             value={guests}
-            helperText={guests < MIN_GUESTS ? 'Invalid number' : ''}
-            onChange={(e) => setGuests(e.target.value)}
+            helperText={
+              guests < MIN_GUESTS
+                ? 'Invalid value'
+                : guests > MAX_GUESTS
+                ? `Maximum allowed guests is ${MAX_GUESTS}`
+                : ''
+            }
+            onChange={handleGuestChange}
             onWheel={doNothing}
           />
         </FormControl>
         <Spacing />
+        <Button onClick={submitBooking}>RESERVE</Button>
+        <MidText>You wont be charged yet</MidText>
+
+        <SummaryText>
+          {' '}
+          $ {room?.price_per_night} x {durationOfStays}{' '}
+          {durationOfStays === 1 ? 'night' : 'nights'}{' '}
+        </SummaryText>
+        <SummaryText>Service fee and tax included</SummaryText>
+        <HrLine />
 
         <TotalPrice>
           {' '}
           <span>Total:</span>{' '}
           <span>$ {isNaN(totalPrice) ? 0 : totalPrice}</span>{' '}
         </TotalPrice>
-
-        <Button onClick={submitBooking}>RESERVE</Button>
       </FormGroup>
     </Container>
   );

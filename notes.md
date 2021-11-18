@@ -8,6 +8,9 @@
 - [ ] Fix login when press enter tab
 - [ ] Icons inside side drawer menu
 - [ ] Customization of text field
+- [ ] Change UI format of the date input
+- [ ] Format numbers
+- [ ] Customize buttons
 
 ### Todos before submit
 
