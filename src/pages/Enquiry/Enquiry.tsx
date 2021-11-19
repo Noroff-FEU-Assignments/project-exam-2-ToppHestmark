@@ -1,42 +1,33 @@
 import { useState, useEffect } from 'react';
-import styled from 'styled-components/macro';
+import { nanoid } from 'nanoid';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { FormGroup, Button } from '@mui/material';
-import { RoomType } from '../../types/roomType';
+import { Button } from '@mui/material';
 import { enquirySchema } from '../../validation/enquirySchema';
 import { EnquiryInputs } from '../../components';
+import {
+  ILocationState,
+  IEnquiry,
+  IGuestRequest,
+  IGuestPreference,
+} from './Enquiry.types';
+import { RoomType } from '../../types/roomType';
+import { InitialGuestPreference, EnquiriesInitial } from './initialValues';
+import { makeBooking } from '../../apis/makeBooking';
 
-export const FormContainer = styled(FormGroup)`
-  width: 100%;
-`;
-
-export interface IEnquiry {
-  firstname: string;
-  lastname: string;
-  email: string;
-  phone_number: number | string;
-  enquiry_specifications: string;
-}
-
-export interface ILocationState {
-  property: RoomType | undefined;
-}
+import { FormContainer } from './Enquiry.styles';
 
 const Enquiry = () => {
   const { state }: any = useLocation<ILocationState>();
-  const property: RoomType = state?.property;
   const history = useHistory();
 
+  const [property, setProperty] = useState<RoomType>();
   const [enquiriesError, setEnquiriesError] = useState<any>(null);
-  const [enquiries, setEnquiries] = useState<IEnquiry>({
-    firstname: '',
-    lastname: '',
-    email: '',
-    phone_number: '',
-    enquiry_specifications: '',
-  });
+  const [guestPreference, setGuestPreference] = useState<IGuestPreference>(
+    InitialGuestPreference
+  );
+  const [enquiries, setEnquiries] = useState<IEnquiry>(EnquiriesInitial);
 
   const {
     register,
@@ -46,12 +37,17 @@ const Enquiry = () => {
     resolver: yupResolver(enquirySchema),
   });
 
-  // Convert this to Async
-  const onSubmit = (data: IEnquiry) => {
+  const onSubmit = async (data: IEnquiry) => {
     setEnquiriesError(null);
-    // Please include booking_id
+    const generatedId = nanoid(8).toUpperCase();
+    const bookRoom = await makeBooking(
+      data,
+      guestPreference,
+      generatedId,
+      property
+    );
 
-    console.log('Enquiries data: ', data);
+    console.log(bookRoom);
   };
 
   const handleEnquiryChange =
@@ -62,10 +58,18 @@ const Enquiry = () => {
       });
     };
 
+  useEffect(() => {
+    const guestRequest: IGuestRequest = state?.guestRequest;
+    const propertyState: RoomType = state?.property;
+
+    setProperty(propertyState);
+    setGuestPreference(guestRequest);
+  }, []);
+
   return (
     <div>
       <h1>Your're almost there.</h1>
-      <h2> Enquiry for {property.Title} </h2>
+      <h2> Enquiry for {property?.Title} </h2>
 
       <FormContainer>
         <EnquiryInputs

@@ -7,8 +7,8 @@ type MethodsType = 'POST' | 'PUT' | 'DELETE';
 export const manageRoom = async (
   method: MethodsType,
   token: string,
-  propertyOptions: PropertyOptions,
-  data: PropertyType
+  propertyOptions?: PropertyOptions,
+  data?: PropertyType
 ): Promise<void> => {
   const options = {
     method: method,
@@ -17,34 +17,34 @@ export const manageRoom = async (
       Authorization: 'Bearer ' + token,
     },
     body: JSON.stringify({
-      breakfast_included: propertyOptions.breakfast_included,
-      free_cancellation: propertyOptions.free_cancellation,
-      wifi: propertyOptions.wifi,
-      featured: propertyOptions.featured,
-      Title: data.Title,
-      room_type: data.room_type,
-      bed_type: data.bed_type,
-      price_per_night: data.price_per_night,
-      guest_review: data.guest_review,
-      image_01: data.image_01,
-      image_02: data.image_02,
-      image_03: data.image_03,
-      image_04: data.image_04,
-      subtitle: data.subtitle,
-      property_type: data.property_type,
-      neighbourhood: data.neighbourhood,
-      description: data.description,
+      breakfast_included: propertyOptions?.breakfast_included,
+      free_cancellation: propertyOptions?.free_cancellation,
+      wifi: propertyOptions?.wifi,
+      featured: propertyOptions?.featured,
+      Title: data?.Title,
+      room_type: data?.room_type,
+      bed_type: data?.bed_type,
+      price_per_night: data?.price_per_night,
+      guest_review: data?.guest_review,
+      image_01: data?.image_01,
+      image_02: data?.image_02,
+      image_03: data?.image_03,
+      image_04: data?.image_04,
+      subtitle: data?.subtitle,
+      property_type: data?.property_type,
+      neighbourhood: data?.neighbourhood,
+      description: data?.description,
     }),
   };
 
   try {
-    const response = await (await fetch(ROOMS_URL, options)).json();
+    const response = await fetch(ROOMS_URL, options);
 
-    if (response.created_at) {
-      console.log('Successfully created a room: ', response);
+    if (!response.ok) {
+      throw new Error('Something went wrong when fetching data');
     }
 
-    return response;
+    return await response.json();
   } catch (error) {
     console.log('error', error);
   }

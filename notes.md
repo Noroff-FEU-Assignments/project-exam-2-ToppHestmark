@@ -11,6 +11,7 @@
 - [ ] Change UI format of the date input
 - [ ] Format numbers
 - [ ] Customize buttons
+- [ ] Change date input view
 
 ### Todos before submit
 

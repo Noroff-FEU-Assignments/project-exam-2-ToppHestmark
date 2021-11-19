@@ -54,30 +54,29 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
     if (typeof parseInt(value) !== 'number') return;
 
     setGuestsError(false);
-    setGuests(value);
+    setGuests(parseInt(value));
   };
 
   const submitBooking = () => {
-    console.log(guestsError);
-    console.log('Guests: ', guests);
-
     if (
-      !Number(guests) ||
-      Number(guests) < MAX_GUESTS ||
+      Number(guests) < MIN_GUESTS ||
       Number(guests) > MAX_GUESTS ||
       guestsError
     )
       return;
 
-    const bookingRequest = {
+    const bookingDateRequest = {
       fromDate: dateStart,
       toDate: dateEnd,
       lengthOfStays: durationOfStays,
-      numberOfGuests: guests,
+      numberOfGuests: Number(guests),
       total: totalPrice,
     };
 
-    history.push(`/enquiry/${room?.id}`, { property: room });
+    history.push(`/enquiry/${room?.id}`, {
+      property: room,
+      guestRequest: bookingDateRequest,
+    });
   };
 
   const doNothing = (e) => e.target.blur();

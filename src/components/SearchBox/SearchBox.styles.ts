@@ -24,12 +24,12 @@ export const SubmitButton = styled.button`
   cursor: pointer;
   display: inline-block;
   border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.colors.blue_light};
-  border: 2px solid ${({ theme }) => theme.colors.blue_light};
+  border: 2px solid ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.primary};
 
   &:hover {
-    border: 2px solid ${({ theme }) => theme.colors.primary};
-    background-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.blue_light};
+    border: 2px solid ${({ theme }) => theme.colors.blue_light};
   }
 
   @media screen and (max-width: 600px) {
