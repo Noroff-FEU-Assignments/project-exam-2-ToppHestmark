@@ -4,6 +4,7 @@ import { Divider } from '@mui/material';
 
 export const Container = styled.div`
   width: 100%;
+  margin: 1em 0;
   padding: 1.5em;
   display: flex;
   flex-direction: column;

@@ -12,6 +12,7 @@ const Routes = () => (
     <Route path="/enquiry/:id" component={p_.Enquiry} />
     <Route path="/bookings" component={p_.Bookings} />
     <Route path="/messages" component={p_.Messages} />
+    <Route path="/summary" component={p_.Summary} />
   </Switch>
 );
 

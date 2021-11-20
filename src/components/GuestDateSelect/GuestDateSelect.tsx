@@ -34,7 +34,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
   const [dateFrom, setDateFrom] = useState<Date | any>(new Date());
   const [dateTo, setDateTo] = useState<Date | any>(dateFrom);
   const [guests, setGuests] = useState<number | string>(1);
-  const [guestsError, setGuestsError] = useState<boolean>(true);
+  const [guestsError, setGuestsError] = useState<boolean>(false);
   const [totalPrice, setTotalPrice] = useState<number>(0);
 
   const minimumStays = DateTime.fromJSDate(dateFrom)
@@ -49,6 +49,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
   const durationOfStays: number = Math.round(duration);
 
   const handleGuestChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGuestsError(true);
     const value = e.target.value;
 
     if (typeof parseInt(value) !== 'number') return;

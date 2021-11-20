@@ -32,14 +32,15 @@ export const makeBooking = async (
   };
 
   try {
-    const response = await fetch(BOOKING_URL, options);
+    const response: any = await fetch(BOOKING_URL, options);
 
     if (!response.ok) {
-      throw new Error('Something went wrong when fetching data');
+      // throw new Error('Something went wrong when connection to server.')
+      return response;
     }
 
     return await response.json();
   } catch (error) {
-    console.log('error', error);
+    console.log('Booking error', error);
   }
 };

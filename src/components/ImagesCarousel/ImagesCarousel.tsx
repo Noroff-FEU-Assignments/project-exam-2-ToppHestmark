@@ -1,18 +1,9 @@
 import { useState } from 'react';
 import Carousel from './Carousel';
-import styled from 'styled-components/macro';
 import { RoomType } from '../../types/roomType';
+import { Container } from './ImagesCarousel.styles';
 
 // Ref: https://medium.com/suyeonme/react-how-to-build-an-image-slider-with-hooks-in-react-decd4a3ab152
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
 interface ImagesCarouselProps {
   room: RoomType;
 }
@@ -46,7 +37,7 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({ room }) => {
   };
 
   return (
-    <Wrapper>
+    <Container>
       <Carousel
         title={room?.Title}
         images={images}
@@ -55,7 +46,7 @@ const ImagesCarousel: React.FC<ImagesCarouselProps> = ({ room }) => {
         handleClickPrev={handleClickPrev}
         handleClicknext={handleClicknext}
       />
-    </Wrapper>
+    </Container>
   );
 };
 

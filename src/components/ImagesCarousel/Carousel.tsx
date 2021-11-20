@@ -1,29 +1,6 @@
 import { useRef, useEffect } from 'react';
-import styled from 'styled-components';
 import Buttons from './Buttons';
-import { boxShadow } from '../../styles/mixins';
-
-const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  border-radius: ${({ theme }) => theme.borderRadius};
-
-  ${boxShadow}
-`;
-
-const Slide = styled.div<{ xPosition: number }>`
-  display: flex;
-  width: 100%;
-  transition: transform 0.6s ease-in-out;
-  transform: ${(props) => `translateX(${props.xPosition}px)`};
-  aspect-ratio: 5/4;
-
-  * img {
-    width: 100%;
-    height: 100%;
-  }
-`;
+import { CarouselWrapper, Slide } from './ImagesCarousel.styles';
 
 interface CarouselProps {
   title: string;
@@ -52,7 +29,7 @@ const Carousel: React.FC<CarouselProps> = ({
   }, [window.onresize, setWidth]);
 
   return (
-    <Wrapper>
+    <CarouselWrapper>
       <Slide xPosition={xPosition} ref={slideRef}>
         {images.map((img, i) => (
           <img src={img} alt={title} key={i} />
@@ -63,7 +40,7 @@ const Carousel: React.FC<CarouselProps> = ({
         handleClickPrev={handleClickPrev}
         handleClicknext={handleClicknext}
       />
-    </Wrapper>
+    </CarouselWrapper>
   );
 };
 export default Carousel;

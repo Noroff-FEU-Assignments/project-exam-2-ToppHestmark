@@ -5,7 +5,6 @@ import Box from '@mui/material/Box';
 export const Container = styled(Box)`
   padding: 1.25em 0;
   display: flex;
-  justify-content: center;
 
   @media screen and (max-width: 600px) {
     flex-direction: column;

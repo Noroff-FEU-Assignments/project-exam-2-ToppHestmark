@@ -3,50 +3,27 @@ import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-import { FormGroup, Button } from '@mui/material';
-import styled from 'styled-components';
+import { Button } from '@mui/material';
 
 import { AuthContext } from '../../context/AuthProvider';
 import { addRoomSchema } from '../../validation/addRoomSchema';
 import { PropertyInputs, PropertyOptions } from '../../components';
 import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
 import { manageRoom } from '../../apis/manageRoom';
-
-export const FormContainer = styled(FormGroup)`
-  width: 100%;
-`;
+import { initialProperty, initialOptions } from './initialValues';
+import { FormContainer } from './AddProperty.styles';
 
 const AddProperty = () => {
-  const [auth, setAuth] = useContext<any>(AuthContext);
+  const [auth] = useContext<any>(AuthContext);
   const [addError, setAddError] = useState<any>(null);
-  const [breakfast, setBreakfast] = useState<boolean>(false);
-  const [propertyOptions, setPropertyOptions] = useState({
-    breakfast_included: true,
-    free_cancellation: false,
-    wifi: true,
-    featured: false,
-  });
+  const [propertyOptions, setPropertyOptions] = useState(initialOptions);
 
-  const [property, setProperty] = useState<PropertyType>({
-    Title: '',
-    room_type: '',
-    bed_type: '',
-    price_per_night: 0,
-    guest_review: '',
-    image_01: '',
-    image_02: '',
-    image_03: '',
-    image_04: '',
-    subtitle: '',
-    property_type: '',
-    neighbourhood: '',
-    description: '',
-  });
+  const [property, setProperty] = useState<PropertyType>(initialProperty);
 
   const history = useHistory();
   const token = auth?.jwt;
 
-  // !auth && history.push('/');
+  !auth && history.push('/');
 
   const {
     register,

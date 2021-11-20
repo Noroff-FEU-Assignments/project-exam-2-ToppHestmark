@@ -7,3 +7,4 @@ export { default as PropertyDetails } from './PropertyDetails/PropertyDetails';
 export { default as Enquiry } from './Enquiry/Enquiry';
 export { default as Bookings } from './Bookings/Bookings';
 export { default as Messages } from './Messages/Messages';
+export { default as Summary } from './Summary/Summary';

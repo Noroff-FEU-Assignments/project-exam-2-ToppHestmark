@@ -38,8 +38,15 @@ const Enquiry = () => {
   });
 
   const onSubmit = async (data: IEnquiry) => {
+    const confirm = window.confirm(
+      "I'm confirming that all of my details is correct"
+    );
+
+    if (!confirm) return;
+
     setEnquiriesError(null);
     const generatedId = nanoid(8).toUpperCase();
+
     const bookRoom = await makeBooking(
       data,
       guestPreference,
@@ -47,7 +54,7 @@ const Enquiry = () => {
       property
     );
 
-    console.log(bookRoom);
+    history.push('/summary', { bookingSummary: bookRoom });
   };
 
   const handleEnquiryChange =

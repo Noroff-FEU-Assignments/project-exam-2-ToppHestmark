@@ -1,6 +1,6 @@
 ### Todos
 
-- [ ] Loading handling when fetching API
+- [ ] Loading spinner when fetching API
 - [ ] Configure fonts
 - [ ] Error handling pages and forms
 - [ ] Remove all inline styles
