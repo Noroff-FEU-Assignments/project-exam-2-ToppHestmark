@@ -1,8 +1,22 @@
 import { useEffect, useState } from 'react';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { Typography, Divider } from '@mui/material';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
-import { Container } from '@mui/material';
+
+import {
+  Container,
+  InfoWrapper,
+  LinkButton,
+  Card,
+  Row,
+  PriceTag,
+  Slash,
+  TitleText,
+  BoxBottom,
+  Included,
+  Image,
+} from './AllProperties.styles';
 
 const AllProperties = () => {
   const [rooms, setRooms] = useState<RoomType[]>([]);
@@ -16,34 +30,67 @@ const AllProperties = () => {
 
   return (
     <Container>
-      {rooms?.map((room) => {
-        const {
-          Title,
-          bed_type,
-          breakfast_included,
-          description,
-          featured,
-          free_cancellation,
-          guest_review,
-          image_01,
-          neighbourhood,
-          price_per_night,
-          property_type,
-          room_type,
-          subtitle,
-          wifi,
-          id,
-        } = room;
+      <h1>Bergen: {rooms.length} properties</h1>
 
-        return (
-          <div key={id}>
-            <NavLink to={`/property-details/${id}`}>
-              <h3> {Title} </h3>
-              <h6> {subtitle} </h6>
-            </NavLink>
-          </div>
-        );
-      })}
+      {rooms?.map((room) => (
+        <>
+          <Card key={room?.id}>
+            <Image src={room?.image_01} alt={room?.Title} />
+            <InfoWrapper>
+              <Row>
+                {' '}
+                <TitleText> {room?.Title} </TitleText>{' '}
+                <Typography variant="subtitle2">
+                  {' '}
+                  {room?.guest_review}{' '}
+                </Typography>
+              </Row>
+              <Row>
+                <div>
+                  <Typography variant="subtitle2">
+                    {' '}
+                    {room?.room_type}{' '}
+                  </Typography>
+                  <Typography variant="caption"> {room?.bed_type} </Typography>
+                </div>
+                <div>
+                  <PriceTag>
+                    <span>
+                      <h3>$ {room?.price_per_night} </h3>
+                    </span>
+                    <span>
+                      {' '}
+                      <Slash>/</Slash>{' '}
+                    </span>
+                    <p>night</p>
+                  </PriceTag>
+                  <Typography variant="caption">
+                    {' '}
+                    Includes tax and charges{' '}
+                  </Typography>
+                </div>
+              </Row>
+              <Row>
+                <BoxBottom>
+                  <Included show={room?.wifi}>Wifi</Included>
+                  <Included show={room?.breakfast_included}>
+                    Breakfast included
+                  </Included>
+                  <Included show={room?.free_cancellation}>
+                    Free cancellation
+                  </Included>
+                </BoxBottom>
+                <BoxBottom>
+                  <NavLink to={`/property-details/${room?.id}`}>
+                    <LinkButton>Learn More</LinkButton>
+                  </NavLink>
+                </BoxBottom>
+              </Row>
+            </InfoWrapper>
+          </Card>
+          <Divider />
+        </>
+      ))}
     </Container>
   );
 };

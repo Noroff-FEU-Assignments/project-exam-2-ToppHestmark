@@ -16,7 +16,7 @@ import {
 
 import {
   Container,
-  PriceHead,
+  PriceTag,
   Slash,
   Spacing,
   SummaryText,
@@ -94,7 +94,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
 
   return (
     <Container>
-      <PriceHead>
+      <PriceTag>
         <span>
           <h3>$ {room?.price_per_night} </h3>
         </span>
@@ -103,7 +103,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
           <Slash>/</Slash>{' '}
         </span>
         <p>night</p>
-      </PriceHead>
+      </PriceTag>
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker

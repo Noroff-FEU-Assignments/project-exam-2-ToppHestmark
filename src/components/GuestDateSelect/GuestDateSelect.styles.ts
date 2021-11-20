@@ -1,6 +1,5 @@
 import styled from 'styled-components/macro';
 import { boxShadow } from '../../styles/mixins';
-import { Divider } from '@mui/material';
 
 export const Container = styled.div`
   width: 100%;
@@ -9,12 +8,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   border-radius: ${({ theme }) => theme.borderRadius};
-  border: 1px solid ${({ theme }) => theme.colors.border};
 
   ${boxShadow}
 `;
 
-export const PriceHead = styled.div`
+export const PriceTag = styled.div`
   display: flex;
   padding: 1.25em 0;
 

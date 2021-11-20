@@ -12,6 +12,7 @@
 - [ ] Format numbers
 - [ ] Customize buttons
 - [ ] Change date input view
+- [ ] Customized buttons in common folder
 
 ### Todos before submit
 
