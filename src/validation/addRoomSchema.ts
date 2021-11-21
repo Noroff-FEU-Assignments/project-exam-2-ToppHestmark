@@ -1,9 +1,9 @@
 import * as yup from 'yup';
 
 export const addRoomSchema = yup.object().shape({
-  Title: yup.string().required('Please enter property name').min(3).max(30),
-  room_type: yup.string().required('Please enter room type').min(3).max(30),
-  bed_type: yup.string().required('Please enter bed type').min(3).max(30),
+  Title: yup.string().required('Please enter property name').min(3).max(20),
+  room_type: yup.string().required('Please enter room type').min(3).max(15),
+  bed_type: yup.string().required('Please enter bed type').min(3).max(15),
   price_per_night: yup
     .number()
     .required('Please enter price per night')
@@ -14,7 +14,7 @@ export const addRoomSchema = yup.object().shape({
     .string()
     .required('Please enter guest review')
     .min(3)
-    .max(20),
+    .max(15),
   image_01: yup
     .string()
     .required('Please enter an image url')

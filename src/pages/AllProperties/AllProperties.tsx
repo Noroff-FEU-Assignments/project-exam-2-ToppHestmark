@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { Typography, Divider } from '@mui/material';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
+import { Heading } from '../../components';
 
 import {
   Container,
@@ -14,6 +15,7 @@ import {
   Slash,
   TitleText,
   BoxMiddle,
+  GhostText,
   BoxBottom,
   Included,
   Image,
@@ -36,7 +38,7 @@ const AllProperties = () => {
 
   return (
     <Container>
-      <h1>Bergen: {rooms.length} properties</h1>
+      <Heading align="left">Bergen: {rooms.length} properties</Heading>
 
       {rooms?.map((room) => (
         <div key={room?.id}>
@@ -70,10 +72,7 @@ const AllProperties = () => {
                     </span>
                     <p>night</p>
                   </PriceTag>
-                  <Typography variant="caption">
-                    {' '}
-                    Includes tax and charges{' '}
-                  </Typography>
+                  <GhostText> Includes tax and charges </GhostText>
                 </BoxMiddle>
               </Row>
               <Row>

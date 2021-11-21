@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FormControl, Button, FormGroup } from '@mui/material';
+import { boxShadow } from '../../styles/mixins';
 
 export const Container = styled.div`
   width: 100%;
@@ -11,12 +12,19 @@ export const Container = styled.div`
 `;
 
 export const FormWrapper = styled(FormGroup)`
-  min-width: 300px;
+  width: 90vw;
+  padding: 2em;
+  border-radius: ${({ theme }) => theme.borderRadius};
+  ${boxShadow}
+
+  @media screen and (min-width: 480px) {
+    width: 400px;
+  }
 `;
 
 export const TitleText = styled.h4`
   text-align: center;
-  margin: 1em;
+  margin: 0.5em;
   font-weight: 400;
   font-size: 2rem;
 `;

@@ -4,13 +4,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { contactSchema } from '../../validation/contactSchema';
 import { CONTACTS_URL } from '../../apis/apis';
 import { FormControl, FormGroup, Button, TextField } from '@mui/material';
-
-export interface ContactType {
-  fullname: string;
-  email: string;
-  subject: string;
-  message: string;
-}
+import { ContactType } from './Contact.types';
+import { Heading } from '../../components';
 
 const Contact = () => {
   const [contactError, setContactError] = useState<any>(null);
@@ -62,7 +57,7 @@ const Contact = () => {
 
   return (
     <div>
-      <h1>Contact us</h1>
+      <Heading align="center">Contact us</Heading>
       <FormGroup>
         <FormControl sx={{ m: 1, width: '35ch' }}>
           <TextField

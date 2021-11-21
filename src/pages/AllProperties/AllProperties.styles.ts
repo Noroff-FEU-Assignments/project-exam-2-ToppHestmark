@@ -11,7 +11,8 @@ export const Card = styled.div`
   justify-content: space-between;
 
   @media screen and (max-width: 576px) {
-    padding: 2.5em 0 1em 0;
+    padding: 1em 0 1em 0;
+    margin-top: 1em;
     grid-template-columns: 1fr;
   }
 `;
@@ -83,6 +84,12 @@ export const BoxMiddle = styled.div`
     justify-content: flex-end;
     align-items: flex-end;
   }
+`;
+
+export const GhostText = styled.p`
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: ${({ theme }) => theme.colors.ghost};
 `;
 
 export const BoxBottom = styled.div`

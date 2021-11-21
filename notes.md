@@ -1,5 +1,6 @@
 ### Todos
 
+- [ ] Caching the properties on home page
 - [ ] Loading spinner when fetching API
 - [ ] Configure fonts
 - [ ] Error handling pages and forms
