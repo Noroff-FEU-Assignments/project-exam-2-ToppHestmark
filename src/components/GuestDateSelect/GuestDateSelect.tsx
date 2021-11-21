@@ -24,6 +24,7 @@ import {
   HrLine,
   MidText,
 } from './GuestDateSelect.styles';
+import { DATE_FORMAT } from '../../constants/dateFormat';
 
 interface GuestDateSelectProps {
   room: RoomType;
@@ -62,7 +63,9 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
     if (
       Number(guests) < MIN_GUESTS ||
       Number(guests) > MAX_GUESTS ||
-      guestsError
+      guestsError ||
+      !dateTo ||
+      !dateFrom
     )
       return;
 
@@ -107,6 +110,8 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
+          mask="__.__.____"
+          inputFormat={DATE_FORMAT}
           label="From"
           value={dateFrom}
           minDate={new Date()}
@@ -120,6 +125,8 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DatePicker
+          mask="__.__.____"
+          inputFormat={DATE_FORMAT}
           label="To"
           value={dateTo}
           minDate={dateFrom || minimumStays}

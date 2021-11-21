@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Typography, Divider } from '@mui/material';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
@@ -13,13 +13,19 @@ import {
   PriceTag,
   Slash,
   TitleText,
+  BoxMiddle,
   BoxBottom,
   Included,
   Image,
 } from './AllProperties.styles';
 
 const AllProperties = () => {
+  const history = useHistory();
   const [rooms, setRooms] = useState<RoomType[]>([]);
+
+  const redirectToDetail = (roomId) => {
+    history.push(`/property-details/${roomId}`);
+  };
 
   useEffect(() => {
     (async () => {
@@ -33,8 +39,8 @@ const AllProperties = () => {
       <h1>Bergen: {rooms.length} properties</h1>
 
       {rooms?.map((room) => (
-        <>
-          <Card key={room?.id}>
+        <div key={room?.id}>
+          <Card>
             <Image src={room?.image_01} alt={room?.Title} />
             <InfoWrapper>
               <Row>
@@ -53,7 +59,7 @@ const AllProperties = () => {
                   </Typography>
                   <Typography variant="caption"> {room?.bed_type} </Typography>
                 </div>
-                <div>
+                <BoxMiddle>
                   <PriceTag>
                     <span>
                       <h3>$ {room?.price_per_night} </h3>
@@ -68,7 +74,7 @@ const AllProperties = () => {
                     {' '}
                     Includes tax and charges{' '}
                   </Typography>
-                </div>
+                </BoxMiddle>
               </Row>
               <Row>
                 <BoxBottom>
@@ -81,15 +87,15 @@ const AllProperties = () => {
                   </Included>
                 </BoxBottom>
                 <BoxBottom>
-                  <NavLink to={`/property-details/${room?.id}`}>
-                    <LinkButton>Learn More</LinkButton>
-                  </NavLink>
+                  <LinkButton onClick={() => redirectToDetail(room?.id)}>
+                    Learn More
+                  </LinkButton>
                 </BoxBottom>
               </Row>
             </InfoWrapper>
           </Card>
           <Divider />
-        </>
+        </div>
       ))}
     </Container>
   );

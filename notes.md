@@ -20,3 +20,7 @@
 - [ ] Remove all comments
 - [ ] Remove console.log
 - [ ]
+
+### References
+
+- [Media screen breakpoint](https://getbootstrap.com/docs/5.0/layout/breakpoints/)

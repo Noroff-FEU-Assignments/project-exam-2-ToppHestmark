@@ -5,10 +5,15 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  padding: 1.25em 0;
+  padding: 1.625em 0;
   display: grid;
   grid-template-columns: 32% 65%;
   justify-content: space-between;
+
+  @media screen and (max-width: 576px) {
+    padding: 2.5em 0 1em 0;
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Image = styled.img`
@@ -21,11 +26,23 @@ export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  @media screen and (max-width: 576px) {
+    padding: 1.625em 0;
+  }
 `;
 
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (min-width: 480px) and (max-width: 576px) {
+    padding: 0.625em 0;
+  }
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 export const TitleText = styled.h4`
@@ -58,10 +75,26 @@ export const Slash = styled.div`
   padding: 0 0.15em;
 `;
 
+export const BoxMiddle = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 480px) {
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+`;
+
 export const BoxBottom = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  @media screen and (max-width: 480px) {
+    padding: 0.625em 0;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const Included = styled.p<{ show: boolean }>`
@@ -85,5 +118,9 @@ export const LinkButton = styled.button`
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.blue_light};
+  }
+
+  @media screen and (max-width: 480px) {
+    width: 100%;
   }
 `;
