@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { boxShadow } from '../../styles/mixins';
 
 export const Container = styled.div`
   width: 100%;
@@ -9,7 +8,7 @@ export const Container = styled.div`
   flex-direction: column;
   border-radius: ${({ theme }) => theme.borderRadius};
 
-  ${boxShadow}
+  ${({ theme }) => theme.includes.boxShadow}
 `;
 
 export const PriceTag = styled.div`

@@ -1,3 +1,4 @@
+import { boxShadow } from './src/styles/mixins';
 import 'styled-components';
 
 declare module 'styled-components' {
@@ -16,6 +17,10 @@ declare module 'styled-components' {
       success: string;
       danger: string;
       hover: string;
+    };
+
+    includes: {
+      boxShadow: string;
     };
   }
 }

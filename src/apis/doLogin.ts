@@ -5,7 +5,10 @@ export interface ILogin {
   password: string;
 }
 
-export const doLogin = async (data: ILogin): Promise<void> => {
+export const doLogin = async (
+  data: ILogin,
+  setLoginError: (error) => void
+): Promise<void> => {
   const options = {
     method: 'POST',
     headers: {
@@ -18,13 +21,11 @@ export const doLogin = async (data: ILogin): Promise<void> => {
   };
 
   try {
-    const response = await (await fetch(LOGIN_URL, options)).json();
+    const response = await fetch(LOGIN_URL, options);
 
-    const { error } = response;
+    !response.ok && setLoginError(response);
 
-    if (error) return error;
-
-    return response;
+    return await response.json();
   } catch (error) {
     console.log('Login error: ', error);
   }

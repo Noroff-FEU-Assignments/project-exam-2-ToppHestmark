@@ -7,7 +7,13 @@ import { Button } from '@mui/material';
 
 import { AuthContext } from '../../context/AuthProvider';
 import { addRoomSchema } from '../../validation/addRoomSchema';
-import { PropertyInputs, PropertyOptions } from '../../components';
+import {
+  PropertyInputs,
+  PropertyOptions,
+  Heading,
+  Snackbar,
+  ErrorModal,
+} from '../../components';
 import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
 import { manageRoom } from '../../apis/manageRoom';
 import { initialProperty, initialOptions } from './initialValues';
@@ -15,9 +21,9 @@ import { FormContainer } from './AddProperty.styles';
 
 const AddProperty = () => {
   const [auth] = useContext<any>(AuthContext);
-  const [addError, setAddError] = useState<any>(null);
+  const [error, setError] = useState<any>(null);
+  const [success, setSuccess] = useState<boolean>(false);
   const [propertyOptions, setPropertyOptions] = useState(initialOptions);
-
   const [property, setProperty] = useState<PropertyType>(initialProperty);
 
   const history = useHistory();
@@ -34,10 +40,23 @@ const AddProperty = () => {
   });
 
   const onSubmit = async (data: PropertyType) => {
-    setAddError(null);
-    const addNewRoom = await manageRoom('POST', token, propertyOptions, data);
+    setError(null);
 
-    console.log('Add property response', addNewRoom);
+    const addNewRoom: any = await manageRoom(
+      'POST',
+      token,
+      setError,
+      propertyOptions,
+      data
+    );
+
+    if (addNewRoom?.created_at) {
+      setPropertyOptions(initialOptions);
+      setProperty(initialProperty);
+      setSuccess(true);
+    } else return error;
+
+    return addNewRoom;
   };
 
   const handleChange =
@@ -58,21 +77,28 @@ const AddProperty = () => {
   };
 
   return (
-    <FormContainer>
-      <PropertyOptions
-        propertyOptions={propertyOptions}
-        handlePropertyOptions={handlePropertyOptions}
-      />
+    <>
+      <Heading align="center">Add new property</Heading>
+      <FormContainer>
+        <PropertyOptions
+          propertyOptions={propertyOptions}
+          handlePropertyOptions={handlePropertyOptions}
+        />
 
-      <PropertyInputs
-        errors={errors}
-        property={property}
-        register={register}
-        handleChange={handleChange}
-      />
+        <PropertyInputs
+          errors={errors}
+          property={property}
+          register={register}
+          handleChange={handleChange}
+        />
 
-      <Button onClick={handleSubmit(onSubmit)}>Add</Button>
-    </FormContainer>
+        <Button onClick={handleSubmit(onSubmit)}>Add</Button>
+      </FormContainer>
+      {success && <Snackbar message="Successfully added new property" />}
+      {error && (
+        <ErrorModal error={error} message={error?.statusText.toString()} />
+      )}
+    </>
   );
 };
 

@@ -1,4 +1,5 @@
 import { DefaultTheme } from 'styled-components';
+import { boxShadow } from './mixins';
 
 const theme: DefaultTheme = {
   borderRadius: '5px',
@@ -15,6 +16,10 @@ const theme: DefaultTheme = {
     success: '#008009',
     danger: '#db1212',
     hover: 'rgba(0, 0, 0, 0.04)',
+  },
+
+  includes: {
+    boxShadow,
   },
 };
 

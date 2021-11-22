@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { FormControl, Button, FormGroup } from '@mui/material';
-import { boxShadow } from '../../styles/mixins';
 
 export const Container = styled.div`
   width: 100%;
@@ -13,12 +12,14 @@ export const Container = styled.div`
 
 export const FormWrapper = styled(FormGroup)`
   width: 90vw;
-  padding: 2em;
+  padding: 1.5em;
   border-radius: ${({ theme }) => theme.borderRadius};
-  ${boxShadow}
+
+  ${({ theme }) => theme.includes.boxShadow}
 
   @media screen and (min-width: 480px) {
-    width: 400px;
+    max-width: 450px;
+    padding: 2em;
   }
 `;
 
@@ -38,4 +39,10 @@ export const SubmitButton = styled(Button).attrs(() => ({
   variant: 'contained',
 }))`
   margin: 1.2em 0 !important;
+`;
+
+export const ErrorMessage = styled.p`
+  color: ${({ theme }) => theme.colors.danger};
+  text-align: center;
+  font-weight: 350;
 `;

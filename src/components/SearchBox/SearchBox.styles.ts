@@ -6,13 +6,15 @@ export const Container = styled(Box)`
   padding: 1.25em 0;
   display: flex;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 576px) {
     flex-direction: column;
   }
 `;
 
 export const SearchInput = styled(TextField)`
-  min-width: 320px !important;
+  @media screen and (min-width: 576px) {
+    min-width: 320px !important;
+  }
 `;
 
 export const SubmitButton = styled.button`
@@ -31,7 +33,7 @@ export const SubmitButton = styled.button`
     border: 2px solid ${({ theme }) => theme.colors.blue_light};
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 576px) {
     padding: 0.625em;
     margin: 0.75em 0;
   }

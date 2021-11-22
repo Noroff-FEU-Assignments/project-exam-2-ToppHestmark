@@ -2,7 +2,7 @@ import { Container, HeadingText } from './Heading.styles';
 
 interface HeadingProps {
   children: any;
-  align: 'left' | 'center';
+  align: 'flex-start' | 'center' | 'flex-end';
 }
 
 const Heading: React.FC<HeadingProps> = ({ children, align }) => {

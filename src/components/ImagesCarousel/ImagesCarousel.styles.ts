@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { boxShadow } from '../../styles/mixins';
 
 export const Container = styled.div`
   width: 100%;
@@ -15,13 +14,13 @@ export const CarouselWrapper = styled.div`
 `;
 
 export const Slide = styled.div<{ xPosition: number }>`
-  display: flex;
   width: 100%;
+  display: flex;
   transition: transform 0.6s ease-in-out;
   transform: ${(props) => `translateX(${props.xPosition}px)`};
   aspect-ratio: 5/4;
 
-  ${boxShadow}
+  ${({ theme }) => theme.includes.boxShadow}
 
   * img {
     width: 100%;

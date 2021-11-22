@@ -7,6 +7,7 @@ type MethodsType = 'POST' | 'PUT' | 'DELETE';
 export const manageRoom = async (
   method: MethodsType,
   token: string,
+  setError: (error) => void,
   propertyOptions?: PropertyOptions,
   data?: PropertyType
 ): Promise<void> => {
@@ -33,19 +34,17 @@ export const manageRoom = async (
       subtitle: data?.subtitle,
       property_type: data?.property_type,
       neighbourhood: data?.neighbourhood,
-      description: data?.description,
+      description: data?.description.trim(),
     }),
   };
 
   try {
     const response = await fetch(ROOMS_URL, options);
 
-    if (!response.ok) {
-      throw new Error('Something went wrong when fetching data');
-    }
+    !response.ok && setError(response);
 
     return await response.json();
   } catch (error) {
-    console.log('error', error);
+    console.log('Room promise error: ', error);
   }
 };

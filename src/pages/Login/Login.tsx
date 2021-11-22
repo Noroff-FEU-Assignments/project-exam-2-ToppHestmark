@@ -8,19 +8,19 @@ import { TextField } from '@mui/material';
 import { AuthContext } from '../../context/AuthProvider';
 import { loginSchema } from '../../validation/loginSchema';
 import { doLogin, ILogin } from '../../apis/doLogin';
+import { initialLoginValues } from './initialValues';
 import {
   Container,
   TitleText,
   InputWrap,
   SubmitButton,
   FormWrapper,
+  ErrorMessage,
 } from './Login.styles';
 
 const Login = () => {
-  const [values, setValues] = useState<ILogin>({
-    username: '',
-    password: '',
-  });
+  const [loginError, setLoginError] = useState<any>({});
+  const [values, setValues] = useState<ILogin>(initialLoginValues);
   const history = useHistory();
   const [auth, setAuth] = useContext<any>(AuthContext);
 
@@ -35,17 +35,21 @@ const Login = () => {
   });
 
   const onSubmit = async (data: ILogin) => {
-    const login: any = await doLogin(data);
-    console.log('Login: ', login);
+    setLoginError(null);
+    const login: any = await doLogin(data, setLoginError);
 
     if (login?.user) {
       setAuth(login);
+      setValues(initialLoginValues);
       history.push('/');
-    }
+    } else return loginError;
+
+    return login;
   };
 
   const handleChange =
     (prop: any) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setLoginError(null);
       setValues({ ...values, [prop]: event.target.value });
     };
 
@@ -53,6 +57,9 @@ const Login = () => {
     <Container>
       <FormWrapper>
         <TitleText>Login</TitleText>
+        <ErrorMessage>
+          {loginError?.status === 400 && 'Identifier or password invalid.'}
+        </ErrorMessage>
         <InputWrap>
           <TextField
             type="text"

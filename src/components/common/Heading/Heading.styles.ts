@@ -1,14 +1,13 @@
 import styled from 'styled-components/macro';
 
 interface ContainerProps {
-  align: 'left' | 'center';
+  align: 'flex-start' | 'center' | 'flex-end';
 }
 
 export const Container = styled.header<ContainerProps>`
   width: 100%;
   display: flex;
-  justify-content: ${({ align }) =>
-    align === 'left' ? 'flex-start' : 'center'};
+  justify-content: ${({ align }) => align.toString()};
 `;
 
 export const HeadingText = styled.h1`

@@ -2,19 +2,17 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { contactSchema } from '../../validation/contactSchema';
-import { CONTACTS_URL } from '../../apis/apis';
-import { FormControl, FormGroup, Button, TextField } from '@mui/material';
+import { Button, TextField } from '@mui/material';
 import { ContactType } from './Contact.types';
-import { Heading } from '../../components';
+import { Heading, ErrorModal, MessageModal } from '../../components';
+import { Container, FormWrapper, InputWrapper } from './Contact.styles';
+import { doContact } from '../../apis/doContacts';
+import { initialContactValues } from './initialValues';
 
 const Contact = () => {
   const [contactError, setContactError] = useState<any>(null);
-  const [values, setValues] = useState<ContactType>({
-    fullname: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [success, setSuccess] = useState<boolean>(false);
+  const [values, setValues] = useState<ContactType>(initialContactValues);
 
   const {
     register,
@@ -26,28 +24,14 @@ const Contact = () => {
 
   async function onSubmit(data: ContactType) {
     setContactError(null);
-    // console.log(data);
+    setSuccess(false);
 
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        fullname: data.fullname,
-        email: data.email,
-        subject: data.subject,
-        message: data.message,
-      }),
-    };
+    const makeContact: any = await doContact(data, setContactError);
 
-    try {
-      const response = await (await fetch(CONTACTS_URL, options)).json();
-      console.log('Contact response: ', response);
-    } catch (error) {
-      console.log('error', error);
-      setContactError(error);
-    }
+    if (makeContact?.published_at) {
+      setSuccess(true);
+      setValues(initialContactValues);
+    } else return contactError;
   }
 
   const handleChange =
@@ -56,71 +40,86 @@ const Contact = () => {
     };
 
   return (
-    <div>
+    <>
       <Heading align="center">Contact us</Heading>
-      <FormGroup>
-        <FormControl sx={{ m: 1, width: '35ch' }}>
-          <TextField
-            type="text"
-            variant="standard"
-            label="Fullname"
-            placeholder="Fullname"
-            multiline
-            error={errors?.fullname ? true : false}
-            value={values.fullname}
-            helperText={errors?.fullname && errors?.fullname.message}
-            {...register('fullname')}
-            onChange={handleChange('fullname')}
-          />
-        </FormControl>
-        <FormControl sx={{ m: 1, width: '35ch' }}>
-          <TextField
-            type="text"
-            variant="standard"
-            label="Email"
-            placeholder="Email"
-            multiline
-            error={errors?.email ? true : false}
-            value={values.email}
-            helperText={errors?.email && errors?.email.message}
-            {...register('email')}
-            onChange={handleChange('email')}
-          />
-        </FormControl>
-        <FormControl sx={{ m: 1, width: '35ch' }}>
-          <TextField
-            type="text"
-            variant="standard"
-            label="Subject"
-            placeholder="Subject"
-            multiline
-            error={errors?.subject ? true : false}
-            value={values.subject}
-            helperText={errors?.subject && errors?.subject.message}
-            {...register('subject')}
-            onChange={handleChange('subject')}
-          />
-        </FormControl>
 
-        <FormControl sx={{ m: 1, width: '35ch' }}>
-          <TextField
-            label="Message"
-            variant="standard"
-            placeholder="Your message here"
-            multiline
-            rows={4}
-            fullWidth
-            error={errors?.message ? true : false}
-            value={values?.message}
-            helperText={errors?.message && errors?.message.message}
-            {...register('message')}
-            onChange={handleChange('message')}
-          />
-        </FormControl>
+      {contactError && (
+        <ErrorModal error={contactError} message={contactError?.toString()} />
+      )}
 
-        <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
-      </FormGroup>
-    </div>
+      {success && (
+        <MessageModal
+          success={success}
+          title="Message submitted"
+          message="Dear traveler. We will reply back to you as soon as possible, thank you for choosing us."
+        />
+      )}
+
+      <Container>
+        <FormWrapper>
+          <InputWrapper>
+            <TextField
+              type="text"
+              variant="standard"
+              label="Fullname"
+              placeholder="Fullname"
+              multiline
+              error={errors?.fullname ? true : false}
+              value={values.fullname}
+              helperText={errors?.fullname && errors?.fullname.message}
+              {...register('fullname')}
+              onChange={handleChange('fullname')}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <TextField
+              type="text"
+              variant="standard"
+              label="Email"
+              placeholder="Email"
+              multiline
+              error={errors?.email ? true : false}
+              value={values.email}
+              helperText={errors?.email && errors?.email.message}
+              {...register('email')}
+              onChange={handleChange('email')}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <TextField
+              type="text"
+              variant="standard"
+              label="Subject"
+              placeholder="Subject"
+              multiline
+              error={errors?.subject ? true : false}
+              value={values.subject}
+              helperText={errors?.subject && errors?.subject.message}
+              {...register('subject')}
+              onChange={handleChange('subject')}
+            />
+          </InputWrapper>
+
+          <InputWrapper>
+            <TextField
+              label="Message"
+              variant="standard"
+              placeholder="Your message here"
+              multiline
+              rows={4}
+              fullWidth
+              error={errors?.message ? true : false}
+              value={values?.message}
+              helperText={errors?.message && errors?.message.message}
+              {...register('message')}
+              onChange={handleChange('message')}
+            />
+          </InputWrapper>
+
+          <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
+        </FormWrapper>
+      </Container>
+    </>
   );
 };
 

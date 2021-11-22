@@ -10,7 +10,7 @@
 - [ ] Icons inside side drawer menu
 - [ ] Customization of text field
 - [ ] Change UI format of the date input
-- [ ] Format numbers
+- [ ] Format larger numbers
 - [ ] Customize buttons
 - [ ] Change date input view
 - [ ] Customized buttons in common folder
@@ -25,3 +25,9 @@
 ### References
 
 - [Media screen breakpoint](https://getbootstrap.com/docs/5.0/layout/breakpoints/)
+- X-Small ------------- None <576px
+- Small --------------- sm ≥576px
+- Medium -------------- md ≥768px
+- Large --------------- lg ≥992px
+- Extra large --------- xl ≥1200px
+- Extra extra large --- xxl ≥1400px

@@ -7,5 +7,7 @@ export { default as GuestDateSelect } from './GuestDateSelect/GuestDateSelect';
 export { default as ImagesCarousel } from './ImagesCarousel/ImagesCarousel';
 
 // Common
-export { default as ErrorModal } from './common/ErrorModal/ErrorModal';
+export { default as ErrorModal } from './common/Modals/ErrorModal';
+export { default as MessageModal } from './common/Modals/MessageModal';
 export { default as Heading } from './common/Heading/Heading';
+export { default as Snackbar } from './common/Snackbar/Snackbar';

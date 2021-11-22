@@ -1,29 +1,28 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
+import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import { Wrapper } from './ErrorModal.styles';
+import { Wrapper } from './Modal.styles';
 
 interface ErrorModalProps {
-  errorMessage: any;
+  error: any | null;
+  message: string;
 }
 
 const ErrorModal: React.FC<ErrorModalProps> = (props) => {
-  const { errorMessage } = props;
+  const { error, message } = props;
+  let errorState = error ? true : false;
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [open, setOpen] = useState<boolean>(errorState);
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal open={open} onClose={handleClose}>
         <Wrapper>
           <Typography variant="h6" component="h2">
-            Error
+            Error {error?.status}
           </Typography>
-          <Typography sx={{ mt: 2 }}>{errorMessage}</Typography>
+          <Typography sx={{ mt: 2 }}>{message}</Typography>
         </Wrapper>
       </Modal>
     </div>
