@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
-import { GuestDateSelect, ImagesCarousel } from '../../components';
+import { Heading, GuestDateSelect, ImagesCarousel } from '../../components';
 import { UIWrapper } from './PropertyDetails.styles';
 
 interface IDParam {
@@ -24,8 +24,8 @@ const PropertyDetails = () => {
   }, []);
 
   return (
-    <div>
-      <h1> Property Details </h1>
+    <>
+      <Heading align="flex-start"> {room?.Title} </Heading>
 
       <h2> {room?.Title} </h2>
       <p> {room?.subtitle} </p>
@@ -33,7 +33,7 @@ const PropertyDetails = () => {
         <ImagesCarousel room={room} />
         <GuestDateSelect room={room} />
       </UIWrapper>
-    </div>
+    </>
   );
 };
 

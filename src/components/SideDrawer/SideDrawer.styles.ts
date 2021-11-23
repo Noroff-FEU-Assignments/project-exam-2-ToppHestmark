@@ -5,6 +5,10 @@ export const Wrapper = styled.aside`
   margin-top: 2em;
   display: flex;
   flex-direction: column;
+
+  @media print {
+    display: none;
+  }
 `;
 
 export const AsideLink = styled(NavLink)`

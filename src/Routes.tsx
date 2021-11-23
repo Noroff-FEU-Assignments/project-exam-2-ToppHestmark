@@ -11,6 +11,7 @@ const Routes = () => (
     <Route path="/property-details/:id" component={p_.PropertyDetails} />
     <Route path="/enquiry/:id" component={p_.Enquiry} />
     <Route path="/bookings" component={p_.Bookings} />
+    <Route path="/booking-detail/:id" component={p_.BookingDetail} />
     <Route path="/messages" component={p_.Messages} />
     <Route path="/summary" component={p_.Summary} />
   </Switch>

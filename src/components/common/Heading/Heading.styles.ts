@@ -8,6 +8,7 @@ export const Container = styled.header<ContainerProps>`
   width: 100%;
   display: flex;
   justify-content: ${({ align }) => align.toString()};
+  text-align: ${({ align }) => (align === 'center' ? 'center' : 'start')};
 `;
 
 export const HeadingText = styled.h1`

@@ -38,13 +38,13 @@ const Enquiry = () => {
   });
 
   const onSubmit = async (data: IEnquiry) => {
+    setEnquiriesError(null);
     const confirm = window.confirm(
-      "I'm confirming that all of my details is correct"
+      "I'm confirming that all of my details is correct."
     );
 
     if (!confirm) return;
 
-    setEnquiriesError(null);
     const generatedId = nanoid(8).toUpperCase();
 
     const bookRoom = await makeBooking(
@@ -74,7 +74,7 @@ const Enquiry = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <h1>Your're almost there.</h1>
       <h2> Enquiry for {property?.Title} </h2>
 
@@ -87,7 +87,7 @@ const Enquiry = () => {
         />
         <Button onClick={handleSubmit(onSubmit)}>Book</Button>
       </FormContainer>
-    </div>
+    </>
   );
 };
 

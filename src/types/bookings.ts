@@ -1,4 +1,4 @@
-export interface ISummary {
+export interface IBookings {
   booking_id: string;
   created_at: string;
   date_from: string;
@@ -12,8 +12,8 @@ export interface ISummary {
   length_of_stays: number;
   number_of_guests: number;
   phone_number: number;
-  published_at: Date;
+  published_at: string;
   room_id: number;
   subtotal: number;
-  updated_at: Date;
+  updated_at: string;
 }

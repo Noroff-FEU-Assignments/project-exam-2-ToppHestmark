@@ -41,6 +41,6 @@ export const makeBooking = async (
 
     return await response.json();
   } catch (error) {
-    console.log('Booking error', error);
+    console.log('Booking promise error', error);
   }
 };

@@ -6,6 +6,10 @@ export const NavContainer = styled.nav`
   width: 100%;
   z-index: 9;
   background-color: ${({ theme }) => theme.colors.primary};
+
+  @media print {
+    display: none;
+  }
 `;
 
 export const Wrapper = styled.div`

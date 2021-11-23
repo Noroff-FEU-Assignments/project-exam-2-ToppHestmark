@@ -18,19 +18,19 @@ export const SearchInput = styled(TextField)`
 `;
 
 export const SubmitButton = styled.button`
-  padding: 0 2em;
+  padding: 0 2.5em;
   margin: 0 0.5em;
-  color: ${({ theme }) => theme.colors.white};
   font-size: 1.25rem;
   cursor: pointer;
   display: inline-block;
+  color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 2px solid ${({ theme }) => theme.colors.primary};
   background-color: ${({ theme }) => theme.colors.primary};
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.blue_light};
-    border: 2px solid ${({ theme }) => theme.colors.blue_light};
+    background-color: ${({ theme }) => theme.colors.primary_dark};
+    border: 2px solid ${({ theme }) => theme.colors.primary_dark};
   }
 
   @media screen and (max-width: 576px) {

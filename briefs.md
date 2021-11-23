@@ -38,14 +38,14 @@ You will need to create an API to store the data for the establishments, enquiri
 - [x] Search bar typeahead (auto dropdown with hotel names that match what has been typed)
 - [x] A results page with all hotels
 - [x] The hotel specific page which displays all details about the hotel
-- [ ] An enquiry page either modal or separate page
+- [x] An enquiry page either modal or separate page
 - [x] A contact page (different to enquiry page) which goes to the admin for Holidaze
 
 ### Admin side
 
 - [x] Create a login section that makes use of JWT tokens
-- [ ] List of enquiries and new enquiries appear when user submits the form on the enquiry page
-- [ ] List of messages from contact form
+- [x] List of enquiries and new enquiries appear when user submits the form on the enquiry page
+- [x] List of messages from contact form
 - [x] The admin can create a new establishment
 
 ### Recommended Process

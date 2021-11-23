@@ -1,5 +1,5 @@
 // Libraries
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
@@ -19,12 +19,10 @@ import {
 } from './Login.styles';
 
 const Login = () => {
+  const history = useHistory();
   const [loginError, setLoginError] = useState<any>({});
   const [values, setValues] = useState<ILogin>(initialLoginValues);
-  const history = useHistory();
   const [auth, setAuth] = useContext<any>(AuthContext);
-
-  auth && history.push('/');
 
   const {
     register,
@@ -52,6 +50,12 @@ const Login = () => {
       setLoginError(null);
       setValues({ ...values, [prop]: event.target.value });
     };
+
+  useEffect(
+    () => auth && history.push('/'),
+
+    []
+  );
 
   return (
     <Container>
