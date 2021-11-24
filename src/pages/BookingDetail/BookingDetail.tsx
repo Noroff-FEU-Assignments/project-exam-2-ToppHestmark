@@ -51,6 +51,8 @@ const BookingDetail = () => {
     })();
   }, []);
 
+  if (error) return <ErrorModal error={error} message={error?.statusText} />;
+
   return (
     <div>
       <Heading align="center">Booking details </Heading>
@@ -66,8 +68,6 @@ const BookingDetail = () => {
           <Back onClick={goBack}>Back</Back>
         </BtnWrapper>
       </Wrapper>
-
-      {error && <ErrorModal error={error} message={error?.statusText} />}
     </div>
   );
 };

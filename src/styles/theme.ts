@@ -15,6 +15,7 @@ const theme: DefaultTheme = {
     border: 'rgba(0, 0, 0, 0.12)',
     success: '#008009',
     danger: '#db1212',
+    danger_hover: 'rgb(232, 68, 24, 0.1)',
     hover: 'rgba(0, 0, 0, 0.04)',
   },
 

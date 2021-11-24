@@ -9,7 +9,8 @@ export const manageRoom = async (
   token: string,
   setError: (error) => void,
   propertyOptions?: PropertyOptions,
-  data?: PropertyType
+  data?: PropertyType,
+  roomId?: string | number
 ): Promise<void> => {
   const options = {
     method: method,
@@ -34,12 +35,15 @@ export const manageRoom = async (
       subtitle: data?.subtitle,
       property_type: data?.property_type,
       neighbourhood: data?.neighbourhood,
-      description: data?.description.trim(),
+      description: data?.description,
     }),
   };
 
   try {
-    const response = await fetch(ROOMS_URL, options);
+    const response = await fetch(
+      roomId ? `${ROOMS_URL}/${roomId}` : ROOMS_URL,
+      options
+    );
 
     !response.ok && setError(response);
 

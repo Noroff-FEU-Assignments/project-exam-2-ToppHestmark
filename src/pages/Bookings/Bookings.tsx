@@ -6,14 +6,14 @@ import { IBookings } from '../../types/bookings';
 import { Container, Wrapper } from './Bookings.styles';
 
 const Bookings = () => {
-  const [allBookings, setAllBookings] = useState<IBookings[]>([]);
   const [auth] = useContext<any>(AuthContext);
+  const token = auth?.jwt;
+  const [allBookings, setAllBookings] = useState<IBookings[]>([]);
+  const [error, setError] = useState<any>(null);
   const sortedBookings: IBookings[] = allBookings?.sort(
     (a, b) =>
       Number(new Date(b.published_at)) - Number(new Date(a.published_at))
   );
-  const [error, setError] = useState<any>(null);
-  const token = auth?.jwt;
 
   useEffect(() => {
     (async () => {
@@ -22,6 +22,8 @@ const Bookings = () => {
       setAllBookings(getBookings);
     })();
   }, []);
+
+  if (error) return <ErrorModal error={error} message={error?.statusText} />;
 
   return (
     <Container>
@@ -34,7 +36,6 @@ const Bookings = () => {
           <BookingListItem key={idx} booking={booking} />
         ))}
       </Wrapper>
-      {error && <ErrorModal error={error} message={error?.statusText} />}
     </Container>
   );
 };

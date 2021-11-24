@@ -3,13 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { Divider } from '@mui/material';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
-import { Heading, PropertiesCardItem } from '../../components';
-
+import { Heading, PropertiesCardItem, ErrorModal } from '../../components';
 import { Container } from './AllProperties.styles';
 
 const AllProperties = () => {
   const history = useHistory();
   const [rooms, setRooms] = useState<RoomType[]>([]);
+  const [error, setError] = useState<any>(null);
 
   const redirectToDetail = (roomId) => {
     history.push('/property-details/' + roomId);
@@ -17,10 +17,13 @@ const AllProperties = () => {
 
   useEffect(() => {
     (async () => {
-      const allRooms: any = await fetchRooms('');
+      setError(null);
+      const allRooms: any = await fetchRooms(setError, '');
       setRooms(allRooms);
     })();
   }, []);
+
+  if (error) return <ErrorModal error={error} message={error?.statusText} />;
 
   return (
     <Container>

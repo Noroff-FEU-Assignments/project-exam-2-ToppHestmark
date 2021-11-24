@@ -20,7 +20,7 @@ const ErrorModal: React.FC<ErrorModalProps> = (props) => {
       <Modal open={open} onClose={handleClose}>
         <Wrapper>
           <Typography variant="h6" component="h2">
-            Error {error?.status}
+            {error?.status} Error
           </Typography>
           <Typography sx={{ mt: 2 }}>{message}</Typography>
         </Wrapper>

@@ -75,6 +75,8 @@ const AddProperty = () => {
     });
   };
 
+  if (error) return <ErrorModal error={error} message={error?.statusText} />;
+
   return (
     <>
       <Heading align="center">Add new property</Heading>
@@ -94,9 +96,6 @@ const AddProperty = () => {
         <Button onClick={handleSubmit(onSubmit)}>Add</Button>
       </FormContainer>
       {success && <Snackbar message="Successfully added new property" />}
-      {error && (
-        <ErrorModal error={error} message={error?.statusText.toString()} />
-      )}
     </>
   );
 };

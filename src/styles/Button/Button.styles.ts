@@ -78,10 +78,12 @@ export const ButtonOutlined = styled.button`
 `;
 
 export const ButtonOutlinedDanger = styled(ButtonOutlined)`
+  &:focus,
   &:hover {
     color: ${({ theme }) => theme.colors.danger};
-    background-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.danger_hover};
     border: 2px solid ${({ theme }) => theme.colors.danger};
+    outline: 0;
   }
 
   @media print {

@@ -16,6 +16,7 @@ declare module 'styled-components' {
       border: string;
       success: string;
       danger: string;
+      danger_hover: string;
       hover: string;
     };
 

@@ -2,7 +2,6 @@ import { useLocation } from 'react-router-dom';
 import { Heading, BookingSummary } from '../../components';
 import { IBookings } from '../../types/bookings';
 import { Wrapper, Button } from './Summary.styles';
-// import { ButtonPrimary as Print } from '../../styles/Button/Button.styles';
 
 interface ISummaryState {
   bookingSummary: IBookings;

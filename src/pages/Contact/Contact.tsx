@@ -39,13 +39,14 @@ const Contact = () => {
       setValues({ ...values, [prop]: event.target.value });
     };
 
+  if (contactError)
+    return (
+      <ErrorModal error={contactError} message={contactError?.statusText} />
+    );
+
   return (
     <>
       <Heading align="center">Contact us</Heading>
-
-      {contactError && (
-        <ErrorModal error={contactError} message={contactError?.toString()} />
-      )}
 
       {success && (
         <MessageModal

@@ -1,5 +1,11 @@
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthProvider';
+import { useHistory } from 'react-router-dom';
 import { Typography } from '@mui/material';
-import { ButtonPrimary } from '../../styles/Button/Button.styles';
+import {
+  ButtonPrimary,
+  ButtonOutlined,
+} from '../../styles/Button/Button.styles';
 import { RoomType } from '../../types/roomType';
 import {
   Wrapper,
@@ -23,14 +29,26 @@ interface Props {
 
 const PropertiesCardItem: React.FC<Props> = (props) => {
   const { room, redirectToDetail } = props;
+  const [auth] = useContext<any>(AuthContext);
+  const history = useHistory();
+
+  const redirectToManage = (roomId) => {
+    history.push('/manage-property/' + roomId, { property: room });
+  };
 
   return (
     <Wrapper>
-      <Image src={room?.image_01} alt={room?.Title} />
+      <Image
+        onClick={() => redirectToDetail(room.id)}
+        src={room?.image_01}
+        alt={room?.Title}
+      />
       <InfoWrapper>
         <Row>
           {' '}
-          <TitleText> {room?.Title} </TitleText>{' '}
+          <TitleText onClick={() => redirectToDetail(room.id)}>
+            {room?.Title}
+          </TitleText>
           <Typography variant="subtitle2"> {room?.guest_review} </Typography>
         </Row>
         <Row>
@@ -58,9 +76,15 @@ const PropertiesCardItem: React.FC<Props> = (props) => {
             </Included>
           </BoxBottom>
           <BoxBottom>
-            <ButtonPrimary onClick={() => redirectToDetail(room.id)}>
-              Learn More
-            </ButtonPrimary>
+            {auth ? (
+              <ButtonOutlined onClick={() => redirectToManage(room.id)}>
+                Manage property
+              </ButtonOutlined>
+            ) : (
+              <ButtonPrimary onClick={() => redirectToDetail(room.id)}>
+                Learn More
+              </ButtonPrimary>
+            )}
           </BoxBottom>
         </Row>
       </InfoWrapper>

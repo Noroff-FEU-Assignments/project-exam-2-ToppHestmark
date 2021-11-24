@@ -6,9 +6,11 @@ import { CircularProgress } from '@mui/material';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
 import { Container, SearchInput, SubmitButton } from './SearchBox.styles';
+import { ErrorModal } from '../../components';
 
 const SearchBox = () => {
   const [rooms, setRooms] = useState<any>([]);
+  const [error, setError] = useState<any>(null);
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<RoomType[]>([]);
   const loading = open && options.length === 0;
@@ -39,8 +41,9 @@ const SearchBox = () => {
 
     (async () => {
       await sleep();
+      setError(null);
 
-      const allRooms = await fetchRooms('');
+      const allRooms = await fetchRooms(setError, '');
       setRooms(allRooms);
 
       if (active) setOptions([...rooms]);
@@ -54,6 +57,8 @@ const SearchBox = () => {
   useEffect(() => {
     if (!open) setOptions([]);
   }, [open]);
+
+  if (error) return <ErrorModal error={error} message={error?.statusText} />;
 
   return (
     <Container component="form" onSubmit={(e) => handleRoomSubmit(e)}>

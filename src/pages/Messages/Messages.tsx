@@ -27,11 +27,13 @@ const Messages = () => {
     })();
   }, [reloadMessages]);
 
+  if (messageError)
+    return (
+      <ErrorModal error={messageError} message={messageError?.statusText} />
+    );
+
   return (
     <Container>
-      {messageError && (
-        <ErrorModal error={messageError} message={messageError?.statusText} />
-      )}
       <Heading align="center">{messages?.length} messages in total</Heading>
 
       {sortedMessages?.map((message, idx) => (
