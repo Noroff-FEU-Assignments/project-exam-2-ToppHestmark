@@ -2,10 +2,16 @@ import styled from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export const NavContainer = styled.nav`
+interface INavContainer {
+  pathname: string;
+}
+
+export const NavContainer = styled.nav<INavContainer>`
   width: 100%;
   z-index: 9;
-  background-color: ${({ theme }) => theme.colors.primary};
+  position: sticky;
+  background-color: ${({ theme, pathname }) =>
+    pathname === '/' ? 'transparent' : theme.colors.primary};
 
   @media print {
     display: none;

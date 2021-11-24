@@ -23,3 +23,8 @@ export const FormWrapper = styled(FormGroup)`
 export const InputWrapper = styled(FormControl)`
   padding: 0.8em 0 !important;
 `;
+
+export const Spacer = styled.div`
+  width: 100%;
+  padding: 0.5em 0;
+`;

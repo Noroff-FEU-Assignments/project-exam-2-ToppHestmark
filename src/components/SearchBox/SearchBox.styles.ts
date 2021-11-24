@@ -5,6 +5,7 @@ import Box from '@mui/material/Box';
 export const Container = styled(Box)`
   padding: 1.25em 0;
   display: flex;
+  z-index: 3;
 
   @media screen and (max-width: 576px) {
     flex-direction: column;
@@ -12,6 +13,14 @@ export const Container = styled(Box)`
 `;
 
 export const SearchInput = styled(TextField)`
+  background-color: white; // This because Material-UI didn't allowed SC props
+  border-radius: 5px; // This because Material-UI didn't allowed SC props
+
+  fieldset,
+  legend {
+    display: none;
+  }
+
   @media screen and (min-width: 576px) {
     min-width: 320px !important;
   }

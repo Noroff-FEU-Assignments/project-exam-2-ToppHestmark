@@ -2,12 +2,13 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { contactSchema } from '../../validation/contactSchema';
-import { Button, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import { ContactType } from './Contact.types';
 import { Heading, ErrorModal, MessageModal } from '../../components';
-import { Container, FormWrapper, InputWrapper } from './Contact.styles';
+import { Container, FormWrapper, InputWrapper, Spacer } from './Contact.styles';
 import { doContact } from '../../apis/doContacts';
 import { initialContactValues } from './initialValues';
+import { ButtonPrimary as Button } from '../../styles/Button/Button.styles';
 
 const Contact = () => {
   const [contactError, setContactError] = useState<any>(null);
@@ -116,6 +117,7 @@ const Contact = () => {
               onChange={handleChange('message')}
             />
           </InputWrapper>
+          <Spacer />
 
           <Button onClick={handleSubmit(onSubmit)}>Submit</Button>
         </FormWrapper>

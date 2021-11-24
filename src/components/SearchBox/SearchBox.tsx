@@ -9,7 +9,7 @@ import { Container, SearchInput, SubmitButton } from './SearchBox.styles';
 import { ErrorModal } from '../../components';
 
 const SearchBox = () => {
-  const [rooms, setRooms] = useState<any>([]);
+  const [rooms, setRooms] = useState<RoomType[]>([]);
   const [error, setError] = useState<any>(null);
   const [open, setOpen] = useState(false);
   const [options, setOptions] = useState<RoomType[]>([]);
@@ -37,15 +37,14 @@ const SearchBox = () => {
   useEffect(() => {
     let active = true;
 
-    if (!loading) return undefined;
-
     (async () => {
       await sleep();
       setError(null);
 
-      const allRooms = await fetchRooms(setError, '');
+      const allRooms: any = await fetchRooms(setError, '');
       setRooms(allRooms);
 
+      if (!loading) return undefined;
       if (active) setOptions([...rooms]);
     })();
 
@@ -75,8 +74,8 @@ const SearchBox = () => {
         renderInput={(params) => (
           <SearchInput
             {...params}
-            label="Search properties"
             InputProps={{
+              placeholder: 'Search properties',
               ...params.InputProps,
               endAdornment: (
                 <>

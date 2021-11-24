@@ -5,22 +5,21 @@
 - [ ] Configure fonts
 - [ ] Error handling pages and forms
 - [ ] Remove all inline styles
-- [ ] Snackbar pop-up message for form success / errors
+- [x] Snackbar pop-up message for form success / errors
 - [ ] Fix login when press enter tab
 - [ ] Icons inside side drawer menu
 - [ ] Customization of text field
-- [ ] Change UI format of the date input
+- [x] Set date input UI format of the date input
 - [ ] Format larger numbers
-- [ ] Customize buttons
-- [ ] Change date input view
-- [ ] Customized buttons in common folder
+- [x] Customize buttons
+- [x] Change date input view
 
 ### Todos before submit
 
 - [ ] Refactore codes
 - [ ] Remove all comments
 - [ ] Remove console.log
-- [ ]
+- [ ] Lighthouse test
 
 ### References
 

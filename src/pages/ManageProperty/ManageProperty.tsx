@@ -6,6 +6,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import { addRoomSchema } from '../../validation/addRoomSchema';
 import { RoomType } from '../../types/roomType';
 import { manageRoom } from '../../apis/manageRoom';
+import { getPropertyOptions, getPropertyValues } from './initialValues';
 import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
 import { FormContainer, Button, Spacer } from './ManageProperty.styles';
 import { ButtonOutlinedDanger as Delete } from '../../styles/Button/Button.styles';
@@ -13,8 +14,8 @@ import {
   PropertyInputs,
   PropertyOptions,
   Heading,
-  Snackbar,
   ErrorModal,
+  MessageModal,
 } from '../../components';
 
 interface IPropertyState {
@@ -24,33 +25,16 @@ interface IPropertyState {
 const ManageProperty = () => {
   const { state } = useLocation<IPropertyState>();
   const room: RoomType = state.property;
+  const roomId = room.id;
+  const initialOptions = getPropertyOptions(room);
+  const initialProperty = getPropertyValues(room);
   const history = useHistory();
   const [auth] = useContext<any>(AuthContext);
   const token = auth?.jwt;
   const [error, setError] = useState<any>(null);
   const [success, setSuccess] = useState<boolean>(false);
-  const [propertyOptions, setPropertyOptions] = useState({
-    breakfast_included: room.breakfast_included,
-    free_cancellation: room.free_cancellation,
-    wifi: room.wifi,
-    featured: room.featured,
-  });
-  const [property, setProperty] = useState<PropertyType>({
-    Title: room.Title,
-    room_type: room.room_type,
-    bed_type: room.bed_type,
-    price_per_night: room.price_per_night,
-    guest_review: room.guest_review,
-    image_01: room.image_01,
-    image_02: room.image_02,
-    image_03: room.image_03,
-    image_04: room.image_04,
-    subtitle: room.subtitle,
-    property_type: room.property_type,
-    neighbourhood: room.neighbourhood,
-    description: room.description,
-  });
-  const roomId = room.id;
+  const [propertyOptions, setPropertyOptions] = useState(initialOptions);
+  const [property, setProperty] = useState<PropertyType>(initialProperty);
 
   !auth && history.push('/');
 
@@ -146,7 +130,13 @@ const ManageProperty = () => {
         <Spacer />
         <Delete onClick={handleDelete}>Delete Property</Delete>
       </FormContainer>
-      {success && <Snackbar message="Successfully updated" />}
+      {success && (
+        <MessageModal
+          success={success}
+          title="Success"
+          message="Change submitted successfully"
+        />
+      )}
     </>
   );
 };

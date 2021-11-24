@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { Heading, BookingListItem, ErrorModal } from '../../components';
 import { manageBooking } from '../../apis/manageBooking';
@@ -6,6 +7,7 @@ import { IBookings } from '../../types/bookings';
 import { Container, Wrapper } from './Bookings.styles';
 
 const Bookings = () => {
+  const history = useHistory();
   const [auth] = useContext<any>(AuthContext);
   const token = auth?.jwt;
   const [allBookings, setAllBookings] = useState<IBookings[]>([]);
@@ -14,6 +16,8 @@ const Bookings = () => {
     (a, b) =>
       Number(new Date(b.published_at)) - Number(new Date(a.published_at))
   );
+
+  !auth && history.push('/');
 
   useEffect(() => {
     (async () => {

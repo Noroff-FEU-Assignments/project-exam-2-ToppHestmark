@@ -1,4 +1,5 @@
 import { useContext, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import { SideDrawer } from '../components';
 import Logo from '../assets/icons/logo_white.png';
@@ -18,10 +19,10 @@ const TopBar: React.FC = () => {
 
   const closeAside = () => setAsideOpen(false);
   const logout = () => setAuth(null);
+  const location = useLocation();
 
   const CustomersMenu = () => (
     <>
-      {/* <Link to="/all-properties">Properties</Link> */}
       <Link to="/contact">Contact</Link>
       <Link to="/login">Sign in</Link>
     </>
@@ -39,7 +40,7 @@ const TopBar: React.FC = () => {
   );
 
   return (
-    <NavContainer>
+    <NavContainer pathname={location?.pathname}>
       <Wrapper>
         <LogoWrapper to="/">
           {' '}
