@@ -3,9 +3,8 @@ import { nanoid } from 'nanoid';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button } from '@mui/material';
 import { enquirySchema } from '../../validation/enquirySchema';
-import { EnquiryInputs } from '../../components';
+import { Heading, EnquiryInputs } from '../../components';
 import {
   ILocationState,
   IEnquiry,
@@ -16,7 +15,8 @@ import { RoomType } from '../../types/roomType';
 import { InitialGuestPreference, EnquiriesInitial } from './initialValues';
 import { makeBooking } from '../../apis/makeBooking';
 
-import { FormContainer } from './Enquiry.styles';
+import { FormContainer, Title, Text } from './Enquiry.styles';
+import { ButtonPrimary as Button } from '../../styles/Button/Button.styles';
 
 const Enquiry = () => {
   const { state }: any = useLocation<ILocationState>();
@@ -75,10 +75,11 @@ const Enquiry = () => {
 
   return (
     <>
-      <h1>Your're almost there.</h1>
-      <h2> Enquiry for {property?.Title} </h2>
+      <Heading align="center">Your're almost there.</Heading>
 
       <FormContainer>
+        <Title> Enquiry for {property?.Title} </Title>
+        <Text>Please fill your travel details</Text>
         <EnquiryInputs
           errors={errors}
           enquiries={enquiries}

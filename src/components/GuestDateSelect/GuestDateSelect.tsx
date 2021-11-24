@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import { FormGroup, Button, FormControl, Divider } from '@mui/material';
+import { FormGroup, FormControl } from '@mui/material';
 import DatePicker from '@mui/lab/DatePicker';
 import { RoomType } from '../../types/roomType';
 import { DateTime } from 'luxon';
@@ -24,6 +24,7 @@ import {
   HrLine,
   MidText,
 } from './GuestDateSelect.styles';
+import { ButtonPrimary as Button } from '../../styles/Button/Button.styles';
 import { DATE_FORMAT } from '../../constants/dateFormat';
 
 interface GuestDateSelectProps {
@@ -98,13 +99,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
   return (
     <Container>
       <PriceTag>
-        <span>
-          <h3>$ {room?.price_per_night} </h3>
-        </span>
-        <span>
-          {' '}
-          <Slash>/</Slash>{' '}
-        </span>
+        <h3>$ {room?.price_per_night} </h3> &nbsp; <Slash>/</Slash>&nbsp;
         <p>night</p>
       </PriceTag>
 
@@ -172,7 +167,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
 
         <TotalPrice>
           {' '}
-          <span>Total:</span>{' '}
+          <span>Total:</span>
           <span>$ {isNaN(totalPrice) ? 0 : totalPrice}</span>{' '}
         </TotalPrice>
       </FormGroup>

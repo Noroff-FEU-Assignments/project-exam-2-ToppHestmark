@@ -14,7 +14,6 @@ export const DateText = styled.small`
 export const Title = styled.h3`
   font-weight: 500;
   font-size: 1.625rem;
-  margin-bottom: -0.2em;
 `;
 
 export const Row = styled.div`
@@ -39,4 +38,13 @@ export const MessageBox = styled.p`
   padding: 1em 0;
   font-size: 1.125rem;
   font-weight: 300;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 576px) {
+    flex-direction: column-reverse;
+  }
 `;

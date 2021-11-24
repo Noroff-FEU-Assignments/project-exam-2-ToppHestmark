@@ -9,3 +9,4 @@ export { default as Bookings } from './Bookings/Bookings';
 export { default as Messages } from './Messages/Messages';
 export { default as Summary } from './Summary/Summary';
 export { default as BookingDetail } from './BookingDetail/BookingDetail';
+export { default as ManageProperty } from './ManageProperty/ManageProperty';

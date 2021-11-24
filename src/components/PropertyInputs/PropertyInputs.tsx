@@ -161,7 +161,11 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
             variant="standard"
             label="Price per night"
             placeholder="US Dollar"
-            error={errors?.price_per_night ? true : false}
+            error={
+              errors?.price_per_night || property?.price_per_night < 1
+                ? true
+                : false
+            }
             value={property?.price_per_night}
             helperText={errors?.price_per_night && 'Plese enter a valid price'}
             {...register('price_per_night')}

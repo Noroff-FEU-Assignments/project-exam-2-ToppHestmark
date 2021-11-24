@@ -1,7 +1,6 @@
-import React from 'react';
 import { FormControl, TextField } from '@mui/material';
-import { GridWrapper, MessageWrapper } from './EnquiryInputs.styles';
 import { EnquiryInputsProps } from './EnquiryInputs.types';
+import { GridWrapper, MessageWrapper } from './EnquiryInputs.styles';
 
 const EnquiryInputs = (props: EnquiryInputsProps) => {
   const { errors, enquiries, register, handleEnquiryChange } = props;
@@ -9,7 +8,7 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
   return (
     <>
       <GridWrapper>
-        <FormControl sx={{ m: 1, width: '30ch' }}>
+        <FormControl>
           <TextField
             type="text"
             variant="standard"
@@ -23,7 +22,7 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
             onChange={handleEnquiryChange('firstname')}
           />
         </FormControl>
-        <FormControl sx={{ m: 1, width: '30ch' }}>
+        <FormControl>
           <TextField
             type="text"
             variant="standard"
@@ -37,7 +36,7 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
             onChange={handleEnquiryChange('lastname')}
           />
         </FormControl>
-        <FormControl sx={{ m: 1, width: '30ch' }}>
+        <FormControl>
           <TextField
             type="text"
             variant="standard"
@@ -51,7 +50,7 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
             onChange={handleEnquiryChange('email')}
           />
         </FormControl>
-        <FormControl sx={{ m: 1, width: '30ch' }}>
+        <FormControl>
           <TextField
             type="number"
             variant="standard"
@@ -70,7 +69,6 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
       <MessageWrapper
         variant="standard"
         error={errors?.enquiry_specifications ? true : false}
-        sx={{ m: 1 }}
       >
         <TextField
           label="Enquiry specifications"

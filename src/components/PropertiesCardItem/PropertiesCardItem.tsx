@@ -40,13 +40,8 @@ const PropertiesCardItem: React.FC<Props> = (props) => {
           </div>
           <BoxMiddle>
             <PriceTag>
-              <span>
-                <h3>$ {room?.price_per_night} </h3>
-              </span>
-              <span>
-                {' '}
-                <Slash>/</Slash>{' '}
-              </span>
+              <h3>$ {room?.price_per_night} </h3> &nbsp;
+              <Slash>/</Slash>
               <p>night</p>
             </PriceTag>
             <GhostText> Includes tax and charges </GhostText>

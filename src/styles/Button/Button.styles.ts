@@ -15,12 +15,44 @@ export const ButtonPrimary = styled.button`
     border: 2px solid ${({ theme }) => theme.colors.primary_dark};
   }
 
+  &:focus {
+    outline-style: solid;
+    outline-width: medium;
+    outline-offset: 0.15em;
+    outline-color: ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary_dark};
+    border: 1px solid ${({ theme }) => theme.colors.white};
+  }
+
   @media (max-width: 576px) {
     width: 100%;
   }
+
+  @media print {
+    display: none;
+  }
 `;
 
-export const ButtonSecondary = styled.button`
+export const ButtonPrimaryLink = styled.a`
+  padding: 0.6em 1.75em;
+  font-size: 1.125rem;
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.primary};
+  border-radius: ${({ theme }) => theme.borderRadius};
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.blue_light};
+  }
+
+  &:focus {
+    outline-style: solid;
+    outline-width: medium;
+    outline-offset: 0.1em;
+    outline-color: ${({ theme }) => theme.colors.blue_light};
+  }
+`;
+
+export const ButtonOutlined = styled.button`
   padding: 0.35em 1.75em;
   font-size: 1.125rem;
   cursor: pointer;
@@ -38,5 +70,21 @@ export const ButtonSecondary = styled.button`
 
   @media (max-width: 576px) {
     width: 100%;
+  }
+
+  @media print {
+    display: none;
+  }
+`;
+
+export const ButtonOutlinedDanger = styled(ButtonOutlined)`
+  &:hover {
+    color: ${({ theme }) => theme.colors.danger};
+    background-color: ${({ theme }) => theme.colors.white};
+    border: 2px solid ${({ theme }) => theme.colors.danger};
+  }
+
+  @media print {
+    display: none;
   }
 `;

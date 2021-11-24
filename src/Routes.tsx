@@ -6,6 +6,7 @@ const Routes = () => (
     <Route exact path="/" component={p_.Home} />
     <Route path="/login" component={p_.Login} />
     <Route path="/add-property" component={p_.AddProperty} />
+    <Route path="/manage-property" component={p_.ManageProperty} />
     <Route path="/contact" component={p_.Contact} />
     <Route path="/all-properties" component={p_.AllProperties} />
     <Route path="/property-details/:id" component={p_.PropertyDetails} />

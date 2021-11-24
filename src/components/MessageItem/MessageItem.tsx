@@ -4,6 +4,10 @@ import { IMessages } from '../../pages/Messages/Messages.types';
 import { DateTime } from 'luxon';
 import { AMERICAN_DATE_FORMAT } from '../../constants/dateFormat';
 import {
+  ButtonPrimaryLink as MailLink,
+  ButtonOutlinedDanger as DeleteButton,
+} from '../../styles/Button/Button.styles';
+import {
   Wrapper,
   DateText,
   Title,
@@ -11,6 +15,7 @@ import {
   FrontText,
   MessageBox,
   UserDetail,
+  ButtonWrapper,
 } from './MessageItem.styles';
 
 interface MessageItemProps {
@@ -55,10 +60,14 @@ const MessageItem: React.FC<MessageItemProps> = (props) => {
         <UserDetail> {message.email} </UserDetail>
       </Row>{' '}
       <br />
-      <a href={`mailto:${message.email}?subject=RE: ${message.subject}`}>
-        Reply
-      </a>
-      <button onClick={handleDeleteMessage}>Delete</button>
+      <ButtonWrapper>
+        <DeleteButton onClick={handleDeleteMessage}>Delete</DeleteButton>
+        <MailLink
+          href={`mailto:${message.email}?subject=RE: ${message.subject}`}
+        >
+          Reply
+        </MailLink>
+      </ButtonWrapper>
     </Wrapper>
   );
 };

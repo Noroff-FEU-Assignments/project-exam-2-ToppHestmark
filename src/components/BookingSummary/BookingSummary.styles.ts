@@ -9,6 +9,7 @@ export const Row = styled.div`
 
 export const LastRow = styled(Row)`
   padding: 1em 0;
+  margin-bottom: 2em;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;

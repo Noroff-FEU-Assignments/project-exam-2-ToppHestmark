@@ -18,6 +18,7 @@ export const AsideLink = styled(NavLink)`
   padding: 1em 1.6em;
   width: 260px;
 
+  &:focus,
   &:hover {
     background-color: ${({ theme }) => theme.colors.hover};
   }

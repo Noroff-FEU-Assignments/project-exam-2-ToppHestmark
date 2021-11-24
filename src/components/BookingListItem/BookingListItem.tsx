@@ -1,6 +1,14 @@
 import { useHistory } from 'react-router-dom';
 import { IBookings } from '../../types/bookings';
-import { Wrapper, Title, Row, RowText } from './BookingListItem.styles';
+import {
+  Wrapper,
+  TitleRow,
+  Title,
+  BookingId,
+  Row,
+  RowText,
+  Button,
+} from './BookingListItem.styles';
 
 interface Props {
   booking: IBookings;
@@ -16,7 +24,10 @@ const BookingListItem: React.FC<Props> = (props) => {
 
   return (
     <Wrapper>
-      <Title> {booking.hotel_name} </Title>
+      <TitleRow>
+        <Title> {booking.hotel_name} </Title>
+        <BookingId>Ref: {booking.booking_id} </BookingId>
+      </TitleRow>
       <Row>
         <RowText>{booking.date_from}</RowText>
         <RowText> - </RowText>
@@ -26,7 +37,7 @@ const BookingListItem: React.FC<Props> = (props) => {
         <RowText> {booking.number_of_guests} Guests</RowText>
         <RowText>- {booking.length_of_stays} nights</RowText>
       </Row>
-      <button onClick={goToBookingDetails}>Details</button>
+      <Button onClick={goToBookingDetails}>Details</Button>
     </Wrapper>
   );
 };

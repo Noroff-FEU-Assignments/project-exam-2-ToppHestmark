@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import { ButtonPrimaryLink } from '../../styles/Button/Button.styles';
 
 export const Wrapper = styled.section`
   max-width: 750px;
@@ -9,4 +10,15 @@ export const Wrapper = styled.section`
     padding: 3em;
     border: 1px solid ${({ theme }) => theme.colors.border};
   }
+`;
+
+export const BtnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 1.25em;
+`;
+
+export const MailLink = styled(ButtonPrimaryLink)`
+  text-align: center;
 `;

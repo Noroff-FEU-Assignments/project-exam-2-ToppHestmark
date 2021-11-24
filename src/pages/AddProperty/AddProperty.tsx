@@ -3,7 +3,6 @@ import { useState, useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from 'react-router-dom';
-import { Button } from '@mui/material';
 
 import { AuthContext } from '../../context/AuthProvider';
 import { addRoomSchema } from '../../validation/addRoomSchema';
@@ -17,7 +16,7 @@ import {
 import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
 import { manageRoom } from '../../apis/manageRoom';
 import { initialProperty, initialOptions } from './initialValues';
-import { FormContainer } from './AddProperty.styles';
+import { FormContainer, Button } from './AddProperty.styles';
 
 const AddProperty = () => {
   const [auth] = useContext<any>(AuthContext);

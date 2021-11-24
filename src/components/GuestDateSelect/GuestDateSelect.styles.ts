@@ -21,7 +21,7 @@ export const PriceTag = styled.div`
   }
 
   p {
-    margin-top: 0.25em;
+    margin-top: 0.1em;
   }
 `;
 
@@ -38,7 +38,8 @@ export const HrLine = styled.hr`
 export const Slash = styled.div`
   font-size: 1.4rem;
   font-weight: 100;
-  padding: 0 0.15em;
+  padding: 0 0.1em;
+  margin-top: -0.2em;
 `;
 
 export const SummaryText = styled.p`

@@ -11,7 +11,7 @@ export const initialProperty: PropertyType = {
   Title: '',
   room_type: '',
   bed_type: '',
-  price_per_night: 0,
+  price_per_night: 1,
   guest_review: '',
   image_01: '',
   image_02: '',

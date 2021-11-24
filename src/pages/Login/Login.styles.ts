@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FormControl, Button, FormGroup } from '@mui/material';
+import { ButtonPrimary } from '../../styles/Button/Button.styles';
 
 export const Container = styled.div`
   width: 100%;
@@ -35,10 +36,8 @@ export const InputWrap = styled(FormControl)`
   margin: 0.8em 0 !important;
 `;
 
-export const SubmitButton = styled(Button).attrs(() => ({
-  variant: 'contained',
-}))`
-  margin: 1.2em 0 !important;
+export const SubmitButton = styled(ButtonPrimary)`
+  margin: 1.2em 0;
 `;
 
 export const ErrorMessage = styled.p`
