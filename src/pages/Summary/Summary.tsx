@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom';
 import { Heading, BookingSummary } from '../../components';
 import { IBookings } from '../../types/bookings';
-import { Wrapper, Button } from './Summary.styles';
+import { Wrapper, BtnWrapper, Button } from './Summary.styles';
 
 interface ISummaryState {
   bookingSummary: IBookings;
@@ -18,7 +18,9 @@ const Summary = () => {
       <Heading align="center"> Booking confirmation</Heading>
       <Wrapper>
         <BookingSummary booking={enquirySummary} />
-        <Button onClick={handlePrint}>Print</Button>
+        <BtnWrapper>
+          <Button onClick={handlePrint}>Print</Button>
+        </BtnWrapper>
       </Wrapper>
     </>
   );

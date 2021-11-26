@@ -28,6 +28,10 @@ export const Wrapper = styled.div`
 
   ${({ theme }) => theme.includes.layoutSpacing};
   padding: 1em 2em;
+
+  @media (max-width: 768px) {
+    padding: 1em 2em;
+  }
 `;
 
 export const LinkWrap = styled.div`
@@ -75,7 +79,6 @@ export const LogoWrapper = styled(NavLink)`
 `;
 
 export const MenuButton = styled(MenuIcon)<IPathnameProps>`
-  margin: 0.8em 0;
   cursor: pointer;
   color: ${({ theme, pathname }) =>
     pathname === '/' ? theme.colors.white : theme.colors.navy};

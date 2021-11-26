@@ -27,6 +27,7 @@ declare module 'styled-components' {
       boxShadow: string;
       layoutSpacing: string;
       flexCenter: string;
+      iconButton: string;
     };
   }
 }

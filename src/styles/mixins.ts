@@ -18,3 +18,14 @@ export const layoutSpacing = css`
     padding: 0 1em;
   }
 `;
+
+export const iconButton = css`
+  font-size: 2.625rem !important;
+  color: ${({ theme }) => theme.colors.gray};
+  cursor: pointer;
+  border-radius: 50%;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.hover};
+  }
+`;

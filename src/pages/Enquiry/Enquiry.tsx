@@ -15,7 +15,7 @@ import { RoomType } from '../../types/roomType';
 import { InitialGuestPreference, EnquiriesInitial } from './initialValues';
 import { makeBooking } from '../../apis/makeBooking';
 
-import { FormContainer, Title, Text } from './Enquiry.styles';
+import { FormContainer, Title, Text, ButtonWrapper } from './Enquiry.styles';
 import { ButtonPrimary as Button } from '../../styles/Button/Button.styles';
 
 const Enquiry = () => {
@@ -28,6 +28,8 @@ const Enquiry = () => {
     InitialGuestPreference
   );
   const [enquiries, setEnquiries] = useState<IEnquiry>(EnquiriesInitial);
+
+  const goBack = () => history.goBack();
 
   const {
     register,
@@ -91,7 +93,10 @@ const Enquiry = () => {
           register={register}
           handleEnquiryChange={handleEnquiryChange}
         />
-        <Button onClick={handleSubmit(onSubmit)}>Book</Button>
+        <ButtonWrapper>
+          <Button onClick={goBack}>Back</Button>
+          <Button onClick={handleSubmit(onSubmit)}>Book</Button>
+        </ButtonWrapper>
       </FormContainer>
     </>
   );

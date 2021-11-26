@@ -9,12 +9,12 @@ export const Container = styled.div`
   border-radius: ${({ theme }) => theme.borderRadius};
 
   @media screen and (max-width: 992px) {
-    margin: 3em;
+    margin: 4em;
     flex-direction: column-reverse;
   }
 
   @media screen and (max-width: 768px) {
-    margin: 3em 1em;
+    margin: 3em 2em;
     flex-direction: column-reverse;
   }
 

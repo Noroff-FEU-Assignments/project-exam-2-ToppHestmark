@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
-import { SearchBox } from '../../components';
+import { SearchBox, ErrorModal } from '../../components';
 import { HomeTopHeader, Poster, Featured } from '../../containers';
 import { TopSection, Spacer, LowerSection } from './Home.styles';
 
 const Home = () => {
   const [rooms, setRooms] = useState<RoomType[]>([]);
   const [error, setError] = useState<any>(null);
+  const featuredRooms = rooms.filter((room) => room.featured);
 
   useEffect(() => {
     (async () => {
@@ -20,6 +21,7 @@ const Home = () => {
 
   return (
     <>
+      {error && <ErrorModal error={error} message={error?.statusText} />}
       <TopSection>
         <SearchBox />
         <HomeTopHeader />
@@ -27,7 +29,7 @@ const Home = () => {
       </TopSection>
       <LowerSection>
         <Poster />
-        <Featured rooms={rooms} />
+        <Featured rooms={featuredRooms} />
         <Spacer />
       </LowerSection>
     </>

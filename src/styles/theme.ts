@@ -1,5 +1,5 @@
 import { DefaultTheme } from 'styled-components';
-import { boxShadow, layoutSpacing, flexCenter } from './mixins';
+import { boxShadow, layoutSpacing, flexCenter, iconButton } from './mixins';
 
 const theme: DefaultTheme = {
   borderRadius: '10px',
@@ -26,6 +26,7 @@ const theme: DefaultTheme = {
     boxShadow,
     layoutSpacing,
     flexCenter,
+    iconButton,
   },
 };
 

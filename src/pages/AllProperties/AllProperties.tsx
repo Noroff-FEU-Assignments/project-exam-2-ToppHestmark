@@ -27,7 +27,7 @@ const AllProperties = () => {
 
   return (
     <Container>
-      <Heading align="flex-start">Bergen: {rooms?.length} properties</Heading>
+      <Heading align="flex-start"> {rooms?.length} properties</Heading>
 
       {rooms?.map((room) => (
         <div key={room?.id}>

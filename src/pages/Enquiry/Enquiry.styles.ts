@@ -24,3 +24,9 @@ export const Text = styled.p`
   font-size: 0.875rem;
   text-align: center;
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+`;
