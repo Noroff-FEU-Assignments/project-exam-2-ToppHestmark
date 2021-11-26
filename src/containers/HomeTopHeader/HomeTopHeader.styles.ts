@@ -1,6 +1,6 @@
 import styled from 'styled-components/macro';
 import { ButtonPrimaryLight } from '../../styles/Button/Button.styles';
-import banner from '../../assets/images/banner.jpg';
+import banner from '../../assets/images/banner_dark.jpg';
 // Image from: https://unsplash.com/photos/jrMsv-0o0bw - by Lachlan Gowen
 
 export const Container = styled.div`
@@ -17,6 +17,7 @@ export const Banner = styled.div`
   background-attachment: scroll;
   background-size: cover;
   position: relative;
+  z-index: 1;
   ${({ theme }) => theme.includes.layoutSpacing}
 
   &::after {
@@ -26,7 +27,7 @@ export const Banner = styled.div`
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgb(25, 25, 25, 0.36);
+    background-color: rgb(15, 15, 15, 0.66);
 
     @media screen and (min-width: 768px) {
       border-radius: ${({ theme }) => theme.borderRadius};

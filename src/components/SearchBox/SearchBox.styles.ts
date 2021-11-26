@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
 export const SearchInput = styled(TextField)`
   background-color: white; // This because Material-UI didn't allowed SC props
   border-radius: 25px; // This because Material-UI didn't allowed SC props
-  min-width: 320px !important;
+  min-width: 300px !important;
 
   fieldset,
   legend {
@@ -46,22 +46,27 @@ export const SearchInput = styled(TextField)`
   @media screen and (max-width: 576px) {
     width: 100% !important;
   }
+
+  @media screen and (min-width: 576px) {
+    min-width: 320px !important;
+  }
 `;
 
 export const SubmitButton = styled.button`
-  padding: 0.75em;
-  font-size: 1.25rem;
+  padding: 1em;
+  font-size: 1rem;
   cursor: pointer;
   display: inline-block;
   color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius};
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  background-color: ${({ theme }) => theme.colors.primary};
+  border: 2px solid ${({ theme }) => theme.colors.navy};
+  background-color: ${({ theme }) => theme.colors.navy};
   border-radius: 30px;
+  scale: 0.9;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primary_dark};
-    border: 2px solid ${({ theme }) => theme.colors.primary_dark};
+    background-color: ${({ theme }) => theme.colors.dark};
+    border: 2px solid ${({ theme }) => theme.colors.dark};
   }
 
   @media screen and (max-width: 576px) {
@@ -70,7 +75,14 @@ export const SubmitButton = styled.button`
   }
 
   @media screen and (max-width: 576px) {
-    width: 100%;
-    width: 320px !important;
+    width: 330px;
+    padding: 1em;
+    border: 2px solid ${({ theme }) => theme.colors.primary};
+    background-color: ${({ theme }) => theme.colors.primary};
+
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.primary_dark};
+      border: 2px solid ${({ theme }) => theme.colors.primary_dark};
+    }
   }
 `;

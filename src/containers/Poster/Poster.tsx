@@ -1,5 +1,5 @@
 import { Container, Left, Right, TopText, Title } from './Poster.styles';
-import { ButtonPrimary as Button } from '../../styles/Button/Button.styles';
+import { ButtonPrimaryDark as Button } from '../../styles/Button/Button.styles';
 import posterImage from '../../assets/images/poster.jpg';
 // Image ref: https://unsplash.com/photos/v4bCFqVM9Gs - by Nathan Oakley on Unsplash
 
