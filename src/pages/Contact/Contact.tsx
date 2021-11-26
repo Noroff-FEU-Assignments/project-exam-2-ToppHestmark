@@ -53,7 +53,7 @@ const Contact = () => {
         <MessageModal
           success={success}
           title="Message submitted"
-          message="Dear traveler. We will reply back to you as soon as possible, thank you for choosing us."
+          message="Dear guest. We will reply back to you as soon as possible, thank you for choosing us."
         />
       )}
 

@@ -2,11 +2,12 @@ import styled from 'styled-components/macro';
 import { ButtonPrimaryLink } from '../../styles/Button/Button.styles';
 
 export const Wrapper = styled.section`
-  max-width: 750px;
-  margin: 2em auto;
   border-radius: ${({ theme }) => theme.borderRadius};
+  ${({ theme }) => theme.includes.layoutSpacing};
+  max-width: 1200px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
+    margin: 2em auto;
     padding: 3em;
     border: 1px solid ${({ theme }) => theme.colors.border};
   }

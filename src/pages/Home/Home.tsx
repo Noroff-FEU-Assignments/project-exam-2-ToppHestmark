@@ -1,16 +1,35 @@
+import { useState, useEffect } from 'react';
+import { fetchRooms } from '../../apis/fetchRooms';
+import { RoomType } from '../../types/roomType';
 import { SearchBox } from '../../components';
-import { Banner, HeaderWrapper, HeaderText, SubTitle } from './Home.styles';
+import { HomeTopHeader, Poster, Featured } from '../../containers';
+import { TopSection, Spacer, LowerSection } from './Home.styles';
 
 const Home = () => {
+  const [rooms, setRooms] = useState<RoomType[]>([]);
+  const [error, setError] = useState<any>(null);
+
+  useEffect(() => {
+    (async () => {
+      setError(null);
+
+      const allRooms: any = await fetchRooms(setError, '');
+      setRooms(allRooms);
+    })();
+  }, []);
+
   return (
     <>
-      <Banner>
-        <HeaderWrapper>
-          <HeaderText>For your next holiday</HeaderText>
-          <SubTitle>Find hotels, B&B and guesthouses</SubTitle>
-          <SearchBox />
-        </HeaderWrapper>
-      </Banner>
+      <TopSection>
+        <SearchBox />
+        <HomeTopHeader />
+        <Spacer />
+      </TopSection>
+      <LowerSection>
+        <Poster />
+        <Featured rooms={rooms} />
+        <Spacer />
+      </LowerSection>
     </>
   );
 };

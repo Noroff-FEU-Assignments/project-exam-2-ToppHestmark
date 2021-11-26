@@ -59,7 +59,7 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
             multiline
             error={errors?.phone_number ? true : false}
             value={enquiries?.phone_number}
-            helperText={errors?.phone_number && errors?.phone_number.message}
+            helperText={errors?.phone_number && 'Invalid number'}
             {...register('phone_number')}
             onChange={handleEnquiryChange('phone_number')}
           />

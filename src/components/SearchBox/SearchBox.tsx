@@ -5,7 +5,12 @@ import { CircularProgress } from '@mui/material';
 
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
-import { Container, SearchInput, SubmitButton } from './SearchBox.styles';
+import {
+  Container,
+  Wrapper,
+  SearchInput,
+  SubmitButton,
+} from './SearchBox.styles';
 import { ErrorModal } from '../../components';
 
 const SearchBox = () => {
@@ -61,35 +66,37 @@ const SearchBox = () => {
 
   return (
     <Container component="form" onSubmit={(e) => handleRoomSubmit(e)}>
-      <Autocomplete
-        open={open}
-        onOpen={() => setOpen(true)}
-        onClose={() => setOpen(false)}
-        isOptionEqualToValue={(option, value) => option.Title === value.Title}
-        getOptionLabel={(option) => option.Title}
-        options={options}
-        loading={loading}
-        value={selectedRoom}
-        onChange={(_event, room) => handleSelectedRoom(room)}
-        renderInput={(params) => (
-          <SearchInput
-            {...params}
-            InputProps={{
-              placeholder: 'Search properties',
-              ...params.InputProps,
-              endAdornment: (
-                <>
-                  {loading ? (
-                    <CircularProgress color="inherit" size={20} />
-                  ) : null}
-                  {params.InputProps.endAdornment}
-                </>
-              ),
-            }}
-          />
-        )}
-      />
-      <SubmitButton>Go</SubmitButton>
+      <Wrapper>
+        <Autocomplete
+          open={open}
+          onOpen={() => setOpen(true)}
+          onClose={() => setOpen(false)}
+          isOptionEqualToValue={(option, value) => option.Title === value.Title}
+          getOptionLabel={(option) => option.Title}
+          options={options}
+          loading={loading}
+          value={selectedRoom}
+          onChange={(_event, room) => handleSelectedRoom(room)}
+          renderInput={(params) => (
+            <SearchInput
+              {...params}
+              InputProps={{
+                placeholder: 'Search properties',
+                ...params.InputProps,
+                endAdornment: (
+                  <>
+                    {loading ? (
+                      <CircularProgress color="inherit" size={20} />
+                    ) : null}
+                    {params.InputProps.endAdornment}
+                  </>
+                ),
+              }}
+            />
+          )}
+        />
+        <SubmitButton>Go</SubmitButton>
+      </Wrapper>
     </Container>
   );
 };

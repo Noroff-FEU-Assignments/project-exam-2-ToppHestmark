@@ -1,17 +1,22 @@
 import styled from 'styled-components/macro';
 
 export const Row = styled.div`
-  padding: 0.75em 0 0.25em 0;
+  padding: 1.125em 0 0.25em 0;
   display: flex;
   justify-content: space-between;
   border-bottom: 0.3px solid ${({ theme }) => theme.colors.border};
+
+  @media screen and (min-width: 992px) {
+    padding: 1.25em 0;
+  }
 `;
 
 export const LastRow = styled(Row)`
   padding: 1em 0;
   margin-bottom: 2em;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
+  border-bottom: 2px solid ${({ theme }) => theme.colors.navy};
+  font-weight: 700;
 `;
 
 export const TextLeft = styled.p`

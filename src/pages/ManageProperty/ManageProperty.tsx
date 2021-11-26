@@ -8,7 +8,7 @@ import { RoomType } from '../../types/roomType';
 import { manageRoom } from '../../apis/manageRoom';
 import { getPropertyOptions, getPropertyValues } from './initialValues';
 import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
-import { FormContainer, Button, Spacer } from './ManageProperty.styles';
+import { FormContainer, Button, BtnWrapper } from './ManageProperty.styles';
 import { ButtonOutlinedDanger as Delete } from '../../styles/Button/Button.styles';
 import {
   PropertyInputs,
@@ -45,6 +45,8 @@ const ManageProperty = () => {
   } = useForm<PropertyType>({
     resolver: yupResolver(addRoomSchema),
   });
+
+  const goBack = () => history.goBack();
 
   const handleDelete = async (data) => {
     setError(null);
@@ -126,9 +128,11 @@ const ManageProperty = () => {
           handleChange={handleChange}
         />
 
-        <Button onClick={handleSubmit(onSubmit)}>Update</Button>
-        <Spacer />
-        <Delete onClick={handleDelete}>Delete Property</Delete>
+        <BtnWrapper>
+          <Button onClick={goBack}>Go back</Button>
+          <Delete onClick={handleDelete}>Delete Property</Delete>
+          <Button onClick={handleSubmit(onSubmit)}>Update</Button>
+        </BtnWrapper>
       </FormContainer>
       {success && (
         <MessageModal

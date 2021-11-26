@@ -22,6 +22,7 @@ const Messages = () => {
 
   useEffect(() => {
     (async (): Promise<void> => {
+      setMessageError(null);
       const allMessages: any = await doMessage('GET', token, setMessageError);
       setMessages(allMessages);
     })();
@@ -42,6 +43,7 @@ const Messages = () => {
           message={message}
           token={token}
           setReloadMessages={setReloadMessages}
+          setMessageError={setMessageError}
         />
       ))}
     </Container>

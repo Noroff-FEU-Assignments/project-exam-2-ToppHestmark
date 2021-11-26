@@ -2,8 +2,12 @@ import styled from 'styled-components/macro';
 import { FormGroup } from '@mui/material';
 import { ButtonPrimary } from '../../styles/Button/Button.styles';
 
-export const FormContainer = styled(FormGroup)`
-  max-width: 992px;
+export const Container = styled.div`
+  ${({ theme }) => theme.includes.layoutSpacing};
+`;
+
+export const Form = styled(FormGroup)`
+  max-width: 1400px;
   margin: 2em auto;
 
   @media screen and (min-width: 992px) {
@@ -14,5 +18,6 @@ export const FormContainer = styled(FormGroup)`
 `;
 
 export const Button = styled(ButtonPrimary)`
-  margin-top: 1.25em;
+  margin: 2em auto 0 auto;
+  min-width: 300px;
 `;

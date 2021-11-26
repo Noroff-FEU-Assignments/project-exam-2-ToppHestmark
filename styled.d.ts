@@ -1,4 +1,4 @@
-import { boxShadow } from './src/styles/mixins';
+import { boxShadow, layoutSpacing } from './src/styles/mixins';
 import 'styled-components';
 
 declare module 'styled-components' {
@@ -10,9 +10,12 @@ declare module 'styled-components' {
       primary_dark: string;
       blue_light: string;
       white: string;
+      white_hover: string;
+      dark: string;
       navy: string;
       ghost: string;
       gray: string;
+      neutral: string;
       border: string;
       success: string;
       danger: string;
@@ -22,6 +25,8 @@ declare module 'styled-components' {
 
     includes: {
       boxShadow: string;
+      layoutSpacing: string;
+      flexCenter: string;
     };
   }
 }

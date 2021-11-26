@@ -7,7 +7,8 @@ export const makeBooking = async (
   data: IEnquiry,
   guestPreference: IGuestPreference,
   generatedId: string,
-  property: RoomType | undefined
+  property: RoomType | undefined,
+  setEnquiryError: (error) => void
 ): Promise<void> => {
   const options = {
     method: 'POST',
@@ -35,8 +36,7 @@ export const makeBooking = async (
     const response: any = await fetch(BOOKING_URL, options);
 
     if (!response.ok) {
-      // throw new Error('Something went wrong when connection to server.')
-      return response;
+      return setEnquiryError(response);
     }
 
     return await response.json();

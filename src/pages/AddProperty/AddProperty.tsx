@@ -16,7 +16,7 @@ import {
 import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
 import { manageRoom } from '../../apis/manageRoom';
 import { initialProperty, initialOptions } from './initialValues';
-import { FormContainer, Button } from './AddProperty.styles';
+import { Container, Form, Button } from './AddProperty.styles';
 
 const AddProperty = () => {
   const [auth] = useContext<any>(AuthContext);
@@ -80,22 +80,24 @@ const AddProperty = () => {
   return (
     <>
       <Heading align="center">Add new property</Heading>
-      <FormContainer>
-        <PropertyOptions
-          propertyOptions={propertyOptions}
-          handlePropertyOptions={handlePropertyOptions}
-        />
+      <Container>
+        <Form>
+          <PropertyOptions
+            propertyOptions={propertyOptions}
+            handlePropertyOptions={handlePropertyOptions}
+          />
 
-        <PropertyInputs
-          errors={errors}
-          property={property}
-          register={register}
-          handleChange={handleChange}
-        />
+          <PropertyInputs
+            errors={errors}
+            property={property}
+            register={register}
+            handleChange={handleChange}
+          />
 
-        <Button onClick={handleSubmit(onSubmit)}>Add</Button>
-      </FormContainer>
-      {success && <Snackbar message="Successfully added new property" />}
+          <Button onClick={handleSubmit(onSubmit)}>Add</Button>
+        </Form>
+        {success && <Snackbar message="Successfully added new property" />}
+      </Container>
     </>
   );
 };

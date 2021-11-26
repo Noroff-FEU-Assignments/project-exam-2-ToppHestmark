@@ -1,17 +1,20 @@
 import { DefaultTheme } from 'styled-components';
-import { boxShadow } from './mixins';
+import { boxShadow, layoutSpacing, flexCenter } from './mixins';
 
 const theme: DefaultTheme = {
-  borderRadius: '5px',
+  borderRadius: '10px',
 
   colors: {
-    primary: '#224f93',
+    primary: '#003A91',
     primary_dark: '#1d427a',
     blue_light: '#0073bb',
     white: '#fff',
+    white_hover: 'rgb(255, 255, 255, 0.4)',
+    dark: '#000000',
     navy: '#29293a',
     ghost: '#999999',
     gray: '#aeb1be',
+    neutral: '#f1f1f1',
     border: 'rgba(0, 0, 0, 0.12)',
     success: '#008009',
     danger: '#db1212',
@@ -21,6 +24,8 @@ const theme: DefaultTheme = {
 
   includes: {
     boxShadow,
+    layoutSpacing,
+    flexCenter,
   },
 };
 

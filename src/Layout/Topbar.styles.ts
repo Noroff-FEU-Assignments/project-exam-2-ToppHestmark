@@ -2,16 +2,19 @@ import styled from 'styled-components/macro';
 import { NavLink } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 
-interface INavContainer {
+interface IPathnameProps {
   pathname: string;
 }
 
-export const NavContainer = styled.nav<INavContainer>`
+export const NavContainer = styled.nav<IPathnameProps>`
   width: 100%;
   z-index: 9;
   position: sticky;
   background-color: ${({ theme, pathname }) =>
-    pathname === '/' ? 'transparent' : theme.colors.primary};
+    pathname === '/' ? theme.colors.dark : 'transparent'};
+  box-shadow: 4px 3px 13px -6px rgba(0, 0, 0, 0.14);
+  -webkit-box-shadow: 4px 3px 13px -6px rgba(0, 0, 0, 0.14);
+  -moz-box-shadow: 4px 3px 13px -6px rgba(0, 0, 0, 0.14);
 
   @media print {
     display: none;
@@ -19,15 +22,12 @@ export const NavContainer = styled.nav<INavContainer>`
 `;
 
 export const Wrapper = styled.div`
-  max-width: 1300px;
   margin: 0 auto;
-  padding: 0 1em;
   display: flex;
   justify-content: center;
 
-  @media screen and (min-width: 884px) {
-    padding: 1em;
-  }
+  ${({ theme }) => theme.includes.layoutSpacing};
+  padding: 1em 2em;
 `;
 
 export const LinkWrap = styled.div`
@@ -36,16 +36,18 @@ export const LinkWrap = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media screen and (max-width: 884px) {
+  @media screen and (max-width: 992px) {
     display: none;
   }
 `;
 
-export const Link = styled(NavLink)`
+export const Link = styled(NavLink)<IPathnameProps>`
   padding: 8px;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, pathname }) =>
+    pathname === '/' ? theme.colors.white : theme.colors.navy};
   text-decoration: none;
   font-weight: 300 !important;
+  font-size: 1.125rem;
 
   &:hover {
     opacity: 0.85;
@@ -65,24 +67,25 @@ export const LogoWrapper = styled(NavLink)`
     opacity: 0.85;
   }
 
-  @media screen and (max-width: 884px) {
+  @media screen and (max-width: 992px) {
     img {
       width: 100px;
     }
   }
 `;
 
-export const MenuButton = styled(MenuIcon)`
+export const MenuButton = styled(MenuIcon)<IPathnameProps>`
   margin: 0.8em 0;
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme, pathname }) =>
+    pathname === '/' ? theme.colors.white : theme.colors.navy};
   scale: 1.4;
 
   &:hover {
     opacity: 0.85;
   }
 
-  @media screen and (min-width: 884px) {
+  @media screen and (min-width: 992px) {
     display: none !important;
   }
 `;

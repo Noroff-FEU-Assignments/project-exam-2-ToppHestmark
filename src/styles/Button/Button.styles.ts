@@ -1,14 +1,16 @@
 import styled from 'styled-components/macro';
 
 export const ButtonPrimary = styled.button`
-  padding: 0.35em 1.75em;
+  padding: 0.625em 1.75em;
   font-size: 1.125rem;
+  font-weight: 500;
   cursor: pointer;
   display: inline-block;
   color: ${({ theme }) => theme.colors.white};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 2px solid ${({ theme }) => theme.colors.primary};
   background-color: ${({ theme }) => theme.colors.primary};
+  z-index: 2;
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary_dark};
@@ -33,6 +35,24 @@ export const ButtonPrimary = styled.button`
   }
 `;
 
+export const ButtonPrimaryLight = styled(ButtonPrimary)`
+  border: 2px solid ${({ theme }) => theme.colors.white};
+  background-color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.navy};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.white_hover};
+    border: 2px solid ${({ theme }) => theme.colors.white};
+    color: ${({ theme }) => theme.colors.white};
+  }
+
+  &:focus {
+    outline-color: ${({ theme }) => theme.colors.white};
+    background-color: ${({ theme }) => theme.colors.white_hover};
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
 export const ButtonPrimaryLink = styled.a`
   padding: 0.6em 1.75em;
   font-size: 1.125rem;
@@ -53,14 +73,17 @@ export const ButtonPrimaryLink = styled.a`
 `;
 
 export const ButtonOutlined = styled.button`
-  padding: 0.35em 1.75em;
+  padding: 0.625em 1.75em;
+
   font-size: 1.125rem;
+  font-weight: 500;
   cursor: pointer;
   display: inline-block;
   color: ${({ theme }) => theme.colors.primary};
   border-radius: ${({ theme }) => theme.borderRadius};
   border: 2px solid ${({ theme }) => theme.colors.primary};
   background-color: transparent;
+  z-index: 2;
 
   &:hover {
     color: ${({ theme }) => theme.colors.white};

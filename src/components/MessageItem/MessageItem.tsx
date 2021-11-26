@@ -3,6 +3,7 @@ import { doMessage } from '../../apis/doMessage';
 import { IMessages } from '../../pages/Messages/Messages.types';
 import { DateTime } from 'luxon';
 import { AMERICAN_DATE_FORMAT } from '../../constants/dateFormat';
+import Snackbar from '../common/Snackbar/Snackbar';
 import {
   ButtonPrimaryLink as MailLink,
   ButtonOutlinedDanger as DeleteButton,
@@ -22,32 +23,34 @@ interface MessageItemProps {
   message: IMessages;
   token: string;
   setReloadMessages: (e: boolean) => void;
+  setMessageError: (error) => void;
 }
 
 const MessageItem: React.FC<MessageItemProps> = (props) => {
-  const { message, token, setReloadMessages } = props;
-  const [messageError, setMessageError] = useState<any>(null);
+  const { message, token, setReloadMessages, setMessageError } = props;
+  const [success, setSuccess] = useState<boolean>(false);
   const messageDate = DateTime.fromISO(message.created_at).toFormat(
     AMERICAN_DATE_FORMAT
   );
 
   const handleDeleteMessage = async () => {
+    setSuccess(false);
+    setMessageError(null);
     setReloadMessages(false);
     const confirm = window.confirm('Are you sure about deleting this message?');
     if (!confirm) return;
 
-    const onDelete: any = await doMessage(
-      'DELETE',
-      token,
-      setMessageError,
-      message.id
-    ).then(() => setReloadMessages(true));
-
-    console.log('onDelete: ', onDelete);
+    return await doMessage('DELETE', token, setMessageError, message.id).then(
+      () => {
+        setReloadMessages(true);
+        setSuccess(true);
+      }
+    );
   };
 
   return (
     <Wrapper>
+      {success && <Snackbar message="Seccessfully deleted post" />}
       <Title> {message.subject} </Title>
       <DateText> {messageDate} </DateText>
       <MessageBox> {message.message} </MessageBox>

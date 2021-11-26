@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { enquirySchema } from '../../validation/enquirySchema';
-import { Heading, EnquiryInputs } from '../../components';
+import { Heading, EnquiryInputs, ErrorModal } from '../../components';
 import {
   ILocationState,
   IEnquiry,
@@ -23,7 +23,7 @@ const Enquiry = () => {
   const history = useHistory();
 
   const [property, setProperty] = useState<RoomType>();
-  const [enquiriesError, setEnquiriesError] = useState<any>(null);
+  const [enquiryError, setEnquiryError] = useState<any>(null);
   const [guestPreference, setGuestPreference] = useState<IGuestPreference>(
     InitialGuestPreference
   );
@@ -38,7 +38,7 @@ const Enquiry = () => {
   });
 
   const onSubmit = async (data: IEnquiry) => {
-    setEnquiriesError(null);
+    setEnquiryError(null);
     const confirm = window.confirm(
       "I'm confirming that all of my details is correct."
     );
@@ -47,14 +47,16 @@ const Enquiry = () => {
 
     const generatedId = nanoid(8).toUpperCase();
 
-    const bookRoom = await makeBooking(
+    const bookRoom: any = await makeBooking(
       data,
       guestPreference,
       generatedId,
-      property
+      property,
+      setEnquiryError
     );
-
-    history.push('/summary', { bookingSummary: bookRoom });
+    if (bookRoom?.created_at) {
+      history.push('/summary', { bookingSummary: bookRoom });
+    }
   };
 
   const handleEnquiryChange =
@@ -76,6 +78,9 @@ const Enquiry = () => {
   return (
     <>
       <Heading align="center">Your're almost there.</Heading>
+      {enquiryError && (
+        <ErrorModal error={enquiryError} message={enquiryError?.statusText} />
+      )}
 
       <FormContainer>
         <Title> Enquiry for {property?.Title} </Title>

@@ -2,13 +2,13 @@ import styled from 'styled-components/macro';
 import { FormControl, FormGroup } from '@mui/material';
 
 export const Container = styled.div`
-  margin: 3em 0;
+  ${({ theme }) => theme.includes.layoutSpacing};
 `;
 
 export const FormWrapper = styled(FormGroup)`
-  max-width: 500px;
-  margin: 0 auto;
-  padding: 2em;
+  max-width: 600px;
+  margin: 2em auto;
+  padding: 2.25em;
   display: flex;
   justify-content: center;
   border-radius: ${({ theme }) => theme.borderRadius};

@@ -9,6 +9,7 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  ${({ theme }) => theme.includes.layoutSpacing};
 `;
 
 export const FormWrapper = styled(FormGroup)`
@@ -19,8 +20,8 @@ export const FormWrapper = styled(FormGroup)`
   ${({ theme }) => theme.includes.boxShadow}
 
   @media screen and (min-width: 480px) {
-    max-width: 450px;
-    padding: 2em;
+    max-width: 500px;
+    padding: 2.25em;
   }
 `;
 
