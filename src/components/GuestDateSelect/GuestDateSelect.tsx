@@ -17,6 +17,7 @@ import {
 import {
   Container,
   PriceTag,
+  Review,
   Slash,
   Spacing,
   SummaryText,
@@ -28,7 +29,7 @@ import { ButtonPrimary as Button } from '../../styles/Button/Button.styles';
 import { DATE_FORMAT } from '../../constants/dateFormat';
 
 interface GuestDateSelectProps {
-  room: RoomType;
+  room: RoomType | any;
 }
 
 const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
@@ -101,6 +102,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
       <PriceTag>
         <h3>$ {room?.price_per_night} </h3> &nbsp; <Slash>/</Slash>&nbsp;
         <p>night</p>
+        <Review> {room?.guest_review} </Review>
       </PriceTag>
 
       <LocalizationProvider dateAdapter={AdapterDateFns}>

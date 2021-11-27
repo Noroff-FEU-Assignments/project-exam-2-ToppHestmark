@@ -71,14 +71,15 @@ export const ButtonPrimaryDark = styled(ButtonPrimary)`
 `;
 
 export const ButtonPrimaryLink = styled.a`
-  padding: 0.6em 1.75em;
+  padding: 0.6em 0;
   font-size: 1.125rem;
   text-decoration: none;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.blue_light};
   border-radius: ${({ theme }) => theme.borderRadius};
+  cursor: pointer;
 
   &:hover {
-    color: ${({ theme }) => theme.colors.blue_light};
+    opacity: 0.85;
   }
 
   &:focus {

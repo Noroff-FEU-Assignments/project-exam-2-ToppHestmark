@@ -68,6 +68,7 @@ export const Row = styled.div`
   }
   @media (min-width: 1920px) {
     max-width: 1920px;
+    margin: 2em auto;
   }
 `;
 

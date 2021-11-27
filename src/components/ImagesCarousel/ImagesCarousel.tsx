@@ -5,7 +5,7 @@ import { Container } from './ImagesCarousel.styles';
 
 // Ref: https://medium.com/suyeonme/react-how-to-build-an-image-slider-with-hooks-in-react-decd4a3ab152
 interface ImagesCarouselProps {
-  room: RoomType;
+  room: RoomType | undefined;
 }
 
 const ImagesCarousel: React.FC<ImagesCarouselProps> = ({ room }) => {

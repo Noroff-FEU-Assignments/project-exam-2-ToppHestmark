@@ -13,6 +13,8 @@
 - [ ] Format larger numbers
 - [x] Customize buttons
 - [x] Change date input view
+- [ ] Add to favourite button
+- [ ] Customize confirmation window
 
 ### Todos before submit
 

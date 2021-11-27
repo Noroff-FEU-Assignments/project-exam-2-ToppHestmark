@@ -3,7 +3,7 @@ import Buttons from './Buttons';
 import { CarouselWrapper, Slide } from './ImagesCarousel.styles';
 
 interface CarouselProps {
-  title: string;
+  title: string | undefined;
   images: any[];
   setWidth: (width) => void;
   xPosition: number;

@@ -25,6 +25,11 @@ export const PriceTag = styled.div`
   }
 `;
 
+export const Review = styled.b`
+  margin-left: auto;
+  font-size: 1.0125rem;
+`;
+
 export const Spacing = styled.div`
   width: 100%;
   padding: 0.5em 0;

@@ -43,8 +43,10 @@ export const MessageBox = styled.p`
 export const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
 
   @media (max-width: 576px) {
+    width: 100%;
     flex-direction: column-reverse;
   }
 `;
