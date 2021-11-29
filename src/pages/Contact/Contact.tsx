@@ -4,7 +4,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { contactSchema } from '../../validation/contactSchema';
 import { TextField } from '@mui/material';
 import { ContactType } from './Contact.types';
-import { Heading, ErrorModal, MessageModal } from '../../components';
+import { Heading, ErrorModal, MessageModal, Loading } from '../../components';
 import { Container, FormWrapper, InputWrapper, Spacer } from './Contact.styles';
 import { doContact } from '../../apis/doContacts';
 import { initialContactValues } from './initialValues';
@@ -14,6 +14,7 @@ const Contact = () => {
   const [contactError, setContactError] = useState<any>(null);
   const [success, setSuccess] = useState<boolean>(false);
   const [values, setValues] = useState<ContactType>(initialContactValues);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const {
     register,
@@ -24,12 +25,15 @@ const Contact = () => {
   });
 
   async function onSubmit(data: ContactType) {
+    setLoading(true);
     setContactError(null);
     setSuccess(false);
 
     const makeContact: any = await doContact(data, setContactError);
+    contactError && setLoading(false);
 
     if (makeContact?.published_at) {
+      setLoading(false);
       setSuccess(true);
       setValues(initialContactValues);
     } else return contactError;
@@ -47,6 +51,7 @@ const Contact = () => {
 
   return (
     <>
+      {loading && <Loading state={loading} />}
       <Heading align="center">Contact us</Heading>
 
       {success && (

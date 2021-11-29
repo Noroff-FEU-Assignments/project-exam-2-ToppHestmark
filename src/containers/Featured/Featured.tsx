@@ -47,7 +47,7 @@ const Featured: React.FC<IFeaturedProps> = (props) => {
       </TitleRow>
 
       <Row>
-        {rooms.map((room, idx) => (
+        {rooms?.map((room, idx) => (
           <Card
             onClick={() => goToPropertyDetail(room.id)}
             key={room.id}

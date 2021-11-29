@@ -12,6 +12,7 @@ import {
   Heading,
   Snackbar,
   ErrorModal,
+  Loading,
 } from '../../components';
 import { PropertyType } from '../../components/PropertyInputs/PropertyInputs.types';
 import { manageRoom } from '../../apis/manageRoom';
@@ -22,6 +23,7 @@ const AddProperty = () => {
   const [auth] = useContext<any>(AuthContext);
   const [error, setError] = useState<any>(null);
   const [success, setSuccess] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [propertyOptions, setPropertyOptions] = useState(initialOptions);
   const [property, setProperty] = useState<PropertyType>(initialProperty);
 
@@ -39,6 +41,7 @@ const AddProperty = () => {
   });
 
   const onSubmit = async (data: PropertyType) => {
+    setLoading(true);
     setError(null);
 
     const addNewRoom: any = await manageRoom(
@@ -49,11 +52,15 @@ const AddProperty = () => {
       data
     );
 
+    error && setLoading(false);
     if (addNewRoom?.created_at) {
+      setLoading(false);
       setPropertyOptions(initialOptions);
       setProperty(initialProperty);
       setSuccess(true);
     } else return error;
+
+    setLoading(false);
 
     return addNewRoom;
   };
@@ -79,6 +86,7 @@ const AddProperty = () => {
 
   return (
     <>
+      {loading && <Loading state={loading} />}
       <Heading align="center">Add new property</Heading>
       <Container>
         <Form>

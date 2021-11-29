@@ -16,6 +16,7 @@ import {
   Heading,
   ErrorModal,
   MessageModal,
+  Loading,
 } from '../../components';
 
 interface IPropertyState {
@@ -35,6 +36,7 @@ const ManageProperty = () => {
   const [success, setSuccess] = useState<boolean>(false);
   const [propertyOptions, setPropertyOptions] = useState(initialOptions);
   const [property, setProperty] = useState<PropertyType>(initialProperty);
+  const [loading, setLoading] = useState<boolean>(false);
 
   !auth && history.push('/');
 
@@ -55,6 +57,7 @@ const ManageProperty = () => {
     );
 
     if (!confirm) return;
+    setLoading(true);
 
     const deleteProperty: any = await manageRoom(
       'DELETE',
@@ -65,7 +68,9 @@ const ManageProperty = () => {
       roomId
     );
 
+    error && setLoading(false);
     if (deleteProperty?.updated_at) {
+      setLoading(false);
       setSuccess(true);
       setTimeout(() => history.push('/all-properties'), 1200);
     } else return error;
@@ -74,6 +79,7 @@ const ManageProperty = () => {
   };
 
   const onSubmit = async (data: PropertyType) => {
+    setLoading(true);
     setError(null);
 
     const updateProperty: any = await manageRoom(
@@ -85,9 +91,11 @@ const ManageProperty = () => {
       roomId
     );
 
+    error && setLoading(false);
     if (updateProperty?.updated_at) {
+      setLoading(false);
       setSuccess(true);
-      setTimeout(() => history.push('/all-properties'), 1200);
+      setTimeout(() => history.push('/all-properties'), 1500);
     } else return error;
 
     return updateProperty;
@@ -114,6 +122,7 @@ const ManageProperty = () => {
 
   return (
     <>
+      {loading && <Loading state={loading} />}
       <Heading align="center">Managing property</Heading>
       <FormContainer>
         <PropertyOptions

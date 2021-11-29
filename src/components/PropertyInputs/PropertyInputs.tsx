@@ -55,7 +55,7 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
             type="text"
             variant="standard"
             label="Room Type"
-            placeholder="Sea view etc."
+            placeholder="Suit etc."
             multiline
             error={errors?.room_type ? true : false}
             value={property?.room_type}
@@ -99,8 +99,8 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
           <TextField
             type="text"
             variant="standard"
-            label="Image URL"
-            placeholder="jpeg/jpg/png"
+            label="Livingroom image"
+            placeholder="Image URL - jpeg/jpg/png"
             multiline
             error={errors?.image_01 ? true : false}
             value={property?.image_01}
@@ -114,8 +114,8 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
           <TextField
             type="text"
             variant="standard"
-            label="Image URL 2"
-            placeholder="jpeg/jpg/png"
+            label="Bedroom image"
+            placeholder="Image URL - jpeg/jpg/png"
             multiline
             error={errors?.image_02 ? true : false}
             value={property?.image_02}
@@ -129,8 +129,8 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
           <TextField
             type="text"
             variant="standard"
-            label="Image URL 3"
-            placeholder="jpeg/jpg/png"
+            label="Kitchen image etc."
+            placeholder="Image URL - jpeg/jpg/png"
             multiline
             error={errors?.image_03 ? true : false}
             value={property?.image_03}
@@ -144,8 +144,8 @@ const PropertyInputs: React.FC<InputProps> = (props) => {
           <TextField
             type="text"
             variant="standard"
-            label="Image URL 4"
-            placeholder="jpeg/jpg/png"
+            label="Bathroom image etc."
+            placeholder="Image URL - jpeg/jpg/png"
             multiline
             error={errors?.image_04 ? true : false}
             value={property?.image_04}

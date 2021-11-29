@@ -67,8 +67,9 @@ export const Row = styled.div`
     padding: 0;
   }
   @media (min-width: 1920px) {
-    max-width: 1920px;
+    width: 1920px;
     margin: 2em auto;
+    padding: 0 4em;
   }
 `;
 

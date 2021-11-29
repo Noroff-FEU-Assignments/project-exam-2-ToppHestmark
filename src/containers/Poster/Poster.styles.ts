@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.div`
-  max-width: 1920px;
   padding: 2em;
   margin: 4em 4em;
   display: flex;
@@ -20,6 +19,7 @@ export const Container = styled.div`
 
   @media screen and (min-width: 1920px) {
     margin: 4em auto;
+    width: 1920px;
   }
 `;
 

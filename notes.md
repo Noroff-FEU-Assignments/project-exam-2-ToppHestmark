@@ -1,20 +1,20 @@
 ### Todos
 
-- [ ] Caching the properties on home page
 - [ ] Loading spinner when fetching API
+- [ ] Format larger numbers
 - [ ] Configure fonts
-- [ ] Error handling pages and forms
-- [ ] Remove all inline styles
-- [x] Snackbar pop-up message for form success / errors
+- [ ] Customize confirmation window
 - [ ] Fix login when press enter tab
+- [ ] Caching the properties on home page
 - [ ] Icons inside side drawer menu
 - [ ] Customization of text field
+- [ ] Add to favourite button
+- [x] Error handling pages and forms
+- [x] Remove all inline styles
+- [x] Snackbar pop-up message for form success / errors
 - [x] Set date input UI format of the date input
-- [ ] Format larger numbers
 - [x] Customize buttons
 - [x] Change date input view
-- [ ] Add to favourite button
-- [ ] Customize confirmation window
 
 ### Todos before submit
 

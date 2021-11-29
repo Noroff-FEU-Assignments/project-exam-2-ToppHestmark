@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { doMessage } from '../../apis/doMessage';
-import { Heading, ErrorModal, MessageItem } from '../../components';
+import { Heading, ErrorModal, MessageItem, Loading } from '../../components';
 import { IMessages } from './Messages.types';
 import { Container } from './Messages.styles';
 
@@ -12,6 +12,7 @@ const Messages = () => {
   const [messages, setMessages] = useState<IMessages[]>([]);
   const [messageError, setMessageError] = useState<any>(null);
   const [reloadMessages, setReloadMessages] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const token = auth?.jwt;
   const sortedMessages = messages?.sort(
     (a, b) =>
@@ -23,8 +24,12 @@ const Messages = () => {
   useEffect(() => {
     (async (): Promise<void> => {
       setMessageError(null);
+
       const allMessages: any = await doMessage('GET', token, setMessageError);
+
+      messageError && setLoading(false);
       setMessages(allMessages);
+      setLoading(false);
     })();
   }, [reloadMessages]);
 
@@ -32,6 +37,8 @@ const Messages = () => {
     return (
       <ErrorModal error={messageError} message={messageError?.statusText} />
     );
+
+  if (loading) return <Loading state={loading} />;
 
   return (
     <Container>

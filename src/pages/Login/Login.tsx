@@ -9,6 +9,8 @@ import { AuthContext } from '../../context/AuthProvider';
 import { loginSchema } from '../../validation/loginSchema';
 import { doLogin, ILogin } from '../../apis/doLogin';
 import { initialLoginValues } from './initialValues';
+import { Loading } from '../../components';
+
 import {
   Container,
   TitleText,
@@ -20,7 +22,8 @@ import {
 
 const Login = () => {
   const history = useHistory();
-  const [loginError, setLoginError] = useState<any>({});
+  const [loginError, setLoginError] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const [values, setValues] = useState<ILogin>(initialLoginValues);
   const [auth, setAuth] = useContext<any>(AuthContext);
 
@@ -34,13 +37,18 @@ const Login = () => {
 
   const onSubmit = async (data: ILogin) => {
     setLoginError(null);
+    setLoading(true);
+
     const login: any = await doLogin(data, setLoginError);
 
     if (login?.user) {
+      setLoading(false);
       setAuth(login);
       setValues(initialLoginValues);
       history.push('/all-properties');
-    } else return loginError;
+    }
+
+    setLoading(false);
 
     return login;
   };
@@ -59,6 +67,7 @@ const Login = () => {
 
   return (
     <Container>
+      {loading && <Loading state={loading} />}
       <FormWrapper>
         <TitleText>Login</TitleText>
         <ErrorMessage>

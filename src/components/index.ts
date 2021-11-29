@@ -15,3 +15,4 @@ export { default as ErrorModal } from './common/Modals/ErrorModal';
 export { default as MessageModal } from './common/Modals/MessageModal';
 export { default as Heading } from './common/Heading/Heading';
 export { default as Snackbar } from './common/Snackbar/Snackbar';
+export { default as Loading } from './common/Loading/Loading';

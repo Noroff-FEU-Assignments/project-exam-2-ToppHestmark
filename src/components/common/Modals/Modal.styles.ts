@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 export const Wrapper = styled(Box)`
   padding: 2em;
   position: absolute;
+  z-index: 10;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

@@ -4,7 +4,7 @@ import { useLocation, useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { enquirySchema } from '../../validation/enquirySchema';
-import { Heading, EnquiryInputs, ErrorModal } from '../../components';
+import { Heading, EnquiryInputs, ErrorModal, Loading } from '../../components';
 import {
   ILocationState,
   IEnquiry,
@@ -28,6 +28,7 @@ const Enquiry = () => {
     InitialGuestPreference
   );
   const [enquiries, setEnquiries] = useState<IEnquiry>(EnquiriesInitial);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const goBack = () => history.goBack();
 
@@ -46,6 +47,7 @@ const Enquiry = () => {
     );
 
     if (!confirm) return;
+    setLoading(true);
 
     const generatedId = nanoid(8).toUpperCase();
 
@@ -56,8 +58,11 @@ const Enquiry = () => {
       property,
       setEnquiryError
     );
+
+    enquiryError && setLoading(false);
     if (bookRoom?.created_at) {
-      history.push('/summary', { bookingSummary: bookRoom });
+      setLoading(false);
+      return history.push('/summary', { bookingSummary: bookRoom });
     }
   };
 
@@ -80,6 +85,7 @@ const Enquiry = () => {
   return (
     <>
       <Heading align="center">Your're almost there.</Heading>
+      {loading && <Loading state={loading} />}
       {enquiryError && (
         <ErrorModal error={enquiryError} message={enquiryError?.statusText} />
       )}

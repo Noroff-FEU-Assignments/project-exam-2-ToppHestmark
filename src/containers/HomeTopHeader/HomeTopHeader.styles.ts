@@ -37,9 +37,6 @@ export const Banner = styled.div`
   @media screen and (min-width: 768px) {
     border-radius: ${({ theme }) => theme.borderRadius};
   }
-  @media screen and (min-width: 1200px) {
-    background-position: bottom center;
-  }
 `;
 
 export const HeaderWrapper = styled.div`

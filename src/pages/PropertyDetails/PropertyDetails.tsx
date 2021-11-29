@@ -3,7 +3,12 @@ import { useParams, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
-import { GuestDateSelect, ImagesCarousel, ErrorModal } from '../../components';
+import {
+  GuestDateSelect,
+  ImagesCarousel,
+  ErrorModal,
+  Loading,
+} from '../../components';
 import { PropertyDescription } from '../../containers';
 import { Typography } from '@mui/material';
 import {
@@ -26,6 +31,7 @@ const PropertyDetails = () => {
   const history = useHistory();
   const [room, setRoom] = useState<RoomType>();
   const [error, setError] = useState<any>(null);
+  const [loading, setLoading] = useState<boolean>(true);
   const [auth] = useContext<any>(AuthContext);
 
   !id && history.push('/');
@@ -37,19 +43,26 @@ const PropertyDetails = () => {
   useEffect(() => {
     (async () => {
       setError(null);
+
       const room: any = await fetchRooms(setError, id);
+      error && setLoading(false);
       setRoom(room);
+      setLoading(false);
     })();
   }, []);
 
   if (error) return <ErrorModal error={error} message={error?.statusText} />;
+  if (loading) return <Loading state={loading} />;
 
   return (
     <Container>
       <BtnLink>
         <ButtonPrimaryLink onClick={goBack}>Go Back</ButtonPrimaryLink>
         {auth && (
-          <ButtonPrimaryLink onClick={() => editProperty(room?.id)}>
+          <ButtonPrimaryLink
+            rel="noopener"
+            onClick={() => editProperty(room?.id)}
+          >
             Edit this property
           </ButtonPrimaryLink>
         )}

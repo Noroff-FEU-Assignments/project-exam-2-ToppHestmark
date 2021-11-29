@@ -3,6 +3,8 @@
 <hr />
 <Br />
 
+[DEMO SITE](https://holidaze-inn.netlify.app/)
+
 ### User credentials
 
 ```

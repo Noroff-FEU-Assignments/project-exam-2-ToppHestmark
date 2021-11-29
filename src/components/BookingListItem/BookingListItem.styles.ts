@@ -14,17 +14,25 @@ export const TitleRow = styled.div`
   @media (max-width: 576px) {
     flex-direction: column;
     align-items: start;
+    padding-bottom: 0.5em;
   }
 `;
 
 export const Title = styled.h3`
-  padding: 0.2em 0;
+  padding: 0em 0 0.5em 0;
   font-weight: 500;
   font-size: 1.625rem;
 `;
 
+export const DateText = styled.p`
+  /* padding-bottom: 0.75em; */
+  color: ${({ theme }) => theme.colors.ghost};
+  font-size: 0.875rem;
+  font-weight: 300;
+`;
+
 export const BookingId = styled.h3`
-  padding: 0.2em 0;
+  /* padding: 0.1em 0; */
   font-weight: 500;
   font-size: 1rem;
 `;
