@@ -39,7 +39,7 @@ const Login = () => {
     if (login?.user) {
       setAuth(login);
       setValues(initialLoginValues);
-      history.push('/');
+      history.push('/all-properties');
     } else return loginError;
 
     return login;

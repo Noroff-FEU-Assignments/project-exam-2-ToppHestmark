@@ -1,7 +1,7 @@
 import styled from 'styled-components/macro';
 import { ButtonPrimaryLight } from '../../styles/Button/Button.styles';
-import banner from '../../assets/images/banner_dark.jpg';
-// Image from: https://unsplash.com/photos/jrMsv-0o0bw - by Lachlan Gowen
+import banner from '../../assets/images/banner.jpg';
+// Image from: https://unsplash.com/photos/OgcJIKRnRC8 - by Ian Keefe
 
 export const Container = styled.div`
   @media screen and (min-width: 768px) {
@@ -27,7 +27,7 @@ export const Banner = styled.div`
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgb(15, 15, 15, 0.66);
+    background-color: rgb(15, 15, 15, 0.26);
 
     @media screen and (min-width: 768px) {
       border-radius: ${({ theme }) => theme.borderRadius};

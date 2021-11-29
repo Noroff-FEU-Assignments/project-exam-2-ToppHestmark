@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro';
+import RoomIcon from '@mui/icons-material/Room';
 
 export const Wrapper = styled.div`
   padding: 1.625em 0;
@@ -68,6 +69,11 @@ export const CaptionText = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 0.875rem;
   }
+`;
+export const LocationIcon = styled(RoomIcon)`
+  font-size: 1.125rem !important;
+  color: ${({ theme }) => theme.colors.gray};
+  margin: 0 0.1em -0.2em -0.3em;
 `;
 
 export const PriceTag = styled.div`

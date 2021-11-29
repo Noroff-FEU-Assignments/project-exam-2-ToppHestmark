@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
 import { GuestDateSelect, ImagesCarousel, ErrorModal } from '../../components';
+import { PropertyDescription } from '../../containers';
 import { Typography } from '@mui/material';
 import {
   Container,
@@ -24,10 +26,13 @@ const PropertyDetails = () => {
   const history = useHistory();
   const [room, setRoom] = useState<RoomType>();
   const [error, setError] = useState<any>(null);
+  const [auth] = useContext<any>(AuthContext);
 
   !id && history.push('/');
 
   const goBack = () => history.goBack();
+  const editProperty = (roomId) =>
+    history.push('/manage-property/' + roomId, { property: room });
 
   useEffect(() => {
     (async () => {
@@ -43,6 +48,11 @@ const PropertyDetails = () => {
     <Container>
       <BtnLink>
         <ButtonPrimaryLink onClick={goBack}>Go Back</ButtonPrimaryLink>
+        {auth && (
+          <ButtonPrimaryLink onClick={() => editProperty(room?.id)}>
+            Edit this property
+          </ButtonPrimaryLink>
+        )}
       </BtnLink>
       <Row>
         <Chip> {room?.property_type} </Chip> <Title> {room?.Title} </Title>
@@ -55,6 +65,7 @@ const PropertyDetails = () => {
       <UIWrapper>
         <ImagesCarousel room={room} />
         <GuestDateSelect room={room} />
+        <PropertyDescription room={room} />
       </UIWrapper>
     </Container>
   );

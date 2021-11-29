@@ -12,7 +12,9 @@ export const Row = styled.div`
 `;
 
 export const BtnLink = styled.p`
-  padding: 1em 0;
+  padding: 0.375em 0;
+  display: flex;
+  gap: 2em;
 `;
 
 export const Chip = styled.p`
@@ -43,9 +45,9 @@ export const LocationIcon = styled(RoomIcon)`
 `;
 
 export const UIWrapper = styled.section`
-  grid-gap: 1.625em;
+  gap: 1em;
 
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 1200px) {
     display: grid;
     justify-content: space-between;
     grid-template-columns: 59% 39%;

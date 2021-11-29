@@ -15,6 +15,7 @@ import {
   Slash,
   TitleText,
   CaptionText,
+  LocationIcon,
   BoxMiddle,
   GhostText,
   BoxBottom,
@@ -53,8 +54,11 @@ const PropertiesCardItem: React.FC<Props> = (props) => {
         </Row>
         <Row>
           <div>
+            <CaptionText>
+              <LocationIcon />
+              {room?.neighbourhood}
+            </CaptionText>
             <CaptionText> {room?.room_type} </CaptionText>
-            <CaptionText> {room?.bed_type} </CaptionText>
           </div>
           <BoxMiddle>
             <PriceTag>
