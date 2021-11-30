@@ -26,7 +26,7 @@ const Carousel: React.FC<CarouselProps> = ({
       const width: number = slideRef.current.clientWidth;
       setWidth(width);
     }
-  }, [window.onresize, setWidth]);
+  }, [window.onresize, handleClickPrev, handleClicknext]);
 
   return (
     <CarouselWrapper>

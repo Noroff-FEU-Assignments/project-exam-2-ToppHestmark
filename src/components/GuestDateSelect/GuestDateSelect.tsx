@@ -7,7 +7,7 @@ import { FormGroup, FormControl } from '@mui/material';
 import DatePicker from '@mui/lab/DatePicker';
 import { RoomType } from '../../types/roomType';
 import { DateTime } from 'luxon';
-import { formatPrice } from '../../utils/numbers';
+import Numbers from '../../utils/Numbers';
 import {
   LIMIT_STAYS,
   MIN_STAYS,
@@ -40,7 +40,7 @@ const GuestDateSelect: React.FC<GuestDateSelectProps> = ({ room }) => {
   const [guests, setGuests] = useState<number | string>(1);
   const [guestsError, setGuestsError] = useState<boolean>(false);
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const subTotal = formatPrice(isNaN(totalPrice) ? 0 : totalPrice);
+  const subTotal = Numbers.formatPrice(isNaN(totalPrice) ? 0 : totalPrice);
 
   const minimumStays = DateTime.fromJSDate(dateFrom)
     .plus({ days: MIN_STAYS })

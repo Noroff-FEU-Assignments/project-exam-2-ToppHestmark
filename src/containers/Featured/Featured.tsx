@@ -29,11 +29,11 @@ const Featured: React.FC<IFeaturedProps> = (props) => {
 
   const scrollLeft = () => {
     const leftQuery: any = document.querySelector('#card-0');
-    leftQuery?.scrollIntoView({ behavior: 'smooth' });
+    leftQuery?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
   const scrollRight = () => {
     const rightQuery: any = document.querySelector(`#card-${rooms.length - 1}`);
-    rightQuery?.scrollIntoView({ behavior: 'smooth' });
+    rightQuery?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
   return (

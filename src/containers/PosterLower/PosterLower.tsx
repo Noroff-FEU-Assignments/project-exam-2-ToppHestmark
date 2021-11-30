@@ -1,7 +1,7 @@
 import image1 from '../../assets/images/poster_02.jpg';
 import image2 from '../../assets/images/poster_03.jpg';
 // Image 01 ref: https://unsplash.com/photos/mqN-EV9rNlY - by Benjamin Davies
-// Image 02 ref: https://unsplash.com/photos/ndq83aWYdNM - by Daniel J. Schwarz
+// Image 02 ref: https://unsplash.com/photos/C0jolb5ay0c - by Daniel Thiele
 
 import { neverGonnaGiveYouUp } from '../../constants/externalLinks';
 import { ButtonPrimaryLight as Button } from '../../styles/Button/Button.styles';

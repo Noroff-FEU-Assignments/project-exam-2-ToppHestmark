@@ -1,5 +1,7 @@
-export const formatPrice = (price: number) => {
-  const formatter = new Intl.NumberFormat('no-NO');
+export default new (class Numbers {
+  formatter = new Intl.NumberFormat('no-NO');
 
-  return formatter.format(price);
-};
+  formatPrice(price: number) {
+    return this.formatter.format(price);
+  }
+})();
