@@ -57,7 +57,9 @@ const PropertyDetails = () => {
   return (
     <Container>
       <BtnLink>
-        <ButtonPrimaryLink onClick={goBack}>Go Back</ButtonPrimaryLink>
+        <ButtonPrimaryLink rel="noopener" onClick={goBack}>
+          Go Back
+        </ButtonPrimaryLink>
         {auth && (
           <ButtonPrimaryLink
             rel="noopener"

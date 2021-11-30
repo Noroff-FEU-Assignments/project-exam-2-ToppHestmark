@@ -14,7 +14,7 @@ export const layoutSpacing = css`
   margin: 0 auto;
   max-width: 1920px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 480px) {
     padding: 0 1em;
   }
 `;
