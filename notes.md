@@ -2,6 +2,7 @@
 
 - [ ] Loading spinner when fetching API
 - [ ] Format larger numbers
+- [ ] Active state on Topbar
 - [ ] Configure fonts
 - [ ] Customize confirmation window
 - [ ] Fix login when press enter tab
@@ -18,10 +19,10 @@
 
 ### Todos before submit
 
+- [ ] Lighthouse test
 - [ ] Refactore codes
 - [ ] Remove all comments
 - [ ] Remove console.log
-- [ ] Lighthouse test
 
 ### References
 

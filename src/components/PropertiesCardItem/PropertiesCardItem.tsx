@@ -7,6 +7,7 @@ import {
   ButtonOutlined,
 } from '../../styles/Button/Button.styles';
 import { RoomType } from '../../types/roomType';
+import { formatPrice } from '../../utils/numbers';
 import {
   Wrapper,
   InfoWrapper,
@@ -32,6 +33,7 @@ const PropertiesCardItem: React.FC<Props> = (props) => {
   const { room, redirectToDetail } = props;
   const [auth] = useContext<any>(AuthContext);
   const history = useHistory();
+  const price = formatPrice(room ? room.price_per_night : 0);
 
   const redirectToManage = (roomId) => {
     history.push('/manage-property/' + roomId, { property: room });
@@ -62,7 +64,7 @@ const PropertiesCardItem: React.FC<Props> = (props) => {
           </div>
           <BoxMiddle>
             <PriceTag>
-              <h3>$ {room?.price_per_night} </h3> &nbsp;
+              <h3>$ {price} </h3> &nbsp;
               <Slash>/</Slash>
               <p>night</p>
             </PriceTag>

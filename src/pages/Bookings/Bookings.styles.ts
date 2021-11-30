@@ -1,7 +1,6 @@
 import styled from 'styled-components/macro';
 
 export const Container = styled.section`
-  margin: 0 auto;
   ${({ theme }) => theme.includes.layoutSpacing};
 
   @media screen and (min-width: 992px) {
@@ -10,5 +9,5 @@ export const Container = styled.section`
 `;
 
 export const Wrapper = styled.div`
-  padding: 1em 0;
+  padding: 2em 0 0 0;
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import { DateTime } from 'luxon';
 import { IBookings } from '../../types/bookings';
 import { AMERICAN_DATE_FORMAT } from '../../constants/dateFormat';
+import { formatPrice } from '../../utils/numbers';
 import {
   Row,
   LastRow,
@@ -17,6 +18,7 @@ interface Props {
 const BookingSummary: React.FC<Props> = (props) => {
   const { booking } = props;
 
+  const totalPrice = formatPrice(booking ? booking?.subtotal : 0);
   const bookingDate = DateTime.fromISO(`${booking?.created_at}`).toFormat(
     AMERICAN_DATE_FORMAT
   );
@@ -70,7 +72,7 @@ const BookingSummary: React.FC<Props> = (props) => {
       </Row>
       <LastRow>
         <TextLeft> Total: </TextLeft>
-        <TextRight>$ {booking?.subtotal}</TextRight>
+        <TextRight>$ {totalPrice}</TextRight>
       </LastRow>
     </>
   );

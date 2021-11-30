@@ -4,7 +4,7 @@ import { ButtonPrimaryLink } from '../../styles/Button/Button.styles';
 export const Wrapper = styled.section`
   border-radius: ${({ theme }) => theme.borderRadius};
   ${({ theme }) => theme.includes.layoutSpacing};
-  max-width: 1200px;
+  max-width: 800px;
 
   @media (min-width: 992px) {
     margin: 2em auto;
