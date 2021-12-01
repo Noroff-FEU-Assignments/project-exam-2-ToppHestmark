@@ -4,7 +4,7 @@ export { default as PropertyOptions } from './PropertyOptions/PropertyOptions';
 export { default as SideDrawer } from './SideDrawer/SideDrawer';
 export { default as SearchBox } from './SearchBox/SearchBox';
 export { default as GuestDateSelect } from './GuestDateSelect/GuestDateSelect';
-export { default as ImagesCarousel } from './ImagesCarousel/ImagesCarousel';
+export { default as ImageSlider } from './ImageSlider/ImageSlider';
 export { default as MessageItem } from './MessageItem/MessageItem';
 export { default as BookingListItem } from './BookingListItem/BookingListItem';
 export { default as BookingSummary } from './BookingSummary/BookingSummary';

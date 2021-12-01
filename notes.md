@@ -20,7 +20,7 @@
 ### Todos before submit
 
 - [ ] Lighthouse test
-- [ ] Refactore codes
+- [ ] Refactor codes
 - [ ] Remove all comments
 - [ ] Remove console.log
 

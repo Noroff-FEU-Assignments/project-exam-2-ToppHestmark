@@ -1,9 +1,11 @@
 import React from 'react';
 import { DateTime } from 'luxon';
+import logo from '../../assets/icons/logo.png';
 import { IBookings } from '../../types/bookings';
 import { AMERICAN_DATE_FORMAT } from '../../constants/dateFormat';
 import Numbers from '../../utils/Numbers';
 import {
+  Logo,
   Row,
   LastRow,
   TextLeft,
@@ -25,6 +27,7 @@ const BookingSummary: React.FC<Props> = (props) => {
 
   return (
     <>
+      <Logo src={logo} alt="Holidaze logo of the year" />
       <Row>
         <TextLeft> Property: </TextLeft>
         <TextRight> {booking?.hotel_name} </TextRight>

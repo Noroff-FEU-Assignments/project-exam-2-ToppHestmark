@@ -18,7 +18,7 @@ const Footer = () => {
   return (
     <Container>
       <Upper>
-        <Title>Made in heaven by</Title>
+        <Title>Made with ☕️ & 🍺</Title>
         <Typography variant="body2">'Topp' Suphachai Hestmark</Typography>
       </Upper>
       <Lower>

@@ -12,8 +12,9 @@ export const Subtitle = styled.h3`
 `;
 
 export const Row = styled.div`
+  padding: 1em 0;
   display: flex;
-  justify-content: space-between;
+  gap: 2em;
 `;
 
 export const Included = styled.p<{ show: boolean }>`

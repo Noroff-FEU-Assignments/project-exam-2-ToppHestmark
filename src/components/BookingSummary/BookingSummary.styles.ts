@@ -1,5 +1,18 @@
 import styled from 'styled-components/macro';
 
+export const Logo = styled.img`
+  width: 100px;
+  height: auto;
+  display: none;
+
+  @media print {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+`;
+
 export const Row = styled.div`
   padding: 1.125em 0 0.25em 0;
   display: flex;
@@ -15,7 +28,7 @@ export const LastRow = styled(Row)`
   padding: 1em 0;
   margin-bottom: 2em;
   border-top: 1px solid ${({ theme }) => theme.colors.border};
-  border-bottom: 2px solid ${({ theme }) => theme.colors.navy};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.navy};
   font-weight: 700;
 `;
 

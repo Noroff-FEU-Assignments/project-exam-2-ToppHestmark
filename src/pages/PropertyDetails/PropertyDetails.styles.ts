@@ -45,10 +45,11 @@ export const LocationIcon = styled(RoomIcon)`
 `;
 
 export const UIWrapper = styled.section`
+  margin: 1em 0;
   gap: 1em;
+  display: grid;
 
   @media screen and (min-width: 1200px) {
-    display: grid;
     justify-content: space-between;
     grid-template-columns: 59% 39%;
   }

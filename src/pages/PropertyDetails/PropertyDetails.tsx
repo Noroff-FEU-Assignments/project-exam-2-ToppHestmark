@@ -5,7 +5,7 @@ import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
 import {
   GuestDateSelect,
-  ImagesCarousel,
+  ImageSlider,
   ErrorModal,
   Loading,
 } from '../../components';
@@ -78,7 +78,7 @@ const PropertyDetails = () => {
         <Typography variant="body1"> {room?.neighbourhood} </Typography>
       </Row>
       <UIWrapper>
-        <ImagesCarousel room={room} />
+        <ImageSlider room={room} />
         <GuestDateSelect room={room} />
         <PropertyDescription room={room} />
       </UIWrapper>
