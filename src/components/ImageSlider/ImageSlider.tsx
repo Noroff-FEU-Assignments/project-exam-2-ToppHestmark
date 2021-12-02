@@ -12,9 +12,6 @@ interface ImagesSliderProps {
   room: RoomType | undefined;
 }
 
-// Big thanks Brian for showing us how to make a image slide
-// Ref: https://www.youtube.com/watch?v=l1MYfu5YWHc
-
 const ImageSlider: React.FC<ImagesSliderProps> = ({ room }) => {
   const [current, setCurrent] = useState<number>(0);
 

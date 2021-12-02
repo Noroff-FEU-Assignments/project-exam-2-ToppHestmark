@@ -18,8 +18,9 @@ export const ArrowLeft = styled(ArrowBackIosIcon)`
   color: ${({ theme }) => theme.colors.white};
   position: absolute;
   z-index: 2;
-  top: 50%;
+  top: 45%;
   left: 28px;
+  bottom: 55%;
   user-select: none;
 `;
 
@@ -28,15 +29,16 @@ export const ArrowRight = styled(ArrowForwardIosIcon)`
   color: ${({ theme }) => theme.colors.white};
   position: absolute;
   z-index: 2;
-  top: 50%;
+  top: 45%;
   right: 28px;
+  bottom: 55%;
   user-select: none;
 `;
 
 const slide = `
-  opacity: 0;
+  opacity: 0.6;
   transition-duration: 0.75s ease;
-  scale: 0.96;
+  scale: 0.985;
 `;
 
 const slideActive = `

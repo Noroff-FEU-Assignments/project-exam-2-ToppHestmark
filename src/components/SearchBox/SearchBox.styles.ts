@@ -18,7 +18,7 @@ export const Container = styled(Box)`
 export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: 0.4em 1.25em;
+  margin: 0 auto;
   border-radius: 40px;
   background-color: ${({ theme }) => theme.colors.white};
 
@@ -27,12 +27,16 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
   }
+
+  @media screen and (min-width: 576px) {
+    padding: 0.4em 1.25em;
+  }
 `;
 
 export const SearchInput = styled(TextField)`
   background-color: white; // This because Material-UI didn't allowed SC props
   border-radius: 25px; // This because Material-UI didn't allowed SC props
-  min-width: 300px !important;
+  min-width: 280px !important;
 
   fieldset,
   legend {
@@ -75,7 +79,7 @@ export const SubmitButton = styled.button`
   }
 
   @media screen and (max-width: 576px) {
-    width: 330px;
+    width: 100%;
     padding: 1em;
     border: 2px solid ${({ theme }) => theme.colors.primary};
     background-color: ${({ theme }) => theme.colors.primary};

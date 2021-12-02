@@ -1,4 +1,3 @@
-import { boxShadow, layoutSpacing } from './src/styles/mixins';
 import 'styled-components';
 
 declare module 'styled-components' {

@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     scrollbar-width: none;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  :is(h1, h2, h3, h4, h5, h6) {
     font-family: 'PT Sans', sans-serif;
     line-height: 1.125;
   }

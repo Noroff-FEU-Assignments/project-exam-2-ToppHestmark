@@ -55,11 +55,7 @@ const TopBar: React.FC = () => {
     <NavContainer pathname={path}>
       <Wrapper>
         <LogoWrapper to="/">
-          {' '}
-          <img
-            src={path === '/' ? logo_white : logo}
-            alt="Holidaze logo"
-          />{' '}
+          <img src={path === '/' ? logo_white : logo} alt="Holidaze logo" />
         </LogoWrapper>
 
         <LinkWrap>

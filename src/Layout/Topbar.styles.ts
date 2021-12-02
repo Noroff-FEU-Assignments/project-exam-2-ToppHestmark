@@ -32,6 +32,9 @@ export const Wrapper = styled.div`
   @media (max-width: 768px) {
     padding: 1em 2em;
   }
+  @media (max-width: 480px) {
+    padding: 1em;
+  }
 `;
 
 export const LinkWrap = styled.div`
@@ -63,17 +66,19 @@ export const LogoWrapper = styled(NavLink)`
   display: grid;
   align-items: center;
 
-  img {
-    width: 120px;
-  }
-
   &:hover {
     opacity: 0.85;
+  }
+
+  img {
+    width: 120px;
+    margin-left: -0.4em;
   }
 
   @media screen and (max-width: 992px) {
     img {
       width: 100px;
+      margin-left: -0.3em;
     }
   }
 `;
