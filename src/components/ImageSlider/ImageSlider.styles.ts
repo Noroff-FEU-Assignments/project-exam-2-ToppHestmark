@@ -38,7 +38,7 @@ export const ArrowRight = styled(ArrowForwardIosIcon)`
 const slide = `
   opacity: 0.6;
   transition-duration: 0.75s ease;
-  scale: 0.985;
+  scale: 0.99;
 `;
 
 const slideActive = `

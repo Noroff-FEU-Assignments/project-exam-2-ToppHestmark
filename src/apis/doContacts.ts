@@ -14,7 +14,7 @@ export const doContact = async (
       fullname: data.fullname,
       email: data.email,
       subject: data.subject,
-      message: data.message.trim(),
+      message: data.message?.trim(),
     }),
   };
 

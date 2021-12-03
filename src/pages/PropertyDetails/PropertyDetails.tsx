@@ -4,6 +4,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
 import {
+  Head,
   GuestDateSelect,
   ImageSlider,
   ErrorModal,
@@ -56,6 +57,7 @@ const PropertyDetails = () => {
 
   return (
     <Container>
+      <Head title={room?.Title} description={room?.description} />
       <BtnLink>
         <ButtonPrimaryLink rel="noopener" onClick={goBack}>
           Go Back

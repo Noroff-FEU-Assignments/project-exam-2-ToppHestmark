@@ -1,15 +1,15 @@
 ### Todos
 
-- [ ] Loading spinner when fetching API
-- [ ] Format larger numbers
+- [ ] Add Helmet for SEO
 - [ ] Active state on Topbar
-- [ ] Configure fonts
+- [ ] Fix login when press enter/return
 - [ ] Customize confirmation window
-- [ ] Fix login when press enter tab
-- [ ] Caching the properties on home page
 - [ ] Icons inside side drawer menu
 - [ ] Customization of text field
 - [ ] Add to favourite button
+- [x] Format larger numbers
+- [x] Configure fonts
+- [x] Loading spinner when fetching API
 - [x] Error handling pages and forms
 - [x] Remove all inline styles
 - [x] Snackbar pop-up message for form success / errors

@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/AuthProvider';
 import { loginSchema } from '../../validation/loginSchema';
 import { doLogin, ILogin } from '../../apis/doLogin';
 import { initialLoginValues } from './initialValues';
-import { Loading } from '../../components';
+import { Head, Loading } from '../../components';
 
 import {
   Container,
@@ -67,6 +67,10 @@ const Login = () => {
 
   return (
     <Container>
+      <Head
+        title="Sign in"
+        description="Sign in as admin ang start managing the properties."
+      />
       {loading && <Loading state={loading} />}
       <FormWrapper>
         <TitleText>Login</TitleText>

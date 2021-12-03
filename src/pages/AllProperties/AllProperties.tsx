@@ -4,6 +4,7 @@ import { Divider } from '@mui/material';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
 import {
+  Head,
   Heading,
   PropertiesCardItem,
   ErrorModal,
@@ -37,6 +38,10 @@ const AllProperties = () => {
 
   return (
     <Container>
+      <Head
+        title="All Properties"
+        description="List of Holidaze properties with viriety of selections that cover all range of prices."
+      />
       <Heading align="flex-start"> {rooms?.length} properties</Heading>
 
       {rooms?.map((room) => (

@@ -1,7 +1,7 @@
 import { Container, HeadingText } from './Heading.styles';
 
 interface HeadingProps {
-  children: any;
+  children: React.ReactNode;
   align: 'flex-start' | 'center' | 'flex-end';
 }
 

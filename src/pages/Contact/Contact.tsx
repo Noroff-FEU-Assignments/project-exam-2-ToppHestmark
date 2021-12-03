@@ -4,7 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { contactSchema } from '../../validation/contactSchema';
 import { TextField } from '@mui/material';
 import { ContactType } from './Contact.types';
-import { Heading, ErrorModal, MessageModal, Loading } from '../../components';
+import {
+  Head,
+  Heading,
+  ErrorModal,
+  MessageModal,
+  Loading,
+} from '../../components';
 import { Container, FormWrapper, InputWrapper, Spacer } from './Contact.styles';
 import { doContact } from '../../apis/doContacts';
 import { initialContactValues } from './initialValues';
@@ -51,6 +57,10 @@ const Contact = () => {
 
   return (
     <>
+      <Head
+        title="Contact us"
+        description="Contact us for more information, ask us about anything or even share some thought with us."
+      />
       {loading && <Loading state={loading} />}
       <Heading align="center">Contact us</Heading>
 
