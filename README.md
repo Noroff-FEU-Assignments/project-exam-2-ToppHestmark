@@ -3,7 +3,10 @@
 <hr />
 <Br />
 
-[DEMO SITE](https://holidaze-inn.netlify.app/)
+[DEMO SITE with Firebase](https://holidaze-inn.web.app/)
+<br />
+
+[DEMO SITE with Netlify as a back-up](https://holidaze-inn.netlify.app/)
 
 ### Getting Started
 

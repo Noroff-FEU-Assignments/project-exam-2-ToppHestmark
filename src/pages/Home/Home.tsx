@@ -2,7 +2,13 @@ import { useState, useEffect } from 'react';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
 import { SearchBox, ErrorModal, Loading } from '../../components';
-import { HomeTopHeader, Poster, Featured, PosterLower } from '../../containers';
+import {
+  HomeTopHeader,
+  Poster,
+  Featured,
+  PosterLower,
+  BannerBottom,
+} from '../../containers';
 import { TopSection, Spacer, LowerSection } from './Home.styles';
 
 const Home = () => {
@@ -35,6 +41,7 @@ const Home = () => {
         <Poster />
         <Featured rooms={featuredRooms} />
         <PosterLower />
+        <BannerBottom />
       </LowerSection>
     </>
   );
