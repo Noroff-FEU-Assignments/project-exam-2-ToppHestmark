@@ -6,7 +6,7 @@ export const FormContainer = styled(FormGroup)`
   margin: 3em auto;
   padding: 1em;
   border-radius: ${({ theme }) => theme.borderRadius};
-  ${({ theme }) => theme.includes.boxShadow}
+  border: 1px solid ${({ theme }) => theme.colors.border};
 
   @media (min-width: 768px) {
     padding: 2em;

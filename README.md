@@ -24,8 +24,4 @@ User 1:
 Username: holidaze
 Password: Password1234
 
-Admin
-Username: top_hestmark@hotmail.com
-Password: Password1234
-
 ```

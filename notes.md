@@ -33,3 +33,14 @@
 - Large --------------- lg ≥992px
 - Extra large --------- xl ≥1200px
 - Extra extra large --- xxl ≥1400px
+
+```
+User 1:
+Username: holidaze
+Password: Password1234
+
+Admin
+Username: top_hestmark@hotmail.com
+Password: Password1234
+
+```

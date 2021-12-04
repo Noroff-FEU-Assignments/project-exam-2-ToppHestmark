@@ -13,7 +13,7 @@ export const Form = styled(FormGroup)`
   @media screen and (min-width: 992px) {
     padding: 3em;
     border-radius: ${({ theme }) => theme.borderRadius};
-    ${({ theme }) => theme.includes.boxShadow};
+    border: 1px solid ${({ theme }) => theme.colors.border};
   }
 `;
 

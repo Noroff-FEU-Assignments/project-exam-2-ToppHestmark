@@ -2,7 +2,7 @@ import { FormControl, TextField } from '@mui/material';
 import { EnquiryInputsProps } from './EnquiryInputs.types';
 import { GridWrapper, MessageWrapper } from './EnquiryInputs.styles';
 
-const EnquiryInputs = (props: EnquiryInputsProps) => {
+const EnquiryInputs: React.FC<EnquiryInputsProps> = (props) => {
   const { errors, enquiries, register, handleEnquiryChange } = props;
 
   return (
@@ -57,7 +57,12 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
             label="Phone number"
             placeholder="8 digits"
             multiline
-            error={errors?.phone_number ? true : false}
+            error={
+              errors?.phone_number ||
+              enquiries?.phone_number.toString().length > 10
+                ? true
+                : false
+            }
             value={enquiries?.phone_number}
             helperText={errors?.phone_number && 'Invalid number'}
             {...register('phone_number')}

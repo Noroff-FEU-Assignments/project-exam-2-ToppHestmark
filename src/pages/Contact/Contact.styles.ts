@@ -12,8 +12,7 @@ export const FormWrapper = styled(FormGroup)`
   display: flex;
   justify-content: center;
   border-radius: ${({ theme }) => theme.borderRadius};
-
-  ${({ theme }) => theme.includes.boxShadow}
+  border: 1px solid ${({ theme }) => theme.colors.border};
 
   @media screen and (max-width: 480px) {
     padding: 1.5em;
