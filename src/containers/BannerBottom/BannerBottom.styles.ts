@@ -6,7 +6,6 @@ export const Container = styled.div<{ image: string }>`
   min-height: 500px;
   position: relative;
   z-index: 1;
-  overflow-y: hidden;
 
   img {
     width: 100%;
@@ -18,7 +17,6 @@ export const Container = styled.div<{ image: string }>`
     img {
       display: none;
     }
-
     background-image: url(${({ image }) => image});
     background-position: center;
     background-size: cover;
@@ -28,12 +26,14 @@ export const Container = styled.div<{ image: string }>`
     padding: 0 4em;
 
     img {
+      overflow-y: hidden;
       border-radius: ${({ theme }) => theme.borderRadius};
     }
   }
 
   @media screen and (min-width: 1920px) {
     ${({ theme }) => theme.includes.layoutSpacing}
+    width: 100%;
   }
 `;
 

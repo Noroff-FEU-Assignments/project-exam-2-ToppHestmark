@@ -14,4 +14,5 @@ export const Spacer = styled.div`
 
 export const LowerSection = styled.div`
   min-height: 100vh;
+  overflow-y: hidden;
 `;
