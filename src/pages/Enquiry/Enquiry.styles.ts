@@ -11,6 +11,10 @@ export const FormContainer = styled(FormGroup)`
   @media (min-width: 768px) {
     padding: 2em;
   }
+
+  @media (max-width: 768px) {
+    margin: 3em 1em;
+  }
 `;
 
 export const Title = styled.h3`
@@ -26,7 +30,13 @@ export const Text = styled.p`
 `;
 
 export const ButtonWrapper = styled.div`
+  padding-top: 1em;
   display: flex;
   justify-content: space-between;
   gap: 1em;
+
+  @media (max-width: 480px) {
+    flex-direction: column-reverse;
+    gap: 3em;
+  }
 `;

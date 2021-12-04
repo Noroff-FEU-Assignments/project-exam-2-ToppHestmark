@@ -45,8 +45,8 @@ const PropertyDetails = () => {
     (async () => {
       setError(null);
 
-      const room: any = await fetchRooms(setError, id);
       error && setLoading(false);
+      const room: any = await fetchRooms(setError, id);
       setRoom(room);
       setLoading(false);
     })();

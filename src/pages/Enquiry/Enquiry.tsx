@@ -14,6 +14,7 @@ import {
 import { RoomType } from '../../types/roomType';
 import { InitialGuestPreference, EnquiriesInitial } from './initialValues';
 import { makeBooking } from '../../apis/makeBooking';
+import Numbers from '../../utils/Numbers';
 
 import { FormContainer, Title, Text, ButtonWrapper } from './Enquiry.styles';
 import { ButtonPrimary as Button } from '../../styles/Button/Button.styles';
@@ -29,6 +30,7 @@ const Enquiry = () => {
   );
   const [enquiries, setEnquiries] = useState<IEnquiry>(EnquiriesInitial);
   const [loading, setLoading] = useState<boolean>(false);
+  const totalPrice = Numbers.formatPrice(guestPreference.total);
 
   const goBack = () => history.goBack();
 
@@ -51,6 +53,8 @@ const Enquiry = () => {
 
     const generatedId = nanoid(8).toUpperCase();
 
+    enquiryError && setLoading(false);
+
     const bookRoom: any = await makeBooking(
       data,
       guestPreference,
@@ -59,7 +63,6 @@ const Enquiry = () => {
       setEnquiryError
     );
 
-    enquiryError && setLoading(false);
     if (bookRoom?.created_at) {
       setLoading(false);
       return history.push('/summary', { bookingSummary: bookRoom });
@@ -92,7 +95,12 @@ const Enquiry = () => {
 
       <FormContainer>
         <Title> Enquiry for {property?.Title} </Title>
-        <Text>Please fill your travel details</Text>
+        <Text>
+          {' '}
+          {guestPreference.numberOfGuests} guests,{' '}
+          {guestPreference.lengthOfStays} nights
+          <br />$ {totalPrice}
+        </Text>
         <EnquiryInputs
           errors={errors}
           enquiries={enquiries}

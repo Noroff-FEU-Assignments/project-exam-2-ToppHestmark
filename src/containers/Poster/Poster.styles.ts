@@ -60,9 +60,9 @@ export const Right = styled.div`
     width: 100%;
     max-width: 500px;
     padding: 2em;
+    aspect-ratio: 1/1;
     height: auto;
     border-radius: 50%;
-    aspect-ratio: 1/1;
 
     @media screen and (max-width: 768px) {
       padding: 1em;

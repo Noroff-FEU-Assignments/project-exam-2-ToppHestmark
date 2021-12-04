@@ -35,8 +35,8 @@ const Contact = () => {
     setContactError(null);
     setSuccess(false);
 
-    const makeContact: any = await doContact(data, setContactError);
     contactError && setLoading(false);
+    const makeContact: any = await doContact(data, setContactError);
 
     if (makeContact?.published_at) {
       setLoading(false);

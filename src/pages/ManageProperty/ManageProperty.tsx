@@ -59,6 +59,7 @@ const ManageProperty = () => {
     if (!confirm) return;
     setLoading(true);
 
+    error && setLoading(false);
     const deleteProperty: any = await manageRoom(
       'DELETE',
       token,
@@ -68,7 +69,6 @@ const ManageProperty = () => {
       roomId
     );
 
-    error && setLoading(false);
     if (deleteProperty?.updated_at) {
       setLoading(false);
       setSuccess(true);
@@ -82,6 +82,7 @@ const ManageProperty = () => {
     setLoading(true);
     setError(null);
 
+    error && setLoading(false);
     const updateProperty: any = await manageRoom(
       'PUT',
       token,
@@ -91,7 +92,6 @@ const ManageProperty = () => {
       roomId
     );
 
-    error && setLoading(false);
     if (updateProperty?.updated_at) {
       setLoading(false);
       setSuccess(true);

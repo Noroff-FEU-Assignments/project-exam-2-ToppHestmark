@@ -25,9 +25,9 @@ const Messages = () => {
     (async (): Promise<void> => {
       setMessageError(null);
 
+      messageError && setLoading(false);
       const allMessages: any = await doMessage('GET', token, setMessageError);
 
-      messageError && setLoading(false);
       setMessages(allMessages);
       setLoading(false);
     })();

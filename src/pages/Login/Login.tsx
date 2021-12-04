@@ -105,7 +105,6 @@ const Login = () => {
             onChange={handleChange('password')}
           />
         </InputWrap>
-
         <SubmitButton onClick={handleSubmit(onSubmit)}>Submit</SubmitButton>
       </FormWrapper>
     </Container>

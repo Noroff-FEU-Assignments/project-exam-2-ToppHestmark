@@ -15,12 +15,12 @@ Whatever project you choose, the final submission must have the following:
 
 - [x] A Gantt chart planning the project
 - [x] A style guide
-- [ ] An Adobe XD prototype
+- [x] An Adobe XD prototype
 - [x] Use a CSS Pre-processor and BEM if not using CSS Modules, Styled Components, etc
 - [x] Use a React.js or Next.js
 - [x] You can use regular JS or TypeScript
 - [x] Please use create-react-app or create-next-app to generate a skeleton project for yourself
-- [ ] A fully working website that fulfils the brief
+- [x] A fully working website that fulfils the brief
 
 ## Option 2: Hotel Booking Website
 
@@ -34,7 +34,7 @@ You will need to create an API to store the data for the establishments, enquiri
 
 ### Visitor Side
 
-- [ ] Homepage
+- [x] Homepage
 - [x] Search bar typeahead (auto dropdown with hotel names that match what has been typed)
 - [x] A results page with all hotels
 - [x] The hotel specific page which displays all details about the hotel

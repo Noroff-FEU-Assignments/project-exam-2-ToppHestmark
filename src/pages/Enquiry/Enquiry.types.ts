@@ -18,8 +18,10 @@ export interface IGuestRequest {
 }
 
 export interface ILocationState {
-  property: RoomType | undefined;
-  guestRequest: IGuestRequest | undefined;
+  state: {
+    property: RoomType | undefined;
+    guestRequest: IGuestRequest | undefined;
+  };
 }
 
 export type IGuestPreference = IGuestRequest;

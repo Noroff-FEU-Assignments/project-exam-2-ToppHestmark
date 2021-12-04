@@ -52,10 +52,10 @@ const EnquiryInputs = (props: EnquiryInputsProps) => {
         </FormControl>
         <FormControl>
           <TextField
-            type="number"
+            type="string"
             variant="standard"
             label="Phone number"
-            placeholder="91 80 80 80"
+            placeholder="8 digits"
             multiline
             error={errors?.phone_number ? true : false}
             value={enquiries?.phone_number}

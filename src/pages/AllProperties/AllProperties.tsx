@@ -26,8 +26,8 @@ const AllProperties = () => {
     (async () => {
       setError(null);
 
-      const allRooms: any = await fetchRooms(setError, '');
       error && setLoading(false);
+      const allRooms: any = await fetchRooms(setError, '');
       setRooms(allRooms);
       setLoading(false);
     })();

@@ -17,7 +17,7 @@ const HomeTopHeader = () => {
     <Container>
       <Banner>
         <HeaderWrapper>
-          <HeaderText>For your next holiday</HeaderText>
+          <HeaderText>Find your next holiday</HeaderText>
           <SubTitle>Find hotels, B&B and guesthouses</SubTitle>
           <ButtonLight onClick={goToAllProperties}>Start explore</ButtonLight>
         </HeaderWrapper>

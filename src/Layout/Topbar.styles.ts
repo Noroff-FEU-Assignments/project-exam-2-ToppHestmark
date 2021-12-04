@@ -49,7 +49,8 @@ export const LinkWrap = styled.div`
 `;
 
 export const Link = styled(NavLink)<IPathnameProps>`
-  padding: 8px;
+  padding: 8px 0;
+  margin: 0 8px;
   color: ${({ theme, pathname }) =>
     pathname === '/' ? theme.colors.white : theme.colors.navy};
   text-decoration: none;

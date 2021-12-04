@@ -1,12 +1,12 @@
 ### Todos
 
-- [ ] Add Helmet for SEO
-- [ ] Active state on Topbar
 - [ ] Fix login when press enter/return
-- [ ] Customize confirmation window
-- [ ] Icons inside side drawer menu
-- [ ] Customization of text field
-- [ ] Add to favourite button
+- [ ] Customize confirmation window?
+- [ ] Icons inside side drawer menu?
+- [ ] Customization of text field?
+- [ ] Add to favourite button?
+- [x] Active state on Topbar
+- [x] Add Helmet for SEO
 - [x] Format larger numbers
 - [x] Configure fonts
 - [x] Loading spinner when fetching API
@@ -20,9 +20,9 @@
 ### Todos before submit
 
 - [ ] Lighthouse test
-- [ ] Refactor codes
-- [ ] Remove all comments
-- [ ] Remove console.log
+- [x] Refactor codes
+- [x] Remove all comments
+- [x] Remove console.log
 
 ### References
 

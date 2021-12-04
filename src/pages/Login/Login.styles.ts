@@ -16,8 +16,7 @@ export const FormWrapper = styled(FormGroup)`
   width: 90vw;
   padding: 1.5em;
   border-radius: ${({ theme }) => theme.borderRadius};
-
-  ${({ theme }) => theme.includes.boxShadow}
+  border: 1px solid ${({ theme }) => theme.colors.border};
 
   @media screen and (min-width: 480px) {
     max-width: 500px;
