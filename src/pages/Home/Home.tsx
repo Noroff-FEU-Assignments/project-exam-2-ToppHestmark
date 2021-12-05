@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { fetchRooms } from '../../apis/fetchRooms';
 import { RoomType } from '../../types/roomType';
-import { SearchBox, ErrorModal, Loading } from '../../components';
+import { Head, SearchBox, ErrorModal, Loading } from '../../components';
 import {
   HomeTopHeader,
   Poster,
@@ -32,6 +32,10 @@ const Home = () => {
 
   return (
     <>
+      <Head
+        title="Hotel and Accomodations booking site"
+        description="Book hotel, bed & breakfast, cabin, apartments and cabins within Bergen area."
+      />
       <TopSection>
         <SearchBox />
         <HomeTopHeader />
